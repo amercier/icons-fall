@@ -1,7 +1,10 @@
 {
-  "name": "iconsFall",
-  "version": "0.0.0",
-  "dependencies": {},
+  "private": true,
+  "scripts": {
+    "test": "gulp test"
+  },
+  "dependencies": {
+  },
   "devDependencies": {
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "^0.0.6",
