@@ -27,7 +27,7 @@ module.exports = function(config) {
 
     // Code coverage report
 
-    reporters: ['progress', 'coverage'],
+    reporters: ['dots', 'coverage'],
 
     preprocessors: {
       'src/app/**/*.js': ['coverage'],
