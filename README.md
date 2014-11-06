@@ -12,8 +12,8 @@ Code analysis is performed by [Code Climate](https://codeclimate.com/).
 Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 
 [![Build Status](http://img.shields.io/codeship/35da2210-4540-0132-ec31-26eabbfbacd1.svg?style=flat-square)](https://codeship.io/projects/44957)
-[![Code Climate](http://img.shields.io/codeclimate/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall)
-[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall)
+[![Code Climate](http://img.shields.io/codeclimate/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall/trends)
+[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall/code)
 [![Dependency Status](http://img.shields.io/gemnasium/amercier/iconsfall.svg?style=flat-square)](https://gemnasium.com/amercier/iconsfall)
 
 Pushes on master branch are automatically deployed on
