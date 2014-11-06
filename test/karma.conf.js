@@ -30,7 +30,8 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage'],
 
     preprocessors: {
-      'src/app/**/*.js': ['coverage']
+      'src/app/**/*.js': ['coverage'],
+      'src/components/**/*.js': ['coverage']
     },
 
     coverageReporter: {
