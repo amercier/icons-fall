@@ -6,7 +6,19 @@ var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep');
 
-gulp.task('test', function() {
+function echo(cb) {
+  return function (err, stdout, stderr) {
+    stdout && console.log(stdout.trim());
+    stderr && console.error(stderr.trim());
+    cb(err);
+  }
+};
+
+gulp.task('clean:coverage', function(cb) {
+  return gulp.src(['coverage'], { read: false }).pipe($.rimraf());
+});
+
+gulp.task('karma', ['clean:coverage'], function() {
   var bowerDeps = wiredep({
     directory: 'src/bower_components',
     exclude: ['bootstrap-sass-official'],
@@ -29,3 +41,10 @@ gulp.task('test', function() {
       throw err;
     });
 });
+
+gulp.task('coverage', ['karma'], function(cb) {
+  return gulp.src('coverage/*/coverage.txt')
+    .pipe($.exec('echo "<%= file.path.replace(/^.*\\/coverage\\/(.*)\\/coverage.txt$/, \'$1\') %>"; cat "<%= file.path %>"', echo(cb)));
+});
+
+gulp.task('test', ['coverage']);
