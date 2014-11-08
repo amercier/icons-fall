@@ -96,8 +96,17 @@ gulp.task('fonts', function () {
     .pipe($.size());
 });
 
+gulp.task('static', function () {
+  return gulp.src([
+      'src/favicon.ico',
+      'src/.htaccess'
+    ])
+    .pipe(gulp.dest('dist'))
+    .pipe($.size());
+});
+
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.rimraf());
 });
 
-gulp.task('build', ['html', 'partials', 'images', 'fonts']);
+gulp.task('build', ['html', 'partials', 'images', 'fonts', 'static']);
