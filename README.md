@@ -4,28 +4,6 @@ icons-fall
 Icon's Fall website
 
 
-Setup
------
-
-Clone the repo on dev branch
-
-    git clone -b dev git@github.com:amercier/iconsfall.git
-    npm install
-    bower install
-
-
-Development
------------
-
-    gulp dev
-
-
-Build
------
-
-    gulp build
-
-
 Continuous deployment
 ---------------------
 
@@ -53,3 +31,25 @@ Step 2: test at [http://iconsfall-staging.herokuapp.com](http://iconsfall-stagin
 Step 3: create a PR on GitHub
 
 Step 4: merge the PR into master branch 
+
+
+Setup
+-----
+
+Clone the repo on dev branch
+
+    git clone -b dev git@github.com:amercier/iconsfall.git
+    npm install
+    bower install
+
+
+Development
+-----------
+
+    gulp dev
+
+
+Build
+-----
+
+    gulp build
