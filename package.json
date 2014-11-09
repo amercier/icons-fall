@@ -9,6 +9,7 @@
   "devDependencies": {
     "browser-sync": "^1.3.6",
     "chalk": "^0.4.0",
+    "david": "^5.0.0",
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "^0.0.6",
     "gulp-cache": "^0.2.0",
