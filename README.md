@@ -15,6 +15,8 @@ Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 [![Code Climate](http://img.shields.io/codeclimate/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall/trends)
 [![Test Coverage](http://img.shields.io/codeclimate/coverage/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall/code)
 [![Dependency Status](http://img.shields.io/gemnasium/amercier/iconsfall.svg?style=flat-square)](https://gemnasium.com/amercier/iconsfall)
+![Dependency Status](http://img.shields.io/david/dev/amercier/iconsfall.svg?style=flat-square)
+[![Open Issues](http://img.shields.io/github/issues/amercier/iconsfall.svg?style=flat-square)](https://github.com/amercier/iconsfall/issues)
 
 Pushes on master branch are automatically deployed on
 [http://iconsfall-staging.herokuapp.com](http://iconsfall-staging.herokuapp.com).
