@@ -16,7 +16,7 @@ Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 [![Test Coverage](http://img.shields.io/codeclimate/coverage/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall/code)
 
 [![Dependency Status](http://img.shields.io/gemnasium/amercier/iconsfall.svg?style=flat-square)](https://gemnasium.com/amercier/iconsfall)
-![Dependency Status](http://img.shields.io/david/dev/amercier/iconsfall.svg?style=flat-square)
+[![Dependency Status](http://img.shields.io/david/dev/amercier/iconsfall.svg?style=flat-square)](https://gemnasium.com/amercier/iconsfall#development-dependencies)
 
 [![Open Issues](http://img.shields.io/github/issues/amercier/iconsfall.svg?style=flat-square)](https://github.com/amercier/iconsfall/issues)
 
