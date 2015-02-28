@@ -1,6 +1,7 @@
-node_modules
-test/coverage
-dist
-.tmp
 .sass-cache
+.tmp
+dist
+node_modules
+npm_debug.log
 src/bower_components
+test/coverage
