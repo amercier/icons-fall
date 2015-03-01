@@ -1,7 +1,7 @@
 sudo: false
 after_success:
-- "./node_modules/.bin/codeclimate < tests/coverage/coverage.lcov"
-- "./node_modules/.bin/coveralls < tests/coverage/coverage.lcov"
+- "./node_modules/.bin/codeclimate < test/coverage/coverage.lcov"
+- "./node_modules/.bin/coveralls < test/coverage/coverage.lcov"
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_TAG" != ""
   && npm run build || echo "Not on master branch or a tag. Skipping build" >&2
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master"
