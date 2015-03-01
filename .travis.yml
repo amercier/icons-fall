@@ -1,5 +1,8 @@
 sudo: false
 after_success:
+- echo "TRAVIS_PULL_REQUEST = $TRAVIS_PULL_REQUEST"
+- echo "TRAVIS_BRANCH = $TRAVIS_BRANCH"
+- echo "TRAVIS_TAG = $TRAVIS_TAG"
 - "./node_modules/.bin/codeclimate < tests/coverage/coverage.lcov"
 - "./node_modules/.bin/coveralls < tests/coverage/coverage.lcov"
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_TAG" != ""
