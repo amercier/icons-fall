@@ -43,8 +43,8 @@ gulp.task('karma', ['clean:coverage'], function() {
 });
 
 gulp.task('coverage', ['karma'], function(cb) {
-  return gulp.src('test/coverage/*/coverage.txt')
-    .pipe($.exec('echo "<%= file.path.replace(/^.*\\/coverage\\/(.*)\\/coverage.txt$/, \'$1\') %>"; cat "<%= file.path %>"', echo(cb)));
+  return gulp.src('test/coverage/coverage.txt')
+    .pipe($.exec('echo "<%= file.path.replace(/^.*\\/coverage\\/coverage.txt$/, \'$1\') %>"; cat "<%= file.path %>"', echo(cb)));
 });
 
 gulp.task('test', ['coverage']);

@@ -1,9 +1,12 @@
 {
   "private": true,
   "scripts": {
+    "build": "gulp build",
     "install": "bower install",
     "start": "gulp serve",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "gulp test",
+    "deploy-staging": "./deploy-ftp.sh dist ftp.iconsfall.com /staging",
+    "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www"
   },
   "dependencies": {
     "bower": "^1.3.12"

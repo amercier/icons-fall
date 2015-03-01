@@ -1,0 +1,19 @@
+sudo: false
+after_success:
+- "./node_modules/.bin/codeclimate < tests/coverage/coverage.lcov"
+- "./node_modules/.bin/coveralls < tests/coverage/coverage.lcov"
+- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_TAG" != ""
+  && npm run build || echo "Not on master branch or a tag. Skipping build" >&2
+- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master"
+  && npm run deploy-staging || echo "Not on master branch. Skipping deployment to staging" >&2
+- test "$TRAVIS_TAG" != "" && test "$TRAVIS_BRANCH" = "master"
+  && npm run deploy-production || echo "Not tagged. Skipping deployment to production" >&2
+cache:
+  directories:
+  - bower_components
+  - node_modules
+language: node_js
+env:
+  global:
+  - secure: Iwm1Wwh6RshfavOuZD0ug5ljj17xcjO1jXrYXGSc3sHdPFwtOsSQC3QUwOxzHsAhWmfhIcai/egxDC3rdhbLCcmgFueAAHXMJOL+mb3zUns1NPZEDl5JzXIDh2dL58EqCkbUXcLZJdnoEmgjd1iqhoHjxqVrhT1B95d8tQTPWA4=
+  - secure: MIwPIh/CryFu+SP1EtVV3bHJylFc2n4S3qG3Xn3yHG7H74n0FooCNedXfc7mDEM9EFpAky7YQOYVgHv8MCihnADJQMyR+MBS3e3EyNO2iG2OAhl6q/pfzrBWKvZVx/i7IIJGM/qENzeYUiMdZItkpj/I+L9WI4i3IFdqViMQXbo=
