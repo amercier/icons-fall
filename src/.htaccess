@@ -11,13 +11,12 @@
 # # Authorization                                                      #
 # ######################################################################
 
-AuthUserFile /homez.155/iconsfaloh/staging/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Staging access is restricted"
-AuthType Basic
-
 # Apache 2.4
 <IfModule mod_authz_core.c>
+  AuthUserFile /homez.155/iconsfaloh/staging/.htpasswd
+  AuthGroupFile /dev/null
+  AuthName "Staging access is restricted"
+  AuthType Basic
   Require all denied
   SetEnvIf Host .* authentication_not_needed
   SetEnvIf Host ^staging\.iconsfall\.com$ !authentication_not_needed
@@ -29,9 +28,12 @@ AuthType Basic
 
 # Apache 2.2
 <IfModule !mod_authz_core.c>
-  SetEnvIf Host ^staging\.iconsfall\.com$ authorization_required
+  AuthUserFile /homez.155/iconsfaloh/staging/.htpasswd
+  AuthGroupFile /dev/null
+  AuthName "Staging access is restricted"
+  AuthType Basic
   Require valid-user
-
+  SetEnvIf Host ^staging\.iconsfall\.com$ authorization_required
   Order Allow,Deny
   Deny from all
   Allow from env=!authorization_required
