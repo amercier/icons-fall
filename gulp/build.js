@@ -99,7 +99,8 @@ gulp.task('fonts', function () {
 gulp.task('static', function () {
   return gulp.src([
       'src/favicon.ico',
-      'src/.htaccess'
+      'src/.htaccess',
+      'src/.htpasswd'
     ])
     .pipe(gulp.dest('dist'))
     .pipe($.size());
