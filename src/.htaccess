@@ -13,17 +13,29 @@
 
 AuthUserFile /homez.155/iconsfaloh/staging/.htpasswd
 AuthGroupFile /dev/null
-AuthName "Staging access is resrtricted"
+AuthName "Staging access is restricted"
 AuthType Basic
-require valid-user
 
-SetEnvIf Host staging.iconsfall.com authorization_required
+# Apache 2.4
+<IfModule mod_authz_core.c>
+  Require all denied
+  SetEnvIf Host .* authentication_not_needed
+  SetEnvIf Host ^staging\.iconsfall\.com$ !authentication_not_needed
+  <RequireAny>
+    Require env authentication_not_needed
+    Require valid-user
+  </RequireAny>
+</IfModule>
 
-Order Allow,Deny
-Allow from all
-Deny from env=authorization_required
-
-Satisfy Any
+# Apache 2.2
+<IfModule !mod_authz_core.c>
+  SetEnvIf Host ^staging\.iconsfall\.com$ authorization_required
+  Order Allow,Deny
+  Allow from all
+  Deny from env=!authorization_required
+  Require valid-user
+  Satisfy Any
+</IfModule>
 
 # ######################################################################
 # # CROSS-ORIGIN                                                       #
