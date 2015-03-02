@@ -5,7 +5,7 @@
     "install": "bower install",
     "start": "gulp serve",
     "test": "gulp test",
-    "deploy-staging": "./deploy-ftp.sh dist ftp.iconsfall.com /staging",
+    "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
     "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "gulp-size": "^1.1.0",
     "gulp-uglify": "^1.0.0",
     "gulp-useref": "^1.0.0",
+    "htpasswd": "^2.1.6",
     "http-proxy": "^1.3.0",
     "jshint-stylish": "^1.0.0",
     "karma-coverage": "^0.2.6",
