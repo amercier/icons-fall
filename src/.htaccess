@@ -31,8 +31,8 @@ AuthType Basic
 <IfModule !mod_authz_core.c>
   SetEnvIf Host ^staging\.iconsfall\.com$ authorization_required
   Order Allow,Deny
-  Allow from all
-  Deny from env=!authorization_required
+  Deny from all
+  Allow from env=!authorization_required
   Require valid-user
   Satisfy Any
 </IfModule>
