@@ -30,10 +30,11 @@ AuthType Basic
 # Apache 2.2
 <IfModule !mod_authz_core.c>
   SetEnvIf Host ^staging\.iconsfall\.com$ authorization_required
+  Require valid-user
+
   Order Allow,Deny
   Deny from all
   Allow from env=!authorization_required
-  Require valid-user
   Satisfy Any
 </IfModule>
 
