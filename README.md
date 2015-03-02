@@ -19,20 +19,21 @@ Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 [![Open Issues](http://img.shields.io/github/issues/amercier/iconsfall.svg?style=flat-square)](https://github.com/amercier/iconsfall/issues)
 
 Pushes on master branch are automatically deployed on
-[http://iconsfall-staging.herokuapp.com](http://iconsfall-staging.herokuapp.com).
+[http://staging.iconsfall.com](http://staging.iconsfall.com).
 
 Tags are automatically deployed on
-[http://iconsfall.herokuapp.com](http://iconsfall.herokuapp.com).
+[http://iconsfall.com](http://iconsfall.com).
 
-Step 1: deploy to dev branch
+Step 1: deploy to master branch
 
     git push
 
-Step 2: test at [http://iconsfall-staging.herokuapp.com](http://iconsfall-staging.herokuapp.com)
+Step 2: test at [http://staging.iconsfall.com](http://staging.iconsfall.com)
 
-Step 3: create a PR on GitHub
+Step 3: tag the latest commit
 
-Step 4: merge the PR into master branch 
+    git tag vx.y.z
+    git push --tags
 
 
 Setup
@@ -42,16 +43,15 @@ Clone the repo on dev branch
 
     git clone -b dev git@github.com:amercier/iconsfall.git
     npm install
-    bower install
 
 
 Development
 -----------
 
-    gulp dev
+    npm start
 
 
 Build
 -----
 
-    gulp build
+    npm run build
