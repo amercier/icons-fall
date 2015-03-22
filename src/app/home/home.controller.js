@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iconsFall')
-  .controller('MainCtrl', function ($scope) {
+  .controller('HomeCtrl', function ($scope) {
     $scope.awesomeThings = [
       {
         'key': 'angular',

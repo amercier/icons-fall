@@ -5,8 +5,8 @@ angular.module('iconsFall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router'])
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'app/home/home.html',
+        controller: 'HomeCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
