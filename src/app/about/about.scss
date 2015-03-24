@@ -1,1 +1,27 @@
 @import "../common/settings";
+
+.about {
+
+  .about-members {
+    margin-bottom: rem-calc($line-height);
+  }
+
+  .about-biography {
+    margin-bottom: rem-calc($line-height);
+  }
+
+  .about-files {
+    font-family: $font-family-sans-serif;
+
+    a {
+      display: block;
+
+      > .fa {
+        display: block;
+        font-size: rem-calc(30);
+        margin-bottom: rem-calc($line-height / 2);
+      }
+    }
+  }
+
+}

@@ -1,0 +1,42 @@
+@import "../common/settings";
+
+a {
+  @include transition($anchor-transition);
+  background: $anchor-background;
+  padding: $anchor-padding;
+
+  &:hover, &:focus {
+    background: $anchor-background-hover;
+  }
+
+  &:active {
+    @include transition($anchor-transition-active);
+    color: $anchor-color-active;
+    background: $anchor-background-active;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+figure {
+  display: block;
+  margin: 0;
+}
+
+figure img {
+  display: block;
+}
+
+.list-inline-centered {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  > * {
+    display: table-cell;
+    text-align: center;
+    width: 100%;
+  }
+}

@@ -1,13 +1,12 @@
 @import "../common/settings";
 
-// .container {
-//   border: 2px dashed green;
-// }
+a {
+  display: block;
+  font-family: $font-family-sans-serif;
 
-// .row {
-//   border: 2px dotted red;
-// }
-
-// .columns {
-//   border: 1px solid blue;
-// }
+  > .fa {
+    display: block;
+    font-size: rem-calc(30);
+    margin-bottom: rem-calc($line-height / 2);
+  }
+}

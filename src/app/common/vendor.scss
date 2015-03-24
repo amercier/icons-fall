@@ -1,2 +1,11 @@
+
+// Foundation
+
 @import "settings";
 @import "../../bower_components/foundation/scss/foundation";
+
+
+// Font Awesome
+
+$fa-font-path: "../../bower_components/font-awesome/fonts";
+@import "../../bower_components/font-awesome/scss/font-awesome";
