@@ -35,7 +35,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: 'iconsFall'
+      moduleName: 'iconsfall'
     }))
     .pipe(gulp.dest('.tmp'))
     .pipe($.size());
@@ -89,7 +89,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  return gulp.src($.mainBowerFiles())
+  return gulp.src($.mainBowerFiles().concat(['src/assets/fonts/**/*']))
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest('dist/fonts'))

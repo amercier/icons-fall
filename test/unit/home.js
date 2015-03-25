@@ -3,7 +3,7 @@
 describe('controllers', function(){
   var scope;
 
-  beforeEach(module('iconsFall'));
+  beforeEach(module('iconsfall'));
 
   beforeEach(inject(function($rootScope) {
   	scope = $rootScope.$new();

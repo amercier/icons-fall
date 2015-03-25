@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iconsFall')
+angular.module('iconsfall')
   .controller('HomeCtrl', function ($scope) {
     $scope.awesomeThings = [
       {

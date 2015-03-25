@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('iconsFall')
+angular.module('iconsfall')
   .controller('CalendarCtrl', function ($scope) {
   });
