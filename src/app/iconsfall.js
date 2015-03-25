@@ -26,6 +26,7 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router'])
 
     $urlRouterProvider.otherwise('/');
   })
-  .run(function($rootScope){
+  .run(function($rootScope) {
+    Foundation.global.namespace = '';
     $rootScope.$apply($(document).foundation());
   });
