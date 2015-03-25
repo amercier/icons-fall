@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('iconsFall')
-  .controller('NavbarCtrl', ['$scope', function ($scope) {
-    $scope.date = new Date();
+angular.module('iconsfall')
+  .controller('NavbarCtrl', ['$scope', '$state', function ($scope, $state) {
+
+    $scope.state = $state.current;
+    console.log($state);
+
   }]);
