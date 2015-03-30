@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 'angular-timeline'])
+angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 'angular-timeline', 'rt.encodeuri'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

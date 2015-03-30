@@ -1,12 +1,14 @@
 @import "../common/settings";
 
-a {
-  display: block;
-  font-family: $font-family-sans-serif;
-
-  > .fa {
+.home {
+  a {
     display: block;
-    font-size: rem-calc(30);
-    margin-bottom: rem-calc($line-height / 2);
+    font-family: $font-family-sans-serif;
+
+    > .fa {
+      display: block;
+      font-size: rem-calc(30);
+      margin-bottom: rem-calc($line-height / 2);
+    }
   }
 }

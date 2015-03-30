@@ -1,1 +1,33 @@
 @import "../common/settings";
+
+.calendar {
+
+  a {
+    display: block;
+  }
+
+  .calendar-title {
+    a {
+      padding: 0.2rem 0.5rem;
+    }
+  }
+
+  .calendar-time {
+    padding: 0 0.5rem;
+  }
+
+  .calendar-location {
+    a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0.2rem 0.5rem;
+
+      .fa {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
