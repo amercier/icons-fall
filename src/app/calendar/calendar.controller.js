@@ -10,7 +10,7 @@ angular.module('iconsfall')
 
         apiKey = {
             development: 'AIzaSyArUI5x5gVBaJveN2e-LSHrjb3cNqZdxtE',
-            staging: 'AAIzaSyDkLZm2YY4DOXgHBXAEYcx9xeb1LDuuQo0',
+            staging: 'AIzaSyDkLZm2YY4DOXgHBXAEYcx9xeb1LDuuQo0',
             production: 'AIzaSyBKWXYfrcvF6-24FMJqI0OCCDA4LrQB1yY'
           }[environment],
 
