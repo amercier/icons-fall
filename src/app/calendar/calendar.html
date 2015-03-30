@@ -19,7 +19,7 @@
         <timeline-panel>
           <timeline-heading>
             <timeline-title class="calendar-title">
-              <a href="{{event.htmlLink}}">{{event.summary}}</a>
+              <a href="{{event.htmlLink}}" target="_blank">{{event.summary}}</a>
               <small class="calendar-time" ng-if="event.start.dateTime">
                 {{event.start.dateTime | date:shortDate }}
                 <span ng-if="event.end.dateTime">de {{event.start.dateTime | date:'H:mm'}} à {{event.end.dateTime | date:'H:mm'}}</span>
