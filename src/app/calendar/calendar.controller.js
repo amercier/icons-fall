@@ -10,7 +10,7 @@ angular.module('iconsfall')
 
         now = new Date(),
         today = new Date(),
-        afterTime = new Date((new Date).getTime() - 24 * 3600 * 1000),
+        afterTime = new Date((new Date()).getTime() - 24 * 3600 * 1000),
 
         apiKey = {
             development: 'AIzaSyArUI5x5gVBaJveN2e-LSHrjb3cNqZdxtE',

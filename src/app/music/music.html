@@ -4,4 +4,27 @@
 
   <h1 class="title small-12 columns text-center">Musique</h1>
 
+  <div ng-repeat="album in albums">
+
+    <h2 class="small-12 columns">{{album.title}}</h2>
+
+    <figure class="music-album-cover no-bullet small-12 medium-6 columns">
+      <img ng-src="{{album.cover}}" alt="{{album.title}} cover">
+    </figure>
+
+    <ul class="no-bullet small-12 medium-6 columns">
+
+      <li class="music-track row" ng-repeat="track in album.tracks">
+        <h4 class="small-12 columns">0{{$index + 1}}. {{track.title}}</h4>
+        <div class="small-12 columns">
+          <audio controls preload="none">
+            <source type="audio/mp3" ng-src="{{track.url}}">
+            Your browser does not support HTML5 Audio :'(
+          </audio>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
 </div>

@@ -1,2 +1,26 @@
 @import "../common/settings";
 @import "../common/globals";
+
+.music {
+
+  audio {
+    display: block;
+    width: 100%;
+  }
+
+  .music-track {
+    margin-bottom: rem-calc($line-height);
+  }
+
+  .music-album-cover {
+    margin-bottom: rem-calc($line-height);
+
+    img {
+      display: block;
+      margin: 0;
+      width: 100%;
+    }
+
+  }
+
+}

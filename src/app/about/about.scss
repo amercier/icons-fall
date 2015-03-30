@@ -4,6 +4,10 @@
 
   .about-members {
     margin-bottom: rem-calc($line-height);
+
+    img {
+      margin: 0 auto;
+    }
   }
 
   .about-biography {
