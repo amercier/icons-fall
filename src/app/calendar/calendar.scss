@@ -6,6 +6,10 @@
     display: block;
   }
 
+  .done {
+    opacity: 0.5;
+  }
+
   .calendar-title {
     a {
       padding: 0.2rem 0.5rem;
@@ -14,6 +18,11 @@
 
   .calendar-time {
     padding: 0 0.5rem;
+
+    .calendar-done {
+      display: block;
+      color: $alert-color;
+    }
   }
 
   .calendar-location {

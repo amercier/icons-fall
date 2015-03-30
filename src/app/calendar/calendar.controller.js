@@ -8,6 +8,10 @@ angular.module('iconsfall')
             'staging.iconsfall.com': 'staging'
           }[location.host] || 'development',
 
+        now = new Date(),
+        today = new Date(),
+        afterTime = new Date((new Date).getTime() - 24 * 3600 * 1000),
+
         apiKey = {
             development: 'AIzaSyArUI5x5gVBaJveN2e-LSHrjb3cNqZdxtE',
             staging: 'AIzaSyDkLZm2YY4DOXgHBXAEYcx9xeb1LDuuQo0',
@@ -31,6 +35,7 @@ angular.module('iconsfall')
               'naauslsv7q1k5rc57ltr7bkgac@group.calendar.google.com': 'residence'
             }
           }[environment];
+    today.setHours(0, 0, 0, 0);
 
     $scope.events = [];
 
@@ -38,7 +43,10 @@ angular.module('iconsfall')
         return $http.get(
           'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events',
           {
-            params: { key: apiKey }
+            params: {
+              key: apiKey,
+              timeMin: afterTime
+            }
           }
         );
       }))
@@ -49,13 +57,16 @@ angular.module('iconsfall')
                 item.type = calendars[item.organizer.email];
                 if (item.start.dateTime) {
                   item.date = new Date(item.start.dateTime);
+                  item.done = new Date(item.end.dateTime) < now.getTime();
                 }
                 else if (item.start.date) {
                   var d = item.start.date.split('-');
                   item.date = new Date(d[0], d[1], d[2]);
+                  item.done = item.date.getTime() < today.getTime();
                 }
                 else {
                   item.date = new Date();
+                  item.done = false;
                 }
                 return item;
               });
