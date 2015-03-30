@@ -30,9 +30,9 @@ angular.module('iconsfall')
               'naauslsv7q1k5rc57ltr7bkgac@group.calendar.google.com': 'residence'
             },
             production: {
-              'l8b30g066blbal91sc0lnothp8@group.calendar.google.com': 'concert',
-              'qqj7m66f1320ieih44plda7hl0@group.calendar.google.com': 'recording',
-              'naauslsv7q1k5rc57ltr7bkgac@group.calendar.google.com': 'residence'
+              'uhh2f7e4311su1hkal0vbv4ag0@group.calendar.google.com': 'concert',
+              '0rtnac07pej1tp8hsdh4n4deq0@group.calendar.google.com': 'recording',
+              'psj8q1be7fun4mdfkggg49n5e0@group.calendar.google.com': 'residence'
             }
           }[environment];
     today.setHours(0, 0, 0, 0);
