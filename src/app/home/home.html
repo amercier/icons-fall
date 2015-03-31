@@ -1,25 +1,27 @@
 <div class="home">
-  <div class="row">
-    <div class="small-10 small-offset-1 columns text-center">
-      <figure>
-        <img src="/assets/images/iconsfall-logo.jpg" alt="Icon's Fall logo"/>
-      </figure>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-10 small-offset-1 columns">
+  <div ng-include="'components/navbar/navbar.html'"></div>
 
-      <ul class="no-bullet row text-center">
-        <li class="small-12 medium-4 columns">
-          <a ng-href="#/about"><i class="fa fa-file-text-o"></i> Bio</a>
-        </li>
-        <li class="small-12 medium-4 columns">
-          <a ng-href="#/music"><i class="fa fa-bolt"></i> Musique</a>
-        </li>
-        <li class="small-12 medium-4 columns">
-          <a ng-href="#/calendar"><i class="fa fa-clock-o"></i> Agenda</a>
-        </li>
-      </ul>
+  <section>
+    <div class="row">
+      <div class="small-10 small-offset-1 columns text-center">
+        <figure class="home-logo"></figure>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+
+        <ul class="no-bullet row text-center">
+          <li class="small-12 medium-4 columns">
+            <a ng-href="#/about"><i class="fa fa-file-text-o"></i> Bio</a>
+          </li>
+          <li class="small-12 medium-4 columns">
+            <a ng-href="#/music"><i class="fa fa-bolt"></i> Musique</a>
+          </li>
+          <li class="small-12 medium-4 columns">
+            <a ng-href="#/calendar"><i class="fa fa-clock-o"></i> Agenda</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </div>

@@ -1,6 +1,9 @@
 @import "../common/settings";
 
 .home {
+
+  height: 100%;
+
   a {
     display: block;
     font-family: $font-family-sans-serif;
@@ -12,7 +15,10 @@
     }
   }
 
-  img {
-    margin: 0 auto;
+  svg {
+    margin: 3rem auto;
+    width: 300px;
+    height: 100%;
+    max-width: 100%;
   }
 }

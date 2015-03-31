@@ -1,4 +1,18 @@
 @import "../common/settings";
+@import "../common/animate";
+
+body {
+  overflow-y: scroll;
+}
+
+section {
+  padding-top: 50px;
+}
+
+.home .top-bar {
+  opacity: 0;
+  z-index: 1;
+}
 
 a {
   @include transition($anchor-transition);
