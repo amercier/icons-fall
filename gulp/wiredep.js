@@ -15,7 +15,13 @@ gulp.task('wiredep', function () {
   gulp.src('src/*.html')
     .pipe(wiredep({
       directory: 'src/bower_components',
-      exclude: ['foundation']
+      exclude: [
+        'angular-bootstrap',
+        'fastclick',
+        'foundation',
+        'jquery.cookie',
+        'jquery-placeholder'
+      ]
     }))
     .pipe(gulp.dest('src'));
 });
