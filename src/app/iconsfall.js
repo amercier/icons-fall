@@ -27,6 +27,14 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
     $urlRouterProvider.otherwise('/');
   })
   .run(function($rootScope) {
-    Foundation.global.namespace = '';
-    $rootScope.$apply($(document).foundation());
+    $rootScope.$on(
+      '$stateChangeSuccess',
+      function(event, toState, toParams, fromState, fromParams) {
+        setTimeout(function() {
+          $rootScope.$apply(function () {
+            $(document).foundation()
+          });
+        }, 0);
+      }
+    );
   });
