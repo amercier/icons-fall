@@ -14,10 +14,11 @@
 
     <ul class="no-bullet small-12 medium-6 columns">
 
-      <li class="music-track row" ng-repeat="track in album.tracks">
-        <h4 class="small-12 columns">0{{$index + 1}}. {{track.title}}</h4>
+      <li class="music-track row" ng-repeat="track in album.tracks"
+          itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+        <h4 class="small-12 columns">0{{$index + 1}}. <span itemprop="name">{{track.title}}</span></h4>
         <div class="small-12 columns">
-          <audio controls preload="none">
+          <audio controls preload="none" itemprop="audio">
             <source type="audio/mp3" ng-src="{{track.url}}">
             Your browser does not support HTML5 Audio :'(
           </audio>
