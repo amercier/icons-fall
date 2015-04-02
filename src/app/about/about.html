@@ -1,16 +1,16 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<section class="about row">
+<section class="about">
 
-  <h1 class="title small-12 columns text-center">Bio</h1>
+  <div class="row">
 
-  <div class="small-12 columns">
+    <h1 class="title small-12 columns text-center">Bio</h1>
 
-    <figure class="about-members">
+    <figure class="about-members small-12 medium-10 medium-offset-1 large-8 large-offset-2 columns">
       <img src="/assets/images/iconsfall-members.jpg" alt="Icon's Fall members">
     </figure>
 
-    <p class="about-biography">
+    <p class="about-biography medium-10 medium-offset-1 large-8 large-offset-2 columns end">
       Icon’s fall est un groupe de musique actuelle. Ses compositions
       originales mêlent influences rock (Radiohead, Grizzly Bear,
       Sigur Rós) aux expérimentations electronica (Bjork, Air, Atoms
@@ -27,21 +27,31 @@
 
   </div>
 
-  <nav class="small-12 columns">
-    <ul class="about-files no-bullet list-inline-centered">
-      <li>
-        <a href="http://files.iconsfall.com/Icon's%20Fall%20-%20Dossier%20de%20Presse.pdf" target="_blank">
-          <i class="fa fa-file-pdf-o"></i>
-          Dossier de Presse
-        </a>
-      </li>
-      <li>
-        <a href="http://files.iconsfall.com/Icon's%20Fall%20-%20Revue%20de%20Presse.pdf" target="_blank">
-          <i class="fa fa-file-pdf-o"></i>
-          Revue de Presse
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <div class="row">
+
+    <p class="about-contact text-center">
+      Contact:
+      <a ng-href="mailto:max@iconsfall.com" target="_blank">max@iconsfall.com</a>
+      —
+      <span>+33 (0)6 48 12 52 09</span>
+    </p>
+
+    <nav class="small-12 medium-10 medium-offset-1 large-8 large-offset-2 columns end">
+      <ul class="about-files no-bullet list-inline-centered">
+        <li>
+          <a href="http://files.iconsfall.com/Icon's%20Fall%20-%20Dossier%20de%20Presse.pdf" target="_blank">
+            <i class="fa fa-file-pdf-o"></i>
+            Dossier de Presse
+          </a>
+        </li>
+        <li>
+          <a href="http://files.iconsfall.com/Icon's%20Fall%20-%20Revue%20de%20Presse.pdf" target="_blank">
+            <i class="fa fa-file-pdf-o"></i>
+            Revue de Presse
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
 </section>
