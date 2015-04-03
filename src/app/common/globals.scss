@@ -71,3 +71,17 @@ figure img {
 #assets {
   display: none;
 }
+
+.navbar {
+  a {
+    white-space: nowrap;
+    .icon {
+      display: inline-block;
+      margin-right: 0.5em;
+      fill: #fff;
+      position: relative;
+      top: .4em;
+      height: 20px;
+    }
+  }
+}
