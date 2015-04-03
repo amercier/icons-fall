@@ -7,11 +7,21 @@
   a {
     display: block;
     font-family: $font-family-sans-serif;
+    margin-bottom: rem-calc($line-height);
 
-    > .fa {
+    .icon {
       display: block;
-      font-size: rem-calc(30);
-      margin-bottom: rem-calc($line-height / 2);
+      fill: #000;
+      margin: 0 auto rem-calc($line-height);
+      width: 32px;
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        fill: #fff;
+        @include transition($anchor-transition);
+      }
     }
   }
 
@@ -21,4 +31,5 @@
     height: 100%;
     max-width: 100%;
   }
+
 }

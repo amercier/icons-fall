@@ -1,12 +1,15 @@
 @import "foundation.scss";
 @import "mixins.scss";
 
-$anchor-padding: 0.5em 0;
+$anchor-padding: 1em 0;
 
 $anchor-background: $white;
 
 $anchor-transition-duration: 500ms;
-$anchor-transition: color $anchor-transition-duration, background-color $anchor-transition-duration;
+$anchor-transition:
+  color $anchor-transition-duration,
+  background-color $anchor-transition-duration,
+  fill $anchor-transition-duration;
 
 $anchor-background-hover: $black;
 
