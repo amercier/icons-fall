@@ -46,6 +46,10 @@
 // Angular Timeline
 @import "../../bower_components/angular-timeline/src/angular-timeline";
 
-.timeline > li > .timeline-badge {
-  z-index: 1;
+.timeline {
+  margin-left: 0;
+
+  > li > .timeline-badge {
+    z-index: 1;
+  }
 }
