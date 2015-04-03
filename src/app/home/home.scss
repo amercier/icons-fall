@@ -11,7 +11,7 @@
 
     .icon {
       display: block;
-      margin: 0 auto rem-calc($line-height);
+      margin: 0 auto rem-calc($line-height / 2);
       width: 32px;
     }
   }
