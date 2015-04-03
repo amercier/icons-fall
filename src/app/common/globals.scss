@@ -10,7 +10,7 @@ section {
   padding-top: 50px;
 }
 
-.home .top-bar {
+[data-state="home"] .top-bar {
   opacity: 0;
   z-index: 1;
 }

@@ -1,6 +1,10 @@
 
 // Animation
 
+.top-bar {
+  @include transition(opacity 500ms);
+}
+
 .ng-enter,
 .ng-leave {
   @include transition(opacity 500ms ease);
