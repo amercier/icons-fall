@@ -28,10 +28,10 @@
     a {
       display: block;
 
-      > .fa {
+      .icon {
         display: block;
-        font-size: rem-calc(30);
-        margin-bottom: rem-calc($line-height / 2);
+        margin: 0 auto rem-calc($line-height / 2);
+        width: 32px;
       }
     }
   }
