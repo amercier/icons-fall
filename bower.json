@@ -10,7 +10,6 @@
     "angular-touch": "1.x.x",
     "angular-ui-router": "0.x.x",
     "compass-mixins": "1.x.x",
-    "font-awesome": "4.x.x",
     "foundation": "5.x.x",
     "jquery": "2.x.x",
     "modernizr": "2.x.x"
