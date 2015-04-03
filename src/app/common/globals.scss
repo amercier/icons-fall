@@ -1,5 +1,6 @@
 @import "../common/settings";
 // @import "../common/animate";
+@import "../common/animate-fade";
 
 body {
   overflow-y: scroll;
@@ -60,8 +61,13 @@ figure img {
 }
 
 .title {
-  margin-top: rem-calc(2 * $line-height);
-  margin-bottom: rem-calc($line-height);
+  margin-top: rem-calc($line-height);
+  margin-bottom: rem-calc(2 * $line-height);
+
+  .icon {
+    width: 64px;
+    margin: 0 auto rem-calc($line-height / 2);
+  }
 }
 
 .timeline-body p {
@@ -95,4 +101,5 @@ figure img {
 
 svg {
   fill: currentColor;
+  display: block;
 }

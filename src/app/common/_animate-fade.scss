@@ -1,0 +1,17 @@
+
+// Animation
+
+.ng-enter,
+.ng-leave {
+  @include transition(opacity 500ms ease);
+}
+
+.ng-enter,
+.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.ng-enter.ng-enter-active,
+.ng-leave {
+  opacity: 1;
+}
