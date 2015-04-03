@@ -11,17 +11,8 @@
 
     .icon {
       display: block;
-      fill: #000;
       margin: 0 auto rem-calc($line-height);
       width: 32px;
-    }
-
-    &:hover,
-    &:focus {
-      svg {
-        fill: #fff;
-        @include transition($anchor-transition);
-      }
     }
   }
 

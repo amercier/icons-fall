@@ -78,10 +78,21 @@ figure img {
     .icon {
       display: inline-block;
       margin-right: 0.5em;
-      fill: #fff;
       position: relative;
       top: .4em;
       height: 20px;
     }
   }
+
+  .title-area {
+    a {
+      .icon {
+        top: .3em;
+      }
+    }
+  }
+}
+
+svg {
+  fill: currentColor;
 }
