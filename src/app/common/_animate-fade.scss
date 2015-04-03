@@ -1,13 +1,22 @@
 
 // Animation
 
-.top-bar {
-  @include transition(opacity 500ms);
+
+$animate-duration: 500ms;
+
+.navbar {
+  @include transition(opacity $animate-duration, transform ($animate-duration / 2));
+}
+
+[data-state="home"] .navbar {
+  opacity: 0;
+  transform: translateY(-100%);
+  z-index: 1;
 }
 
 .ng-enter,
 .ng-leave {
-  @include transition(opacity 500ms ease);
+  @include transition(opacity $animate-duration ease);
 }
 
 .ng-enter,

@@ -10,11 +10,6 @@ section {
   padding-top: 50px;
 }
 
-[data-state="home"] .top-bar {
-  opacity: 0;
-  z-index: 1;
-}
-
 a {
   @include transition($anchor-transition);
   background: $anchor-background;
