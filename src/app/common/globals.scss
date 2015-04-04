@@ -6,10 +6,6 @@ body {
   overflow-y: scroll;
 }
 
-section {
-  padding-top: 50px;
-}
-
 a {
   @include transition($anchor-transition);
   background: $anchor-background;
