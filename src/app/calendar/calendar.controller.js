@@ -10,7 +10,6 @@ angular.module('iconsfall')
 
         now = new Date(),
         today = new Date(),
-        afterTime = new Date((new Date()).getTime() - 24 * 3600 * 1000),
 
         apiKey = {
             development: 'AIzaSyArUI5x5gVBaJveN2e-LSHrjb3cNqZdxtE',
@@ -44,8 +43,7 @@ angular.module('iconsfall')
           'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events',
           {
             params: {
-              key: apiKey,
-              timeMin: afterTime
+              key: apiKey
             }
           }
         );
