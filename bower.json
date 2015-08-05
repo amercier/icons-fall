@@ -2,19 +2,22 @@
   "name": "iconsfall",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.x.x",
-    "angular-animate": "1.x.x",
-    "angular-encode-uri": "1.x.x",
-    "angular-resource": "1.x.x",
-    "angular-timeline": "1.x.x",
-    "angular-touch": "1.x.x",
-    "angular-ui-router": "0.x.x",
-    "compass-mixins": "1.x.x",
-    "foundation": "5.x.x",
-    "jquery": "2.x.x",
-    "modernizr": "2.x.x"
+    "angular": "1.3.x",
+    "angular-animate": "1.3.x",
+    "angular-encode-uri": "1.0.x",
+    "angular-resource": "1.3.x",
+    "angular-timeline": "1.2.0",
+    "angular-touch": "1.3.x",
+    "angular-ui-router": "0.2.x",
+    "compass-mixins": "1.0.x",
+    "foundation": "5.5.x",
+    "jquery": "2.1.x",
+    "modernizr": "2.8.x"
   },
   "devDependencies": {
     "angular-mocks": "1.3.x"
+  },
+  "resolutions": {
+    "angular": "*"
   }
 }
