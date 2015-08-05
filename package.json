@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "gulp build",
-    "install": "bower install && david",
+    "install": "bower install",
     "start": "gulp serve",
     "test": "gulp test",
     "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
