@@ -1,0 +1,63 @@
+<section class="calendar row">
+
+  <h1 class="iconsfall-title small-12 columns text-center">
+    <svg viewBox="0 0 200 200" class="icon"><use xlink:href="#calendar"></use></svg>
+    Agenda
+  </h1>
+
+  <div class="small-12 columns">
+
+    <timeline>
+
+      <timeline-node ng-repeat="event in events" side="{{['left', 'right'][$index % 2]}}"
+                     itemprop="event" itemscope itemtype="http://schema.org/Event">
+
+        <timeline-badge class="{{event.type}}">
+          <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
+          <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
+          <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
+        </timeline-badge>
+
+        <timeline-panel>
+          <timeline-heading>
+            <timeline-title class="calendar-title">
+              <a href="{{event.htmlLink}}" target="_blank" ng-class="{done: event.done}">{{event.summary}}</a>
+              <div class="calendar-time">
+                <small ng-if="event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
+                  Du {{event.start.dateTime | date:shortDate }} au {{event.end.dateTime | date:shortDate }}
+                </small>
+                <small ng-if="event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
+                  Du {{event.start.date | date:shortDate }} au {{event.end.date | date:shortDate }}
+                </small>
+                <small ng-if="!event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
+                  {{event.start.dateTime | date:shortDate }}
+                  <span ng-if="event.end.dateTime">de {{event.start.dateTime | date:'H:mm'}} à {{event.end.dateTime | date:'H:mm'}}</span>
+                  <span ng-if="!event.end.dateTime">à partir de {{event.start.dateTime | date:'H:mm'}}</span>
+                </small>
+                <small ng-if="!event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
+                  {{event.start.date | date:shortDate}}
+                </small>
+                <small class="calendar-done" ng-if="event.done">
+                  <i class="fa fa-check"></i> Terminé
+                </small>
+              </div>
+            </timeline-title>
+          </timeline-heading>
+          <timeline-content>
+            <p class="calendar-location" ng-class="{done: event.done}"
+               itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
+              <meta itemprop="address" content="{{event.location}}">
+              <a href="http://maps.google.com/?q={{event.location | encodeUri}}" target="_blank">
+                <i class="fa fa-map-marker"></i> {{event.location}}
+              </a>
+            </p>
+          </timeline-content>
+        </timeline-panel>
+
+      </timeline-node>
+
+    </timeline>
+
+  </div>
+
+</section>

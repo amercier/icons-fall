@@ -4,6 +4,7 @@
   "dependencies": {
     "angular": "~1.4.0",
     "angular-animate": "~1.4.0",
+    "angular-encode-uri": "~1.0.0",
     "angular-foundation": "~0.6.0",
     "angular-ui-router": "~0.2.15",
     "animate.css": "~3.3.0",

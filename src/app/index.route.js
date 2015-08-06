@@ -18,6 +18,12 @@ function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/music/music.html',
       controller: 'MusicController',
       controllerAs: 'music'
+    })
+    .state('calendar', {
+      url: '/calendar',
+      templateUrl: 'app/calendar/calendar.html',
+      controller: 'CalendarController',
+      controllerAs: 'calendar'
     });
 
   $urlRouterProvider.otherwise('/');
