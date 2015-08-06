@@ -1,29 +1,34 @@
-<div class="container">
-
-  <div>
-    <iconsfall-navbar />
-  </div>
-
+<section class="home">
   <div class="row">
-    <div class="large-12 large-text-center columns">
-      <div class="panel">
-        <h1>'Allo, 'Allo!</h1>
-        <p>Always a pleasure scaffolding your apps.</p>
-      </div>
+    <div class="small-10 small-offset-1 columns text-center">
+      <figure class="home-logo" item-prop="logo">
+        <svg viewBox="0 0 300 300" class="icon"><use xlink:href="#iconsfall-logo"></use></svg>
+      </figure>
     </div>
   </div>
-
   <div class="row">
-    <div class="large-4 columns" ng-repeat="awesomeThing in home.awesomeThings | orderBy:'rank'">
-      <div class="th">
-        <img class="right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-        <div class="caption">
-          <h3>{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-          <p><a ng-href="{{ awesomeThing.url }}">{{ awesomeThing.url }}</a></p>
-        </div>
-      </div>
+    <div class="small-10 small-offset-1 columns">
+
+      <ul class="no-bullet row text-center">
+        <li class="small-12 medium-4 columns">
+          <a ng-href="#/about">
+            <svg viewBox="0 0 200 200" class="icon"><use xlink:href="#about"></use></svg>
+            Bio
+          </a>
+        </li>
+        <li class="small-12 medium-4 columns">
+          <a ng-href="#/music">
+            <svg viewBox="0 0 200 200" class="icon"><use xlink:href="#music"></use></svg>
+            Musique
+          </a>
+        </li>
+        <li class="small-12 medium-4 columns">
+          <a ng-href="#/calendar">
+            <svg viewBox="0 0 200 200" class="icon"><use xlink:href="#calendar"></use></svg>
+            Agenda
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-
-</div>
+</section>
