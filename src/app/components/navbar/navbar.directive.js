@@ -1,13 +1,15 @@
-class NavbarDirective {
+export default class NavbarDirective {
   constructor () {
     'ngInject';
 
     let directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
-      scope: {},
+      scope: {
+        current: '='
+      },
       controller: NavbarController,
-      controllerAs: 'vm',
+      controllerAs: 'nav',
       bindToController: true
     };
 
@@ -16,9 +18,9 @@ class NavbarDirective {
 }
 
 class NavbarController {
-  constructor () {
+  constructor ($scope, $state) {
     'ngInject';
+    $scope.current = {};
+    $scope.current[$state.current.name] = true;
   }
 }
-
-export default NavbarDirective;
