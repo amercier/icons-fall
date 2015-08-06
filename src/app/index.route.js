@@ -2,9 +2,9 @@ function routerConfig ($routeProvider) {
   'ngInject';
   $routeProvider
     .when('/', {
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main'
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
+      controllerAs: 'home'
     })
     .otherwise({
       redirectTo: '/'

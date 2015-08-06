@@ -1,4 +1,4 @@
-class MainController {
+export default class HomeController {
   constructor ($timeout) {
     'ngInject';
 
@@ -15,5 +15,3 @@ class MainController {
     }, 4000);
   }
 }
-
-export default MainController;
