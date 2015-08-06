@@ -3,7 +3,7 @@ import config from './index.config';
 import routerConfig from './index.route';
 
 import runBlock from './index.run';
-import MainController from './main/main.controller';
+import HomeController from './home/home.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 angular.module('iconsfall', ['ngAnimate', 'ui.router', 'mm.foundation'])
@@ -12,5 +12,5 @@ angular.module('iconsfall', ['ngAnimate', 'ui.router', 'mm.foundation'])
   .config(routerConfig)
 
   .run(runBlock)
-  .controller('MainController', MainController)
+  .controller('HomeController', HomeController)
   .directive('acmeNavbar', () => new NavbarDirective());
