@@ -19,6 +19,8 @@ class NavbarController {
   constructor ($scope, $route) {
     'ngInject';
     $scope.current = {};
-    $scope.current[$route.current.$$route.id] = true;
+    if ($route.current) {
+      $scope.current[$route.current.$$route.id] = true;
+    }
   }
 }
