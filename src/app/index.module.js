@@ -4,6 +4,7 @@ import routerConfig from './index.route';
 
 import runBlock from './index.run';
 import HomeController from './home/home.controller';
+import MusicController from './music/music.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 angular.module('iconsfall', ['ngAnimate', 'ui.router', 'mm.foundation'])
@@ -11,4 +12,5 @@ angular.module('iconsfall', ['ngAnimate', 'ui.router', 'mm.foundation'])
   .config(routerConfig)
   .run(runBlock)
   .controller('HomeController', HomeController)
+  .controller('MusicController', MusicController)
   .directive('iconsfallNavbar', () => new NavbarDirective());
