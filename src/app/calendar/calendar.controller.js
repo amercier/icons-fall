@@ -1,7 +1,6 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('CalendarCtrl', ['$scope', '$q', '$http', function ($scope, $q, $http) {
+/* globals location: false, console: false */
+export default class CalendarController {
+  constructor($scope, $q, $http) {
 
     var environment = {
             'iconsfall.com': 'production',
@@ -81,5 +80,5 @@ angular.module('iconsfall')
           console.error('ERROR', error);
         }
       );
-
-  }]);
+  }
+}

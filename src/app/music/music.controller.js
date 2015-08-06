@@ -1,7 +1,6 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('MusicCtrl', ['$scope', '$sce', function ($scope, $sce) {
+export default class MusicController {
+  constructor($scope, $sce) {
+    'ngInject';
 
     $scope.albums = [{
       title: 'White Line',
@@ -25,5 +24,5 @@ angular.module('iconsfall')
         }
       ]
     }];
-
-  }]);
+  }
+}

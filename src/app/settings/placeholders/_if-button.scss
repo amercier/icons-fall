@@ -1,0 +1,17 @@
+@import './if-anchor';
+
+%if-button {
+  @extend %if-button;
+  display: block;
+  font-family: $font-family-sans-serif;
+  padding: 0.5em 1em;
+
+  svg {
+    display: inline;
+    vertical-align: bottom;
+    line-height: 2em;
+    fill: currentColor;
+    height: 2em;
+    width: 2em;
+  }
+}

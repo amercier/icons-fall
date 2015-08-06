@@ -1,0 +1,19 @@
+@import '../mixins/if-anchor';
+
+$if-anchor-color: black;
+$if-anchor-bg: white;
+$if-anchor-hover-color: $if-anchor-bg !default;
+$if-anchor-hover-bg: $if-anchor-color !default;
+$if-anchor-transition-duration: 500ms !default;
+$if-anchor-transition-easing: ease-out !default;
+
+%if-anchor {
+  @include if-anchor(
+    $color: $if-anchor-color,
+    $background: $if-anchor-bg,
+    $hover-color: $if-anchor-hover-color,
+    $hover-background: $if-anchor-hover-bg,
+    $transition-duration: $if-anchor-transition-duration,
+    $transition-easing: $if-anchor-transition-easing
+  );
+}

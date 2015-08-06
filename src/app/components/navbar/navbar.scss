@@ -1,0 +1,27 @@
+iconsfall-navbar {
+
+  // Hide assets SVG
+  .assets {
+    display: none;
+  }
+
+  [ng-href] {
+
+    svg {
+      display: inline-block;
+      fill: currentColor;
+      height: rem-calc(20);
+      margin-right: 0.5em;
+      position: relative;
+      top: .4em;
+    }
+  }
+
+  .title-area {
+    [ng-href] {
+      svg {
+        top: .3em;
+      }
+    }
+  }
+}

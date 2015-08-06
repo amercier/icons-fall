@@ -1,82 +1,49 @@
 <!doctype html>
-<html class="no-js" ng-app="iconsfall">
+<html ng-app="iconsfall">
   <head>
     <meta charset="utf-8">
-    <title>Icon's Fall</title>
+    <title>iconsfall</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet'>
     <link href='http://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet'>
-    <!-- build:css({.tmp,src}) styles/vendor.css -->
-    <link rel="stylesheet" href="app/common/vendor.css">
 
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css({.tmp,src}) styles/app.css -->
-    <link rel="stylesheet" href="app/common/globals.css">
-    <link rel="stylesheet" href="app/home/home.css">
-    <link rel="stylesheet" href="app/music/music.css">
-    <link rel="stylesheet" href="app/calendar/calendar.css">
-    <link rel="stylesheet" href="app/about/about.css">
-    <!-- endbuild -->
-
-    <!-- build:js scripts/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body itemscope itemtype="http://schema.org/MusicGroup">
+  <body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-include="'components/navbar/navbar.html'"></div>
     <div ui-view></div>
 
-    <!-- Google Analytics -->
-    <script>
-      if (window.location.host === 'iconsfall.com') {
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-60246103-1', 'auto');
-        ga('send', 'pageview');
-      }
-    </script>
+    <iconsfall-navbar/>
 
-    <!-- build:js scripts/vendor.js -->
+    <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-encode-uri/dist/angular-encode-uri.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-timeline/src/angular-timeline.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
-    <script src="bower_components/foundation/js/foundation/foundation.js"></script>
-    <script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
-
     <!-- endbuild -->
 
-    <!-- build:js({src,.tmp}) scripts/main.js -->
-    <script src="app/iconsfall.js"></script>
-    <script src="app/home/home.controller.js"></script>
-    <script src="app/music/music.controller.js"></script>
-    <script src="app/calendar/calendar.controller.js"></script>
-    <script src="app/about/about.controller.js"></script>
-
-    <script src="components/navbar/navbar.controller.js"></script>
+    <!-- build:js({.tmp/serve,.tmp/partials}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
 
     <!-- inject:partials -->
-    <!-- angular templates will be automaticaly converted in js and inserted here -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
-
   </body>
 </html>

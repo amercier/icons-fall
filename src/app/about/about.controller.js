@@ -1,5 +1,5 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('AboutCtrl', function ($scope) {
-  });
+export default class AboutController {
+  constructor() {
+    'ngInject';
+  }
+}
