@@ -1,4 +1,3 @@
-/* global toastr:false */
 import config from './index.config';
 
 import routerConfig from './index.route';
@@ -8,7 +7,6 @@ import MainController from './main/main.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 angular.module('iconsfall', ['ngAnimate', 'ngResource', 'ngRoute', 'mm.foundation'])
-  .constant('toastr', toastr)
   .config(config)
 
   .config(routerConfig)
