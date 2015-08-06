@@ -1,0 +1,20 @@
+@mixin if-anchor(
+  $color,
+  $background,
+  $hover-color,
+  $hover-background,
+  $transition-duration,
+  $transition-easing
+) {
+  color: $color;
+  background: $background;
+  transition:
+    color $transition-duration $transition-easing,
+    background $transition-duration $transition-easing;
+
+  &:hover,
+  &:focus {
+    color: $hover-color;
+    background: $hover-background;
+  }
+}
