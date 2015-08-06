@@ -13,6 +13,12 @@ function routerConfig ($routeProvider) {
       controller: 'MusicController',
       controllerAs: 'music'
     })
+    .when('/about', {
+      id: 'about',
+      templateUrl: 'app/about/about.html',
+      controller: 'AboutController',
+      controllerAs: 'about'
+    })
     .otherwise({
       redirectTo: '/'
     });
