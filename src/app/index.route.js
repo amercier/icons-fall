@@ -7,6 +7,12 @@ function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'HomeController',
       controllerAs: 'home'
     })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'app/about/about.html',
+      controller: 'AboutController',
+      controllerAs: 'about'
+    })
     .state('music', {
       url: '/music',
       templateUrl: 'app/music/music.html',
