@@ -8,9 +8,7 @@ import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 angular.module('iconsfall', ['ngAnimate', 'ngResource', 'ngRoute', 'mm.foundation'])
   .config(config)
-
   .config(routerConfig)
-
   .run(runBlock)
   .controller('HomeController', HomeController)
-  .directive('acmeNavbar', () => new NavbarDirective());
+  .directive('iconsfallNavbar', () => new NavbarDirective());
