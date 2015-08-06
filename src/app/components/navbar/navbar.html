@@ -1,29 +1,24 @@
-<div class="navbar fixed">
-  <nav class="top-bar" data-topbar>
+<top-bar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a ng-href="#/">
+          <svg viewBox="0 0 300 300" class="icon"><use xlink:href="#iconsfall-logo"></use></svg>
+          Icon's Fall
+        </a>
+      </h1>
+    </li>
+    <li toggle-top-bar class="toggle-topbar menu-icon"><a href="#" title="Menu"><span></span></a></li>
+  </ul>
 
-    <ul class="title-area">
-      <li class="name">
-        <h1>
-          <a ng-href="#/">
-            <svg viewBox="0 0 300 300" class="icon"><use xlink:href="#iconsfall-logo"></use></svg>
-            Icon's Fall
-          </a>
-        </h1>
-      </li>
-
-      <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+  <top-bar-section>
+    <ul class="right">
+      <li ng-class="{ active: current.about }"><a ng-href="#/about"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#about"></use></svg> Bio</a></li>
+      <li ng-class="{ active: current.music }"><a ng-href="#/music"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#music"></use></svg> Musique</a></li>
+      <li ng-class="{ active: current.calendar }"><a ng-href="#/calendar"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#calendar"></use></svg> Agenda</a></li>
     </ul>
-
-    <div class="top-bar-section">
-      <ul class="right">
-        <li ng-class="{ active: current.about }"><a ng-href="#/about"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#about"></use></svg> Bio</a></li>
-        <li ng-class="{ active: current.music }"><a ng-href="#/music"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#music"></use></svg> Musique</a></li>
-        <li ng-class="{ active: current.calendar }"><a ng-href="#/calendar"><svg viewBox="0 0 200 200" class="icon"><use xlink:href="#calendar"></use></svg> Agenda</a></li>
-      </ul>
-    </div>
-
-  </nav>
-</div>
+  </top-bar-section>
+</top-bar>
 
 <svg version="1.1" class="assets"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
