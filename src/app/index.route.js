@@ -19,6 +19,12 @@ export default function routerConfig ($routeProvider) {
       controller: 'AboutController',
       controllerAs: 'about'
     })
+    .when('/calendar', {
+      id: 'calendar',
+      templateUrl: 'app/calendar/calendar.html',
+      controller: 'CalendarController',
+      controllerAs: 'calendar'
+    })
     .otherwise({
       redirectTo: '/'
     });
