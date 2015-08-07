@@ -71,7 +71,7 @@ angular.module('iconsfall')
         started = true;
         ga('send', 'event', 'Music', 'Start', track);
       }
-      else if (playing) {
+      else if (playing && playing !== track) {
         ga('send', 'event', 'Music', 'Switch', playing + ' to ' + track);
       }
       playing = track;
