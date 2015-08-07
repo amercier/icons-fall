@@ -56,12 +56,20 @@ angular.module('iconsfall')
       };
     })();
 
-    $.createEventCapturing(['play', 'playing', 'ended']);
+    $.createEventCapturing(['play', 'playing', 'ended', 'volumechange']);
 
     // Pause other audio on play
     $(document).on('play', 'audio', function(event) {
-      $('audio').not(event.target).each(function(){
+      $('audio').not(event.target).each(function() {
         this.pause();
+      });
+    });
+
+    // Set volume to all together
+    $(document).on('volumechange', 'audio', function(event) {
+      $('audio').not(event.target).each(function() {
+        this.muted = event.target.muted;
+        this.volume = event.target.volume;
       });
     });
 
