@@ -19,7 +19,11 @@
           itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
         <h4 class="small-12 columns">0{{$index + 1}}. <span itemprop="name">{{track.title}}</span></h4>
         <div class="small-12 columns">
-          <audio controls preload="none" itemprop="audio">
+          <audio controls preload="metadata" itemprop="audio"
+            data-album="{{album.title}}"
+            data-track="0{{$index + 1}}"
+            data-title="{{track.title}}"
+          >
             <source type="audio/mp3" ng-src="{{track.url}}">
             Your browser does not support HTML5 Audio :'(
           </audio>
