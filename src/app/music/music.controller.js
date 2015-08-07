@@ -58,11 +58,32 @@ angular.module('iconsfall')
 
     $.createEventCapturing(['play', 'playing', 'ended', 'volumechange']);
 
+    var started = false,
+      playing = false;
+
     // Pause other audio on play
     $(document).on('play', 'audio', function(event) {
+
+      // Send GA event
+      var target = $(event.target),
+        track = [ target.data('album'), target.data('track'), target.data('title') ].join(' / ');
+      if (!started) {
+        started = true;
+        ga('send', 'event', 'Music', 'Start', track);
+      }
+      else if (playing) {
+        ga('send', 'event', 'Music', 'Switch', playing + ' to ' + track);
+      }
+      playing = track;
+
+      // Pause others
       $('audio').not(event.target).each(function() {
         this.pause();
       });
+    });
+
+    $(document).on('pause', 'audio', function(event) {
+      playing = false;
     });
 
     // Set volume to all together
@@ -73,13 +94,22 @@ angular.module('iconsfall')
       });
     });
 
-    $(document).on('playing', 'audio', function(event) {
-    });
-
     $(document).on('ended', 'audio', function(event) {
-      var next = $(event.target).parents('li').first().next('li').find('audio').get(0);
+
+      // Send GA event
+      var target = $(event.target),
+        next = target.parents('li').first().next('li').find('audio');
       if (next) {
-        next.play();
+        var track = [ next.data('album'), next.data('track'), next.data('title') ].join(' / ');
+        ga('send', 'event', 'Music', 'Next', track);
+
+        next.get(0).play();
+      }
+      else {
+        var track = [ target.data('album'), target.data('track'), target.data('title') ].join(' / ');
+        playing = false;
+        started = false;
+        ga('send', 'event', 'Music', 'Ended', track);
       }
     });
   }]);
