@@ -56,7 +56,7 @@ angular.module('iconsfall')
       };
     })();
 
-    $.createEventCapturing(['play', 'playing', 'ended', 'volumechange']);
+    $.createEventCapturing(['play', 'timeupdate', 'ended', 'volumechange']);
 
     var started = false,
       playing = false;
@@ -86,6 +86,15 @@ angular.module('iconsfall')
       playing = false;
     });
 
+    // Start preloading next
+    $(document).off('timeupdate').on('timeupdate', 'audio', function(event) {
+      var target = $(event.target),
+        next = target.parents('li').first().next('li').find('audio');
+      if (next.length > 0 && event.target.duration - event.target.currentTime < 30) {
+        next.get(0).preload = 'auto';
+      }
+    });
+
     // Set volume to all together
     $(document).off('volumechange').on('volumechange', 'audio', function(event) {
       $('audio').not(event.target).each(function() {
@@ -99,7 +108,7 @@ angular.module('iconsfall')
       // Send GA event
       var target = $(event.target),
         next = target.parents('li').first().next('li').find('audio');
-      if (next) {
+      if (next.length > 0) {
         var track = [ next.data('album'), next.data('track'), next.data('title') ].join(' / ');
         ga('send', 'event', 'Music', 'Next', track);
 
