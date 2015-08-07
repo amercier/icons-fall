@@ -26,4 +26,52 @@ angular.module('iconsfall')
       ]
     }];
 
+    $.createEventCapturing = (function () {
+      var special = $.event.special;
+      return function (names) {
+        if (!document.addEventListener) {
+          return;
+        }
+        if (typeof names === 'string') {
+          names = [names];
+        }
+        $.each(names, function (i, name) {
+          var handler = function (e) {
+            e = $.event.fix(e);
+            return $.event.dispatch.call(this, e);
+          };
+          special[name] = special[name] || {};
+          if (special[name].setup || special[name].teardown) {
+            return;
+          }
+          $.extend(special[name], {
+            setup: function () {
+              this.addEventListener(name, handler, true);
+            },
+            teardown: function () {
+              this.removeEventListener(name, handler, true);
+            }
+          });
+        });
+      };
+    })();
+
+    $.createEventCapturing(['play', 'playing', 'ended']);
+
+    // Pause other audio on play
+    $(document).on('play', 'audio', function(event) {
+      $('audio').not(event.target).each(function(){
+        this.pause();
+      });
+    });
+
+    $(document).on('playing', 'audio', function(event) {
+    });
+
+    $(document).on('ended', 'audio', function(event) {
+      var next = $(event.target).parents('li').first().next('li').find('audio').get(0);
+      if (next) {
+        next.play();
+      }
+    });
   }]);
