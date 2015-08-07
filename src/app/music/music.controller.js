@@ -62,7 +62,7 @@ angular.module('iconsfall')
       playing = false;
 
     // Pause other audio on play
-    $(document).on('play', 'audio', function(event) {
+    $(document).off('play').on('play', 'audio', function(event) {
 
       // Send GA event
       var target = $(event.target),
@@ -82,19 +82,19 @@ angular.module('iconsfall')
       });
     });
 
-    $(document).on('pause', 'audio', function(event) {
+    $(document).off('pause').on('pause', 'audio', function(event) {
       playing = false;
     });
 
     // Set volume to all together
-    $(document).on('volumechange', 'audio', function(event) {
+    $(document).off('volumechange').on('volumechange', 'audio', function(event) {
       $('audio').not(event.target).each(function() {
         this.muted = event.target.muted;
         this.volume = event.target.volume;
       });
     });
 
-    $(document).on('ended', 'audio', function(event) {
+    $(document).off('ended').on('ended', 'audio', function(event) {
 
       // Send GA event
       var target = $(event.target),
