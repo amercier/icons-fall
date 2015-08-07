@@ -26,11 +26,18 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
 
     $urlRouterProvider.otherwise('/');
   })
-  .run(function($rootScope) {
+  .run(function($rootScope, $location) {
     $rootScope.$on('$stateChangeSuccess', function() {
       setTimeout(function() {
         $rootScope.$apply(function () {
+
+          // Reflow Foundation
           $(document).foundation();
+
+          // Track view on Google Analytics
+          if (window.ga) {
+            ga('send', 'pageview', { page: $location.path() });
+          }
         });
       }, 0);
     });
