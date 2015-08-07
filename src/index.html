@@ -40,12 +40,9 @@
     <!-- Google Analytics -->
     <script>
       function gat(category, variable, startTime, label) {
-        if (window.ga) {
+        setTimeout(function() {
           ga('send', 'timing', category, variable, Date.now() - startTime, label);
-        }
-        else {
-          console.info('timing', category, variable, Date.now() - startTime, label);
-        }
+        }, 0);
       }
 
       function gaa(name, startTime) {
@@ -60,6 +57,11 @@
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-60246103-1', 'auto');
+      }
+      else {
+        function ga(a,b,c,d,e,f) {
+          console.info('Google Analytics', a,b,c,d,e,f);
+        }
       }
       gaa('analytics.js', INIT_ANALYTICS);
     </script>
