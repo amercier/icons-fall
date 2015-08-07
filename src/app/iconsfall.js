@@ -27,6 +27,11 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
     $urlRouterProvider.otherwise('/');
   })
   .run(function($rootScope, $location) {
+    var stateChangeStartTime;
+    $rootScope.$on('$stateChangeStart', function() {
+      stateChangeStartTime = Date.now();
+    });
+
     $rootScope.$on('$stateChangeSuccess', function() {
       setTimeout(function() {
         $rootScope.$apply(function () {
@@ -38,6 +43,7 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
           if (window.ga) {
             ga('send', 'pageview', { page: $location.path() });
           }
+          gat('Angular', 'View load', stateChangeStartTime, $location.path());
         });
       }, 0);
     });
