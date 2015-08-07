@@ -19,7 +19,7 @@
           itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
         <h5 class="small-12 columns">0{{$index + 1}}. <span itemprop="name">{{track.title}}</span></h5>
         <div class="small-12 columns">
-          <audio controls ng-attr-preload="{{ $index === 0 ? 'metadata' : 'none' }}" itemprop="audio"
+          <audio controls ng-attr-preload="{{ $index === 0 ? 'auto' : 'metadata' }}" itemprop="audio"
             data-album="{{album.title}}"
             data-track="0{{$index + 1}}"
             data-title="{{track.title}}"
