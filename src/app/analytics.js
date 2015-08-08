@@ -5,8 +5,7 @@ function gat(category, variable, startTime, label) {
 }
 
 function gaa(name, startTime) {
-  gat('Assets', name + ' (absolute)', INIT);
-  gat('Assets', name + ' (relative)', startTime);
+  gat('Assets', name, startTime);
 }
 
 if (window.location.host === 'iconsfall.com') {
