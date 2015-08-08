@@ -77,6 +77,7 @@ $fa-font-path: '../../fonts';
 @import '../../bower_components/fontawesome/scss/mixins';
 @import '../../bower_components/fontawesome/scss/path';
 @import '../../bower_components/fontawesome/scss/core';
+@import '../../bower_components/fontawesome/scss/rotated-flipped';
 
 .#{$fa-css-prefix}-glass:before { content: $fa-var-glass; }
 
@@ -85,7 +86,8 @@ $if-fa-icons: (
   bolt: $fa-var-bolt,
   home: $fa-var-home,
   check: $fa-var-check,
-  map-marker: $fa-var-map-marker
+  map-marker: $fa-var-map-marker,
+  random: $fa-var-random
 );
 
 @each $key in map-keys($if-fa-icons) {

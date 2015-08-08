@@ -47,10 +47,13 @@
           </timeline-heading>
           <timeline-content>
             <p class="calendar-location"
-               itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
+               itemprop="location" itemscope itemtype="http://schema.org/MusicVenue" class="row">
               <meta itemprop="address" content="{{event.location}}">
-              <a href="{{event.locationURI}}" target="_blank" rel="nofollow">
-                <i class="fa fa-map-marker"></i> {{event.location}}
+              <a href="{{event.locationURI}}" target="_blank" rel="nofollow" class="small-6 columns text-center">
+                <i class="fa fa-map-marker"></i> Carte
+              </a>
+              <a href="{{event.directionURI}}" target="_blank" rel="nofollow" class="small-6 columns text-center">
+                <i class="fa fa-random fa-rotate-270"></i> Directions
               </a>
             </p>
           </timeline-content>
