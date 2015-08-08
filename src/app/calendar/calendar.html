@@ -10,20 +10,20 @@
     <timeline>
 
       <timeline-node ng-repeat="event in events" side="{{['left', 'right'][$index % 2]}}"
-        itemprop="event" itemscope itemtype="http://schema.org/Event">
+        itemprop="event" itemscope itemtype="http://schema.org/Event" ng-attr-data-done="{{event.done || undefined}}">
 
         <timeline-badge class="{{event.type}}">
-          <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
-          <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
-          <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
+          <a href="{{event.eventURI}}" target="_blank" rel="nofollow">
+            <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
+            <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
+            <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
+          </a>
         </timeline-badge>
 
         <timeline-panel>
           <timeline-heading>
             <timeline-title class="calendar-title">
-              <a href="{{event.eventLink}}" target="_blank" rel="nofollow"
-                 ng-if="event.eventLink" ng-class="{done: event.done}">{{event.summary}}</a>
-              <span ng-if="!event.eventLink" ng-class="{done: event.done}">{{event.summary}}</span>
+              <a href="{{event.eventURI}}" target="_blank" rel="nofollow">{{event.summary}}</a>
               <div class="calendar-time">
                 <small ng-if="event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
                   Du {{event.start.dateTime | date:shortDate }} au {{event.end.dateTime | date:shortDate }}
@@ -46,10 +46,10 @@
             </timeline-title>
           </timeline-heading>
           <timeline-content>
-            <p class="calendar-location" ng-class="{done: event.done}"
+            <p class="calendar-location"
                itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
               <meta itemprop="address" content="{{event.location}}">
-              <a href="http://maps.google.com/?q={{event.location | encodeUri}}" target="_blank" rel="nofollow">
+              <a href="{{event.locationURI}}" target="_blank" rel="nofollow">
                 <i class="fa fa-map-marker"></i> {{event.location}}
               </a>
             </p>
