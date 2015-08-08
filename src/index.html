@@ -2,7 +2,6 @@
 <html class="no-js" ng-app="iconsfall">
   <head>
     <meta charset="utf-8">
-    <script>var INIT = Date.now()</script>
     <title>Icon's Fall</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -42,8 +41,7 @@
       }
 
       function gaa(name, startTime) {
-        gat('Assets', name + ' (absolute)', INIT);
-        gat('Assets', name + ' (relative)', startTime);
+        gat('Assets', name, startTime);
       }
 
       var INIT_ANALYTICS = Date.now();
