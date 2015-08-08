@@ -22,40 +22,48 @@
 
         <timeline-panel>
           <timeline-heading>
-            <timeline-title class="calendar-title">
+            <timeline-title>
               <a href="{{event.eventURI}}" target="_blank" rel="nofollow">{{event.summary}}</a>
-              <div class="calendar-time">
-                <small ng-if="event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
-                  Du {{event.start.dateTime | date:shortDate }} au {{event.end.dateTime | date:shortDate }}
-                </small>
-                <small ng-if="event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
-                  Du {{event.start.date | date:shortDate }} au {{event.end.date | date:shortDate }}
-                </small>
-                <small ng-if="!event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
-                  {{event.start.dateTime | date:shortDate }}
-                  <span ng-if="event.end.dateTime">de {{event.start.dateTime | date:'H:mm'}} à {{event.end.dateTime | date:'H:mm'}}</span>
-                  <span ng-if="!event.end.dateTime">à partir de {{event.start.dateTime | date:'H:mm'}}</span>
-                </small>
-                <small ng-if="!event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
-                  {{event.start.date | date:shortDate}}
-                </small>
-                <small class="calendar-done" ng-if="event.done">
-                  <i class="fa fa-check"></i> Terminé
-                </small>
-              </div>
             </timeline-title>
           </timeline-heading>
           <timeline-content>
-            <p class="calendar-location"
-               itemprop="location" itemscope itemtype="http://schema.org/MusicVenue" class="row">
+
+            <div class="calendar-time row">
+              <div class="small-8 columns">
+                <span ng-if="event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
+                  Du {{event.start.dateTime | date:shortDate }} au {{event.end.dateTime | date:shortDate }}
+                </span>
+                <span ng-if="event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
+                  Du {{event.start.date | date:shortDate }} au {{event.end.date | date:shortDate }}
+                </span>
+                <span ng-if="!event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
+                  {{event.start.dateTime | date:shortDate }}
+                  <span ng-if="event.end.dateTime">de {{event.start.dateTime | date:'H:mm'}} à {{event.end.dateTime | date:'H:mm'}}</span>
+                  <span ng-if="!event.end.dateTime">à partir de {{event.start.dateTime | date:'H:mm'}}</span>
+                </span>
+                <span ng-if="!event.manyDays &amp;&amp; event.start.date" itemprop="startDate" content="{{event.start.date}}">
+                  {{event.start.date | date:shortDate}}
+                </span>
+              </div>
+              <div class="small-4 columns">
+                <span class="calendar-done right" ng-if="event.done"><i class="fa fa-check"></i> Terminé</span>
+              </div>
+            </div>
+
+            <div class="calendar-location row"
+               itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
               <meta itemprop="address" content="{{event.location}}">
-              <a href="{{event.locationURI}}" target="_blank" rel="nofollow" class="small-6 columns text-center">
-                <i class="fa fa-map-marker"></i> Carte
-              </a>
-              <a href="{{event.directionURI}}" target="_blank" rel="nofollow" class="small-6 columns text-center">
-                <i class="fa fa-random fa-rotate-270"></i> Directions
-              </a>
-            </p>
+              <div class="small-6 columns text-center">
+                <a href="{{event.locationURI}}" target="_blank" rel="nofollow">
+                  <i class="fa fa-map-marker"></i> Carte
+                </a>
+              </div>
+              <div class="small-6 columns text-center">
+                <a href="{{event.directionURI}}" target="_blank" rel="nofollow">
+                  <i class="fa fa-random fa-rotate-270"></i> Directions
+                </a>
+              </div>
+            <div>
           </timeline-content>
         </timeline-panel>
 

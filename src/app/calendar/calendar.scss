@@ -19,33 +19,48 @@
 
       .timeline-panel {
 
-        .calendar-title {
-          a {
-            padding: 0.2rem 0.5rem;
+        .timeline-heading {
+          .timeline-title {
+            margin-bottom: 0.3rem;
+
+            a {
+              padding: 0.2rem 0.5rem 0 0.5rem;
+            }
           }
         }
 
-        .calendar-time {
-          padding: 0 0.5rem;
+        .timeline-body {
 
-          .calendar-done {
+          .calendar-time {
             display: block;
-            color: $alert-color;
+            margin-bottom: 0.5rem;
+            padding: 0 0.5rem;
+            font-size: 0.8em;
+
+            > * {
+              display: block;
+            }
+
+            .calendar-done {
+              color: $alert-color;
+            }
           }
-        }
 
-        .calendar-location {
-          a {
-            font-family: $font-family-sans-serif;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 0.2rem 0.5rem;
+          .calendar-location {
+            font-size: 0.8em;
 
-            .fa {
-              display: inline-block;
-              margin-bottom: 0;
-              margin-right: 0.5em;
+            a {
+              font-family: $font-family-sans-serif;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0.2rem 0.5rem 0 0.5rem;
+
+              .fa {
+                display: inline-block;
+                margin-bottom: 0;
+                margin-right: 0.5em;
+              }
             }
           }
         }
