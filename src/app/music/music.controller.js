@@ -5,6 +5,7 @@ angular.module('iconsfall')
 
     $scope.albums = [{
       title: 'White Line',
+      type: 'EP',
       cover: $sce.trustAsResourceUrl('http://files.iconsfall.com/music/white-line/cover.jpg'),
       tracks: [
         {
