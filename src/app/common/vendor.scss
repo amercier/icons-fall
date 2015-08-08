@@ -54,6 +54,23 @@
   }
 }
 
+@media only screen and (max-width: 767px) {
+
+  ul.timeline:before {
+    left: 20px;
+  }
+
+  ul.timeline > li > .timeline-panel {
+    width: calc(100% - 60px);
+    width: -moz-calc(100% - 60px);
+    width: -webkit-calc(100% - 60px);
+  }
+
+  ul.timeline > li > .timeline-badge {
+    left: -5px;
+  }
+}
+
 // Font-awesome
 $fa-font-path: '../../fonts';
 @import '../../bower_components/fontawesome/scss/variables';
