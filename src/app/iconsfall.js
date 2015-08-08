@@ -47,10 +47,6 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
       }, 0);
     });
 
-    $rootScope.$on('$viewContentLoading', function(e) {
-      gat('Views', 'ContentLoading', stateChangeStartTime, $location.path());
-    });
-
     $rootScope.$on('$viewContentLoaded', function(e) {
       if (stateChangeStartTime) { // else: no change start
         gat('Views', 'ContentLoaded', stateChangeStartTime, $location.path());
