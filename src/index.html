@@ -59,7 +59,7 @@
         ga('create', 'UA-60246103-1', 'auto');
       }
       else {
-        function ga(a,b,c,d,e,f) {
+        window.ga = function(a,b,c,d,e,f) {
           console.info('Google Analytics', a,b,c,d,e,f);
         }
       }
