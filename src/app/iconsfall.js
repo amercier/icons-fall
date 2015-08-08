@@ -42,18 +42,18 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
 
           // Track view on Google Analytics
           ga('send', 'pageview', { page: $location.path() });
-          gat('View', 'ChangeSuccess', stateChangeStartTime, $location.path());
+          gat('Views', 'ChangeSuccess', stateChangeStartTime, $location.path());
         });
       }, 0);
     });
 
     $rootScope.$on('$viewContentLoading', function(e) {
-      gat('View', 'ContentLoading', stateChangeStartTime, $location.path());
+      gat('Views', 'ContentLoading', stateChangeStartTime, $location.path());
     });
 
     $rootScope.$on('$viewContentLoaded', function(e) {
       if (stateChangeStartTime) { // else: no change start
-        gat('View', 'ContentLoaded', stateChangeStartTime, $location.path());
+        gat('Views', 'ContentLoaded', stateChangeStartTime, $location.path());
       }
     });
   });
