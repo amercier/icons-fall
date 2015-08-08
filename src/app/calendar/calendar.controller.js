@@ -53,6 +53,14 @@ angular.module('iconsfall')
           $scope.events = [].concat.apply([], data.map(function(calendar) {
               return calendar.data.items.map(function(item) {
                 item.type = calendars[item.organizer.email];
+
+                if (item.description) {
+                  var matches = new RegExp('(http://[^ ]+)').exec(item.description.trim());
+                  if (matches) {
+                    item.eventLink = matches[0];
+                  }
+                }
+
                 if (item.start.dateTime && item.end.dateTime) {
                   var start = new Date(item.start.dateTime);
                   var end = new Date(item.end.dateTime);

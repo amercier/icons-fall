@@ -10,7 +10,7 @@
     <timeline>
 
       <timeline-node ng-repeat="event in events" side="{{['left', 'right'][$index % 2]}}"
-                     itemprop="event" itemscope itemtype="http://schema.org/Event">
+        itemprop="event" itemscope itemtype="http://schema.org/Event">
 
         <timeline-badge class="{{event.type}}">
           <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
@@ -21,7 +21,9 @@
         <timeline-panel>
           <timeline-heading>
             <timeline-title class="calendar-title">
-              <a href="{{event.htmlLink}}" target="_blank" ng-class="{done: event.done}">{{event.summary}}</a>
+              <a href="{{event.eventLink}}" target="_blank" rel="nofollow"
+                 ng-if="event.eventLink" ng-class="{done: event.done}">{{event.summary}}</a>
+              <span ng-if="!event.eventLink" ng-class="{done: event.done}">{{event.summary}}</span>
               <div class="calendar-time">
                 <small ng-if="event.manyDays &amp;&amp; event.start.dateTime" itemprop="startDate" content="{{event.start.dateTime}}">
                   Du {{event.start.dateTime | date:shortDate }} au {{event.end.dateTime | date:shortDate }}
@@ -47,7 +49,7 @@
             <p class="calendar-location" ng-class="{done: event.done}"
                itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
               <meta itemprop="address" content="{{event.location}}">
-              <a href="http://maps.google.com/?q={{event.location | encodeUri}}" target="_blank">
+              <a href="http://maps.google.com/?q={{event.location | encodeUri}}" target="_blank" rel="nofollow">
                 <i class="fa fa-map-marker"></i> {{event.location}}
               </a>
             </p>
