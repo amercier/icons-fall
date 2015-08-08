@@ -5,3 +5,4 @@ node_modules
 npm_debug.log
 src/bower_components
 test/coverage
+npm-debug.log
