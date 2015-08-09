@@ -1,0 +1,15 @@
+// FontAwesome icons for Icon's Fall
+$if-fa-icons: (
+  microphone: $fa-var-microphone,
+  bolt: $fa-var-bolt,
+  home: $fa-var-home,
+  check: $fa-var-check,
+  map-marker: $fa-var-map-marker,
+  random: $fa-var-random
+);
+
+@each $key in map-keys($if-fa-icons) {
+  .#{$fa-css-prefix}-#{$key}:before {
+    content: map-get($if-fa-icons, $key);
+  }
+}
