@@ -4,14 +4,31 @@
   @extend %if-button;
   display: block;
   font-family: $font-family-sans-serif;
-  padding: 0.5em 1em;
+  margin-bottom: rem-calc(2 * $line-height);
+  padding: 0.5em 1em 0.5em 50%;
+  text-align: left;
+  white-space: nowrap;
 
   svg {
-    display: inline;
-    vertical-align: bottom;
-    line-height: 2em;
     fill: currentColor;
-    height: 2em;
-    width: 2em;
+    display: inline-block;
+    margin: 0 1em 0 -3.5em;
+    position: relative;
+    top: rem-calc(8);
+    height: rem-calc(32);
+    width: rem-calc(32);
+  }
+}
+
+@media #{$medium-up} {
+  %if-button {
+    text-align: center;
+    padding: 0.8em 1em 0.5em 1em;
+
+    svg {
+      display: block;
+      margin: 0 auto rem-calc($line-height / 2);
+      top: 0;
+    }
   }
 }
