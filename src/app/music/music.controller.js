@@ -14,11 +14,11 @@ angular.module('iconsfall')
         },
         {
           title: 'Season Passed',
-          url: $sce.trustAsResourceUrl('http://files.iconsfall.com/music/white-line/03.%20Season%20Passed.mp3')
+          url: $sce.trustAsResourceUrl('http://files.iconsfall.com/music/white-line/02.%20Season%20Passed.mp3')
         },
         {
           title: 'Paths',
-          url: $sce.trustAsResourceUrl('http://files.iconsfall.com/music/white-line/02.%20Paths.mp3')
+          url: $sce.trustAsResourceUrl('http://files.iconsfall.com/music/white-line/03.%20Paths.mp3')
         },
         {
           title: 'White Line',
