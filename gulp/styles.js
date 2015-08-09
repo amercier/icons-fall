@@ -13,7 +13,8 @@ var _ = require('lodash');
 
 gulp.task('styles', function () {
   var sassOptions = {
-    style: 'expanded'
+    style: 'expanded',
+    includePaths: ['bower_components']
   };
 
   var injectFiles = gulp.src([
