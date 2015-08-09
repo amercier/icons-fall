@@ -49,6 +49,22 @@ angular.module('iconsfall')
       }
     };
 
+    $scope.trackEvent = function(action, label) {
+      ga('send', 'event', 'Calendar', action, label);
+    };
+
+    $scope.trackEventURI = function(event) {
+      this.trackEvent('Click ' + event.type, event.summary);
+    };
+
+    $scope.trackEventMap = function(event) {
+      this.trackEvent('Map ' + event.type, event.summary);
+    };
+
+    $scope.trackEventDirections = function(event) {
+      this.trackEvent('Directions ' + event.type, event.summary);
+    };
+
     $q.all(Object.keys(calendars).map(function(calendarId) {
         return $http.get(
           'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events',
