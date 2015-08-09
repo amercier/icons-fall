@@ -18,10 +18,18 @@ gulp.task('wiredep', function () {
       exclude: [
         'angular-bootstrap',
         'fastclick',
-        'foundation',
         'jquery.cookie',
-        'jquery-placeholder'
-      ]
+        'jquery-placeholder',
+        'modernizr'
+      ],
+      overrides: {
+        foundation: {
+          main: [
+            'js/foundation/foundation.js',
+            'js/foundation/foundation.topbar.js'
+          ]
+        }
+      }
     }))
     .pipe(gulp.dest('src'));
 });

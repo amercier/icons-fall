@@ -27,6 +27,12 @@ gulp.task('scripts', function () {
     .pipe($.size());
 });
 
+gulp.task('bower-fonts', function () {
+  return gulp.src(['src/bower_components/fontawesome/fonts/*'])
+    .pipe(gulp.dest('.tmp/fonts'))
+    .pipe($.size());
+});
+
 gulp.task('partials', function () {
   return gulp.src('src/{app,components}/**/*.html')
     .pipe($.minifyHtml({
@@ -41,7 +47,7 @@ gulp.task('partials', function () {
     .pipe($.size());
 });
 
-gulp.task('html', ['styles', 'scripts', 'partials'], function () {
+gulp.task('html', ['styles', 'scripts', 'partials', 'bower-fonts'], function () {
   var htmlFilter = $.filter('*.html');
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
@@ -89,8 +95,14 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  return gulp.src($.mainBowerFiles().concat(['src/assets/fonts/**/*']))
-    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+  return gulp.src($.mainBowerFiles({
+      overrides: {
+        fontawesome: {
+          main: 'fonts/*'
+        }
+      }
+    }).concat(['src/assets/fonts/**/*']))
+    .pipe($.filter('**/*.{eot,oft,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size());

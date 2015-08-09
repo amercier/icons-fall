@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 'angular-timeline', 'rt.encodeuri'])
+angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 'angular-timeline'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
@@ -45,10 +45,6 @@ angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 
           gat('Views', 'ChangeSuccess', stateChangeStartTime, $location.path());
         });
       }, 0);
-    });
-
-    $rootScope.$on('$viewContentLoading', function(e) {
-      gat('Views', 'ContentLoading', stateChangeStartTime, $location.path());
     });
 
     $rootScope.$on('$viewContentLoaded', function(e) {

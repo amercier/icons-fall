@@ -6,35 +6,80 @@
     display: block;
   }
 
-  .done {
-    opacity: 0.5;
-  }
+  .timeline {
+    li {
+      .timeline-badge {
+        background: #333;
+        color: white;
 
-  .calendar-title {
-    a {
-      padding: 0.2rem 0.5rem;
-    }
-  }
+        a {
+          padding: 0;
+        }
+      }
 
-  .calendar-time {
-    padding: 0 0.5rem;
+      .timeline-panel {
 
-    .calendar-done {
-      display: block;
-      color: $alert-color;
-    }
-  }
+        .timeline-heading {
+          .timeline-title {
+            margin-bottom: 0.3rem;
 
-  .calendar-location {
-    a {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding: 0.2rem 0.5rem;
+            a {
+              padding: 0.2rem 0.5rem 0 0.5rem;
+            }
+          }
+        }
 
-      .fa {
-        display: inline-block;
-        margin-bottom: 0;
+        .timeline-body {
+
+          .calendar-time {
+            display: block;
+            margin-bottom: 0.5rem;
+            padding: 0 0.5rem;
+            font-size: 0.8em;
+
+            > * {
+              display: block;
+            }
+
+            .calendar-done {
+              color: $alert-color;
+            }
+          }
+
+          .calendar-location {
+            font-size: 0.8em;
+
+            a {
+              font-family: $font-family-sans-serif;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0.2rem 0.5rem 0 0.5rem;
+
+              .fa {
+                display: inline-block;
+                margin-bottom: 0;
+                margin-right: 0.5em;
+              }
+            }
+          }
+        }
+      }
+
+      &[data-done] {
+
+        .timeline-badge {
+          background: white;
+          color: #CCC;
+
+          a {
+            opacity: 0.5;
+          }
+        }
+
+        .timeline-panel {
+          opacity: 0.5;
+        }
       }
     }
   }
