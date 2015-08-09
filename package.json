@@ -1,7 +1,6 @@
 {
   "name": "iconsfall",
-  "version": "0.0.0",
-  "dependencies": {},
+  "private": true,
   "scripts": {
     "build": "gulp build",
     "install": "bower install",
@@ -10,6 +9,7 @@
     "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
     "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www"
   },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "~5.5.8",
     "babel-loader": "~5.1.4",
@@ -41,8 +41,9 @@
     "gulp-uglify": "~1.2.0",
     "gulp-useref": "~1.2.0",
     "gulp-util": "~3.0.5",
-    "gulp-webpack": "~1.5.0",
     "http-proxy-middleware": "~0.0.5",
+    "jasmine-core": "^2.3.4",
+    "jshint": "^2.8.0",
     "jshint-loader": "~0.8.3",
     "jshint-stylish": "~2.0.0",
     "karma": "~0.12.36",
@@ -52,8 +53,11 @@
     "lodash": "~3.9.3",
     "main-bower-files": "~2.8.0",
     "merge-stream": "~0.1.7",
+    "phantomjs": "^1.9.17",
     "require-dir": "~0.3.0",
     "uglify-save-license": "~0.4.1",
+    "webpack": "^1.11.0",
+    "webpack-stream": "^2.1.0",
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
   },
