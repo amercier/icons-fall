@@ -10,7 +10,9 @@
     <timeline>
 
       <timeline-node ng-repeat="event in events" side="{{['left', 'right'][$index % 2]}}"
-        itemprop="event" itemscope itemtype="http://schema.org/Event" ng-attr-data-done="{{event.done || undefined}}">
+        itemprop="event" itemscope itemtype="http://schema.org/Event"
+        ng-attr-data-next="{{event.next || undefined}}"
+        ng-attr-data-done="{{event.done || undefined}}">
 
         <timeline-badge class="{{event.type}}">
           <a href="{{event.eventURI}}" target="_blank" rel="nofollow">
@@ -74,3 +76,4 @@
   </div>
 
 </section>
+{{scrollToNextEvent()}}

@@ -38,6 +38,15 @@ angular.module('iconsfall')
 
     $scope.events = [];
 
+    $scope.scrollToNextEvent = function() {
+      var scrollTo = $('[data-next]').first();
+      if (scrollTo.length > 0) {
+        $('body').animate({
+          scrollTop: scrollTo.offset().top
+        }, 'slow');
+      }
+    };
+
     $q.all(Object.keys(calendars).map(function(calendarId) {
         return $http.get(
           'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events',
@@ -50,43 +59,51 @@ angular.module('iconsfall')
       }))
       .then(
         function(data) {
+          var nextEvent;
           $scope.events = [].concat.apply([], data.map(function(calendar) {
-              return calendar.data.items.map(function(item) {
-                item.type = calendars[item.organizer.email];
-                item.locationURI = item.location ? 'http://maps.google.com/?q=' + encodeURI(item.location) : '#';
-                item.directionURI = item.location ? 'https://www.google.com/maps/dir/current+location/' + encodeURI(item.location) : '#';
-                item.eventURI = event.locationURI;
+            return calendar.data.items.map(function(item) {
+              item.type = calendars[item.organizer.email];
+              item.locationURI = item.location ? 'http://maps.google.com/?q=' + encodeURI(item.location) : '#';
+              item.directionURI = item.location ? 'https://www.google.com/maps/dir/current+location/' + encodeURI(item.location) : '#';
+              item.eventURI = event.locationURI;
 
-                if (item.description) {
-                  var matches = new RegExp('(http://[^ ]+)').exec(item.description.trim());
-                  if (matches) {
-                    item.eventURI = matches[0];
-                  }
+              if (item.description) {
+                var matches = new RegExp('(http://[^ ]+)').exec(item.description.trim());
+                if (matches) {
+                  item.eventURI = matches[0];
                 }
+              }
 
-                if (item.start.dateTime && item.end.dateTime) {
-                  var start = new Date(item.start.dateTime);
-                  var end = new Date(item.end.dateTime);
-                  item.manyDays = end - start > 24 * 3600 * 1000;
-                  item.date = start;
-                  item.done = end.getTime() < now.getTime();
-                }
-                else if (item.start.date && item.end.date) {
-                  var d = item.start.date.split('-');
-                  item.manyDays = item.start.date !== item.end.date;
-                  item.date = new Date(d[0], d[1], d[2]);
-                  item.done = item.date.getTime() < today.getTime();
-                }
-                else {
-                  item.date = new Date();
-                  item.done = false;
-                }
-                return item;
-              });
-            }))
-            .sort(function(a, b) {
-              return a.date.getTime() - b.date.getTime();
+              if (item.start.dateTime && item.end.dateTime) {
+                var start = new Date(item.start.dateTime);
+                var end = new Date(item.end.dateTime);
+                item.manyDays = end - start > 24 * 3600 * 1000;
+                item.date = start;
+                item.done = end.getTime() < now.getTime();
+              }
+              else if (item.start.date && item.end.date) {
+                var d = item.start.date.split('-');
+                item.manyDays = item.start.date !== item.end.date;
+                item.date = new Date(d[0], d[1], d[2]);
+                item.done = item.date.getTime() < today.getTime();
+              }
+              else {
+                item.date = new Date();
+                item.done = false;
+              }
+
+              return item;
             });
+          }))
+          .sort(function(a, b) {
+            return a.date.getTime() - b.date.getTime();
+          })
+          .map(function(event) {
+            if (!event.done && !nextEvent) {
+              event.next = true;
+            }
+            return event;
+          });
         },
         function(error) {
           console.error('ERROR', error);
