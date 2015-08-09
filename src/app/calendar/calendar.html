@@ -15,7 +15,7 @@
         ng-attr-data-done="{{event.done || undefined}}">
 
         <timeline-badge class="{{event.type}}">
-          <a href="{{event.eventURI}}" target="_blank" rel="nofollow">
+          <a ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow">
             <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
             <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
             <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
@@ -25,7 +25,7 @@
         <timeline-panel>
           <timeline-heading>
             <timeline-title>
-              <a href="{{event.eventURI}}" target="_blank" rel="nofollow">{{event.summary}}</a>
+              <a ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow">{{event.summary}}</a>
             </timeline-title>
           </timeline-heading>
           <timeline-content>

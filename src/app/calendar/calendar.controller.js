@@ -65,9 +65,8 @@ angular.module('iconsfall')
           $scope.events = [].concat.apply([], data.map(function(calendar) {
             return calendar.data.items.map(function(item) {
               item.type = calendars[item.organizer.email];
-              item.locationURI = item.location ? 'http://maps.google.com/?q=' + encodeURI(item.location) : '#';
+              item.locationURI = item.location ? 'http://maps.google.com/?q=' + encodeURI(item.location) : undefined;
               item.directionURI = item.location ? 'https://www.google.com/maps/dir/current+location/' + encodeURI(item.location) : '#';
-              item.eventURI = event.locationURI;
 
               if (item.description) {
                 var matches = new RegExp('(http://[^ ]+)').exec(item.description.trim());

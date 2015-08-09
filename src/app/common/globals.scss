@@ -20,6 +20,10 @@ a {
     color: $anchor-color-active;
     background: $anchor-background-active;
   }
+
+  &:not([href]) {
+    pointer-events: none;
+  }
 }
 
 .top-bar a {
