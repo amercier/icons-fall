@@ -20,7 +20,9 @@
         <h4 class="small-12 columns">0{{$index + 1}}. <span itemprop="name">{{track.title}}</span></h4>
         <div class="small-12 columns">
           <audio controls preload="none" itemprop="audio">
-            <source type="audio/mp3" ng-src="{{track.url}}">
+            <source type='audio/ogg; codecs="vorbis"' ng-src="{{track.ogg}}">
+            <source type='audio/webm; codecs="vorbis"' ng-src="{{track.webm}}">
+            <source type='audio/mp3' ng-src="{{track.mp3}}">
             Your browser does not support HTML5 Audio :'(
           </audio>
         </div>
