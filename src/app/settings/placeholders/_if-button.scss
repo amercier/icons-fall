@@ -4,10 +4,9 @@
   @extend %if-button;
   display: block;
   font-family: $font-family-sans-serif;
-  margin-bottom: rem-calc(2 * $line-height);
+  margin-bottom: rem-calc($line-height);
   padding: 0.5em 1em 0.5em 50%;
   text-align: left;
-  white-space: nowrap;
 
   svg {
     fill: currentColor;
