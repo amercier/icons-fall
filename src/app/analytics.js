@@ -14,6 +14,7 @@ if (window.location.host === 'iconsfall.com') {
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-60246103-1', { siteSpeedSampleRate: 100 });
+  ga('require', 'displayfeatures');
 }
 else {
   window.ga = function(a,b,c,d,e,f) {
