@@ -1,3 +1,5 @@
+var INIT_ANALYTICS = Date.now();
+
 function gat(category, variable, startTime, label) {
   setTimeout(function() {
     ga('send', 'timing', category, variable, Date.now() - startTime, label);
@@ -21,3 +23,5 @@ else {
     console.info('Google Analytics', a,b,c,d,e,f);
   }
 }
+
+gaa('analytics.js', INIT_ANALYTICS);

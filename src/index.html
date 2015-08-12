@@ -33,9 +33,7 @@
     <div ui-view></div>
 
     <script>var INIT_ANALYTICS = Date.now()</script>
-    <!-- build:js scripts/analytics.js -->
-    <script src="app/analytics.js"></script>
-    <!-- endbuild -->
+    <script src="app/analytics.js" inline></script>
     <script>gaa('analytics.js', INIT_ANALYTICS);</script>
 
     <script>var INIT_VENDOR = Date.now()</script>

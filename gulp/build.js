@@ -73,6 +73,7 @@ gulp.task('html', ['styles', 'scripts', 'partials', 'bower-fonts'], function () 
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
+    .pipe($.inlineSource())
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
