@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "gulp build",
+    "build": "rm -rf dist && gulp build",
     "install": "bower install",
     "start": "gulp serve",
     "test": "gulp test",
