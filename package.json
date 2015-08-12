@@ -51,7 +51,6 @@
     "main-bower-files": "^2.0.0",
     "protractor": "^2.0.0",
     "require-dir": "^0.3.0",
-    "uglify-save-license": "^0.4.1",
     "wiredep": "^2.1.0"
   },
   "engines": {
