@@ -6,7 +6,7 @@
     "start": "gulp serve",
     "test": "gulp test",
     "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
-    "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www"
+    "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www && echo iconsfall.com > dist/CNAME && gh-pages --dist dist"
   },
   "dependencies": {
     "bower": "^1.4.0"
@@ -17,6 +17,7 @@
     "codeclimate-test-reporter": "0.0.4",
     "coveralls": "^2.11.2",
     "david": "^6.1.4",
+    "gh-pages": "^0.3.1",
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-cache": "^0.2.0",
