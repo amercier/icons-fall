@@ -2,7 +2,7 @@
 // Animation
 
 
-$animate-duration: 500ms;
+$animate-duration: 200ms;
 
 .navbar {
   @include transition(opacity $animate-duration, transform ($animate-duration / 2));
