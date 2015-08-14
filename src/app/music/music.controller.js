@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('MusicCtrl', ['$scope', '$sce', function ($scope, $sce) {
+  .controller('MusicCtrl', function($rootScope, MetaService, $scope, $sce) {
+    $rootScope.meta = MetaService;
+    $rootScope.meta.setPageTitle('Musique');
 
     $scope.albums = [{
       title: 'White Line',
@@ -134,4 +136,4 @@ angular.module('iconsfall')
         ga('send', 'event', 'Music', 'Ended', track);
       }
     });
-  }]);
+  });

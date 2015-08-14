@@ -1,6 +1,28 @@
 'use strict';
 
-angular.module('iconsfall', ['ngAnimate', 'ngTouch', 'ngResource', 'ui.router', 'angular-timeline'])
+angular
+  .module('iconsfall', [
+    'ngAnimate',
+    'ngTouch',
+    'ngResource',
+    'ui.router',
+    'angular-timeline'
+  ])
+  .service('MetaService', function() {
+    var pageTitle,
+      appTitle = 'Icon\'s Fall',
+      separator = '-';
+
+    return {
+      setPageTitle: function(newPageTitle) {
+        console.info('setPageTitle', newPageTitle);
+        pageTitle = newPageTitle;
+      },
+      title: function() {
+        return pageTitle ? [pageTitle, separator, appTitle].join(' ') : appTitle;
+      }
+    };
+  })
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

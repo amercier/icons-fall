@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('CalendarCtrl', ['$scope', '$q', '$http', function ($scope, $q, $http) {
+  .controller('CalendarCtrl', function ($rootScope, MetaService, $scope, $q, $http) {
+    $rootScope.meta = MetaService;
+    $rootScope.meta.setPageTitle('Agenda');
 
     var environment = {
             'iconsfall.com': 'production',
@@ -127,4 +129,4 @@ angular.module('iconsfall')
         }
       );
 
-  }]);
+  });
