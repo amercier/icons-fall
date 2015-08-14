@@ -7,7 +7,8 @@ angular
     'ngResource',
     'ui.router',
     'angular-timeline',
-    'mm.foundation'
+    'mm.foundation',
+    'ngMedia'
   ])
   .service('MetaService', function() {
     var pageTitle,
@@ -60,9 +61,6 @@ angular
       setTimeout(function() {
         $rootScope.$apply(function () {
 
-          // Reflow Foundation
-          $(document).foundation();
-
           // Track view on Google Analytics
           ga('send', 'pageview', { page: $location.path() });
           gat('Views', 'ChangeSuccess', stateChangeStartTime, $location.path());
@@ -96,19 +94,3 @@ angular.module('iconsfall')
       };
     });
   });
-
-// jQuery errors
-jQuery.error = function (message) {
-  ga('send', 'event', 'jQuery Error', message, navigator.userAgent, 0, true);
-}
-
-// jQuery AJAX errors handler (jQuery API)
-$(document).ajaxError(function (event, request, settings) {
-  ga('send', 'event', 'jQuery Ajax Error', settings.url, JSON.stringify({
-    result: event.result,
-    status: request.status,
-    statusText: request.statusText,
-    crossDomain: settings.crossDomain,
-    dataType: settings.dataType
-  }), 0, true);
-});

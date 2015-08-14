@@ -21,12 +21,16 @@
 
       <li class="music-track row" ng-repeat="track in album.tracks"
           itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
-        <h5 class="small-12 columns">0{{$index + 1}}. <span itemprop="name">{{track.title}}</span></h5>
+        <h5 class="small-12 columns">{{track.track}}. <span itemprop="name">{{track.title}}</span></h5>
         <div class="small-12 columns">
-          <audio controls ng-attr-preload="{{ $index === 0 ? 'auto' : 'none' }}" itemprop="audio"
-            data-album="{{album.title}}"
-            data-track="0{{$index + 1}}"
-            data-title="{{track.title}}"
+          <audio controls ng-attr-preload="{{ $index === 0 ? 'auto' : 'none' }}"
+            itemprop="audio"
+            ng-play="onPlay(album, track, $event)"
+            ng-pause="onPause(album, track, $event)"
+            ng-timeupdate="onTimeUpdate(album, track, $event)"
+            ng-volumechange="onVolumeChange(album, track, $event)"
+            ng-playing="onPlaying(album, track, $event)"
+            ng-ended="onEnded(album, track, $event)"
           >
             <source type='audio/ogg; codecs="vorbis"' ng-src="{{track.ogg}}">
             <source type='audio/webm; codecs="vorbis"' ng-src="{{track.webm}}">

@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('MusicCtrl', function($rootScope, MetaService, $scope, $sce) {
+  .controller('MusicCtrl', function($rootScope, MetaService, $sce, $scope, $element) {
     $rootScope.meta = MetaService;
     $rootScope.meta.setPageTitle('Musique');
+
+    $scope.audios = function() {
+      return angular.element($element[0].querySelectorAll('audio'));
+    };
 
     $scope.albums = [{
       title: 'White Line',
@@ -11,6 +15,7 @@ angular.module('iconsfall')
       cover: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/cover.jpg'),
       tracks: [
         {
+          track: '01',
           title: 'Golden Tree',
           ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.ogg'),
           mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.mp3'),
@@ -18,6 +23,7 @@ angular.module('iconsfall')
           m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.m4a')
         },
         {
+          track: '02',
           title: 'Season Passed',
           ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.ogg'),
           mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.mp3'),
@@ -25,6 +31,7 @@ angular.module('iconsfall')
           m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.m4a')
         },
         {
+          track: '03',
           title: 'Paths',
           ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.ogg'),
           mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.mp3'),
@@ -32,6 +39,7 @@ angular.module('iconsfall')
           m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.m4a')
         },
         {
+          track: '04',
           title: 'White Line',
           ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.ogg'),
           mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.mp3'),
@@ -41,99 +49,68 @@ angular.module('iconsfall')
       ]
     }];
 
-    $.createEventCapturing = (function () {
-      var special = $.event.special;
-      return function (names) {
-        if (!document.addEventListener) {
-          return;
-        }
-        if (typeof names === 'string') {
-          names = [names];
-        }
-        $.each(names, function (i, name) {
-          var handler = function (e) {
-            e = $.event.fix(e);
-            return $.event.dispatch.call(this, e);
-          };
-          special[name] = special[name] || {};
-          if (special[name].setup || special[name].teardown) {
-            return;
-          }
-          $.extend(special[name], {
-            setup: function () {
-              this.addEventListener(name, handler, true);
-            },
-            teardown: function () {
-              this.removeEventListener(name, handler, true);
-            }
-          });
-        });
-      };
-    })();
-
-    $.createEventCapturing(['play', 'timeupdate', 'ended', 'volumechange']);
-
     var started = false,
       playing = false;
 
     // Pause other audio on play
-    $(document).off('play').on('play', 'audio', function(event) {
+    $scope.onPlay = function(album, track, $event) {
 
       // Send GA event
-      var target = $(event.target),
-        track = [ target.data('album'), target.data('track'), target.data('title') ].join(' / ');
+      var trackName = [ album.title, track.track, track.title ].join(' / ');
       if (!started) {
         started = true;
-        ga('send', 'event', 'Music', 'Start', track);
+        ga('send', 'event', 'Music', 'Start', trackName);
       }
-      else if (playing && playing !== track) {
+      else if (playing && playing !== trackName) {
         ga('send', 'event', 'Music', 'Switch', playing + ' to ' + track);
       }
-      playing = track;
+      playing = trackName;
 
       // Pause others
-      $('audio').not(event.target).each(function() {
-        this.pause();
+      angular.forEach($scope.audios(), function(audio) {
+        if (audio !== $event.target) {
+          audio.pause();
+        }
       });
-    });
+    };
 
-    $(document).off('pause').on('pause', 'audio', function(event) {
+    $scope.onPause = function() {
       playing = false;
-    });
+    };
 
-    // Start preloading next
-    $(document).off('timeupdate').on('timeupdate', 'audio', function(event) {
-      var target = $(event.target),
-        next = target.parents('li').first().next('li').find('audio');
-      if (next.length > 0 && event.target.duration - event.target.currentTime < 30) {
-        next.get(0).preload = 'auto';
+    // Start preloading next 30 seconds before end
+    $scope.onTimeUpdate = function(album, track, $event) {
+      var next = angular.element($event.target.parentNode.parentNode).next('li').find('audio');
+      if (next.length > 0 && $event.target.duration - $event.target.currentTime < 30) {
+        next[0].preload = 'auto';
       }
-    });
+    };
 
-    // Set volume to all together
-    $(document).off('volumechange').on('volumechange', 'audio', function(event) {
-      $('audio').not(event.target).each(function() {
-        this.muted = event.target.muted;
-        this.volume = event.target.volume;
+    // Change volume together
+    $scope.onVolumeChange = function(album, track, $event) {
+      var volume = $event.target.volume;
+      angular.forEach($scope.audios(), function(audio) {
+        if (audio !== $event.target) {
+          audio.volume = volume;
+        }
       });
-    });
+    };
 
-    $(document).off('ended').on('ended', 'audio', function(event) {
+    // Track end
+    $scope.onEnded = function(album, track, $event) {
 
-      // Send GA event
-      var target = $(event.target),
-        next = target.parents('li').first().next('li').find('audio');
-      if (next.length > 0) {
-        var track = [ next.data('album'), next.data('track'), next.data('title') ].join(' / ');
-        ga('send', 'event', 'Music', 'Next', track);
+      // Send 'Track completed' GA event
+      ga('send', 'event', 'Music', 'Track completed', album.title + ' / ' + track.title);
 
-        next.get(0).play();
-      }
-      else {
-        var track = [ target.data('album'), target.data('track'), target.data('title') ].join(' / ');
+      // Send 'Album completed' GA event if last track
+      if (track === album.tracks[album.tracks.length - 1]) {
         playing = false;
         started = false;
-        ga('send', 'event', 'Music', 'Ended', track);
+        ga('send', 'event', 'Music', 'Album completed', album.title);
       }
-    });
+      else {
+        var next = angular.element($event.target.parentNode.parentNode).next('li').find('audio');
+        next[0].play();
+      }
+    };
   });

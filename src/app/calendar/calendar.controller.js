@@ -41,9 +41,9 @@ angular.module('iconsfall')
     $scope.events = [];
 
     $scope.scrollToNextEvent = function() {
-      var scrollTo = $('[data-next]').first();
+      var scrollTo = angular.element('[data-next]').first();
       if (scrollTo.length > 0) {
-        $('body:not(.scrolled)')
+        angular.element('body:not(.scrolled)')
           .animate({
             scrollTop: scrollTo.offset().top
           }, 'slow')

@@ -7,6 +7,6 @@ angular.module('iconsfall')
       $scope.state = {}
       $scope.state[toState.name] = toState;
 
-      $('body').attr('data-state', toState.name);
+      angular.element(document.body).attr('data-state', toState.name);
     });
   }]);
