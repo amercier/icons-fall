@@ -111,6 +111,7 @@ gulp.task('fonts', function () {
 
 gulp.task('static', function () {
   return gulp.src([
+      'src/CNAME',
       'src/favicon.ico',
       'src/sitemap.xml',
       'src/.htaccess',
