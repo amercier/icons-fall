@@ -6,7 +6,8 @@ angular
     'ngTouch',
     'ngResource',
     'ui.router',
-    'angular-timeline'
+    'angular-timeline',
+    'mm.foundation'
   ])
   .service('MetaService', function() {
     var pageTitle,
