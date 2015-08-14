@@ -6,7 +6,7 @@
     "start": "gulp serve",
     "test": "gulp test",
     "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
-    "deploy-production": "./deploy-ftp.sh dist ftp.iconsfall.com /www"
+    "deploy-production": "gulp deploy && ./deploy-ftp.sh dist ftp.iconsfall.com /www"
   },
   "dependencies": {
     "bower": "^1.4.0"
@@ -25,6 +25,7 @@
     "gulp-exec": "^2.1.1",
     "gulp-filter": "^2.0.2",
     "gulp-flatten": "0.0.4",
+    "gulp-gh-pages": "^0.5.2",
     "gulp-imagemin": "^2.2.1",
     "gulp-inject": "^1.0.0",
     "gulp-inline-source": "^2.1.0",

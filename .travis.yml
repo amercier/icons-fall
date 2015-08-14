@@ -7,6 +7,8 @@ after_success:
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master"
   && npm run deploy-staging || echo "Not on master branch. Skipping deployment to staging" >&2
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_TAG" != ""
+  && git config --global user.email "iconsfall@travis-ci.org"
+  && git config --global user.name "Icon's Fall CI"
   && npm run deploy-production || echo "Not tagged. Skipping deployment to production" >&2
 cache:
   directories:
