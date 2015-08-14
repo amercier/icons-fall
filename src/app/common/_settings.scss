@@ -3,16 +3,18 @@
 
 $anchor-padding: 1em 0;
 
-$anchor-background: $white;
+$anchor-background: $body-bg;
 
 $anchor-transition-duration: 500ms;
 $anchor-transition:
   color $anchor-transition-duration,
   background-color $anchor-transition-duration;
 
-$anchor-background-hover: $black;
+$anchor-color-hover: $body-bg;
+$anchor-background-hover: $body-font-color;
 
-$anchor-color-active: $black;
-$anchor-background-active: $white;
+$anchor-color-active: $body-bg;
+$anchor-background-active: $body-font-color;
+
 $anchor-transition-duration-active: 200ms;
 $anchor-transition-active: color $anchor-transition-duration, background-color $anchor-transition-duration-active;

@@ -12,6 +12,7 @@ a {
   padding: $anchor-padding;
 
   &:hover, &:focus {
+    color: $anchor-color-hover;
     background: $anchor-background-hover;
   }
 
