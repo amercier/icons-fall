@@ -12,7 +12,7 @@ angular
   ])
   .service('MetaService', function() {
     var pageTitle,
-      appTitle = 'Icon\'s Fall',
+      appTitle = document.title,
       separator = '-';
 
     return {
@@ -50,16 +50,19 @@ angular
 
     $urlRouterProvider.otherwise('/');
   })
-  .run(function($rootScope, $location) {
+  .run(function($rootScope, $location, MetaService) {
     var stateChangeStartTime;
 
-    $rootScope.$on('$stateChangeStart', function() {
+    $rootScope.$on('$stateChangeStart', function(event) {
       stateChangeStartTime = Date.now();
     });
 
-    $rootScope.$on('$stateChangeSuccess', function(e) {
+    $rootScope.$on('$stateChangeSuccess', function() {
       setTimeout(function() {
         $rootScope.$apply(function () {
+
+          // Update title
+          document.title = MetaService.title();
 
           // Track view on Google Analytics
           ga('send', 'pageview', { page: $location.path() });
@@ -68,7 +71,7 @@ angular
       }, 0);
     });
 
-    $rootScope.$on('$viewContentLoaded', function(e) {
+    $rootScope.$on('$viewContentLoaded', function() {
       if (stateChangeStartTime) { // else: no change start
         gat('Views', 'ContentLoaded', stateChangeStartTime, $location.path());
       }
