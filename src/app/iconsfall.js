@@ -54,7 +54,7 @@ angular
   .run(function($rootScope, $location, MetaService) {
     var stateChangeStartTime;
 
-    $rootScope.$on('$stateChangeStart', function(event) {
+    $rootScope.$on('$stateChangeStart', function() {
       stateChangeStartTime = Date.now();
     });
 
@@ -91,7 +91,7 @@ window.addEventListener('error', function (err) {
 // AngularJS exceptions handler
 angular.module('iconsfall')
   .config(function ($provide) {
-    $provide.decorator("$exceptionHandler", function ($delegate) {
+    $provide.decorator('$exceptionHandler', function ($delegate) {
       return function (exception, cause) {
         $delegate(exception, cause);
         ga('send', 'event', 'AngularJS error', exception.message, exception.stack, 0, true);

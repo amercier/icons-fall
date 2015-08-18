@@ -23,6 +23,9 @@
     "angular": false,
     "document": false,
     "ga": false,
-    "location": false
+    "gat": false,
+    "location": false,
+    "navigator": false,
+    "window": false
   }
 }
