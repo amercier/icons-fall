@@ -18,7 +18,6 @@ angular
 
     return {
       setPageTitle: function(newPageTitle) {
-        console.info('setPageTitle', newPageTitle);
         pageTitle = newPageTitle;
       },
       title: function() {
