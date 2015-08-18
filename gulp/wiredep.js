@@ -18,15 +18,13 @@ gulp.task('wiredep', function () {
       exclude: [
         'angular-bootstrap',
         'fastclick',
-        'jquery',
-        'jquery.cookie',
-        'jquery-placeholder',
         'modernizr'
       ],
       overrides: {
         foundation: {
           main: []
-        }
+        },
+        jquery: []
       }
     }))
     .pipe(gulp.dest('src'));
