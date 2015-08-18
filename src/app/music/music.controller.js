@@ -50,7 +50,8 @@ angular.module('iconsfall')
     }];
 
     var started = false,
-      playing = false;
+      playing = false,
+      playTime;
 
     // Pause other audio on play
     $scope.onPlay = function(album, track, $event) {
@@ -70,6 +71,7 @@ angular.module('iconsfall')
         album: album,
         track: track
       };
+      playTime = Date.now();
 
       // Pause others
       angular.forEach($scope.audios(), function(audio) {
@@ -77,6 +79,13 @@ angular.module('iconsfall')
           audio.pause();
         }
       });
+    };
+
+    // Record time-to-play on playing
+    $scope.onPlaying = function(album, track) {
+      if (track === playing.track) {
+        ga('send', 'event', 'Music', 'Playing', album.title + ' / ' + track.title, Date.now() - playTime);
+      }
     };
 
     // Start preloading next 30 seconds before end
