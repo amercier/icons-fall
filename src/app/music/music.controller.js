@@ -99,14 +99,14 @@ angular.module('iconsfall')
     // Track end
     $scope.onEnded = function(album, track, $event) {
 
-      // Send 'Track completed' GA event
-      ga('send', 'event', 'Music', 'Track completed', album.title + ' / ' + track.title);
+      // Send 'Track Completed' GA event
+      ga('send', 'event', 'Music', 'Track Completed', album.title + ' / ' + track.title);
 
-      // Send 'Album completed' GA event if last track
+      // Send 'Album Completed' GA event if last track
       if (track === album.tracks[album.tracks.length - 1]) {
         playing = false;
         started = false;
-        ga('send', 'event', 'Music', 'Album completed', album.title);
+        ga('send', 'event', 'Music', 'Album Completed', album.title);
       }
       else {
         var next = angular.element($event.target.parentNode.parentNode).next('li').find('audio');
