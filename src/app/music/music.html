@@ -26,7 +26,6 @@
           <audio controls ng-attr-preload="{{ $index === 0 ? 'auto' : 'none' }}"
             itemprop="audio"
             ng-play="onPlay(album, track, $event)"
-            ng-pause="onPause(album, track, $event)"
             ng-timeupdate="onTimeUpdate(album, track, $event)"
             ng-volumechange="onVolumeChange(album, track, $event)"
             ng-playing="onPlaying(album, track, $event)"

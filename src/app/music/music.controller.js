@@ -56,15 +56,20 @@ angular.module('iconsfall')
     $scope.onPlay = function(album, track, $event) {
 
       // Send GA event
-      var trackName = [ album.title, track.track, track.title ].join(' / ');
+      var trackName = album.title + ' / ' + track.title;
       if (!started) {
         started = true;
         ga('send', 'event', 'Music', 'Start', trackName);
       }
-      else if (playing && playing !== trackName) {
-        ga('send', 'event', 'Music', 'Switch', playing + ' to ' + track);
+      else if (playing && playing.track !== track) {
+        ga('send', 'event', 'Music', 'Switch From', playing.album.title + ' / ' + playing.track.title);
+        ga('send', 'event', 'Music', 'Switch To', album.title + ' / ' + track.title);
       }
-      playing = trackName;
+
+      playing = {
+        album: album,
+        track: track
+      };
 
       // Pause others
       angular.forEach($scope.audios(), function(audio) {
@@ -72,10 +77,6 @@ angular.module('iconsfall')
           audio.pause();
         }
       });
-    };
-
-    $scope.onPause = function() {
-      playing = false;
     };
 
     // Start preloading next 30 seconds before end
