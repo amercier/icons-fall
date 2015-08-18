@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('CalendarCtrl', function ($rootScope, MetaService, $scope, $q, $http) {
+  .controller('CalendarCtrl', function ($rootScope, MetaService, $scope, $q, $http, $document) {
     $rootScope.meta = MetaService;
     $rootScope.meta.setPageTitle('Agenda');
 
@@ -41,13 +41,11 @@ angular.module('iconsfall')
     $scope.events = [];
 
     $scope.scrollToNextEvent = function() {
-      var scrollTo = angular.element('[data-next]').first();
-      if (scrollTo.length > 0) {
-        angular.element('body:not(.scrolled)')
-          .animate({
-            scrollTop: scrollTo.offset().top
-          }, 'slow')
-          .addClass('scrolled');
+      var next = document.querySelector('[data-next]'),
+        body = angular.element(document.body);
+      if (next && !body.hasClass('scrolled')) {
+        $document.scrollToElementAnimated(next, 100, 1000, function (t) { return t*(2-t); });
+        body.addClass('scrolled');
       }
     };
 

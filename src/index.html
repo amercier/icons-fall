@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Icon's Fall</title>
     <meta name="description" content="Icon’s fall est un groupe de musique actuelle. Ses compositions originales mêlent influences rock (Radiohead, Grizzly Bear, Sigur Rós) aux expérimentations electronica (Bjork, Air, Atoms For Peace).">
+    <meta ng-repeat="link in meta.links" rel="{{link.rel}}" href="{{link.href}}">
     <link rel="dns-prefetch" href="//cdn.iconsfall.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -53,6 +54,7 @@
     <script src="bower_components/angular-timeline/src/angular-timeline.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ng-media-events/src/ng-media-events.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script>gaa('vendor.js', INIT_VENDOR)</script>

@@ -8,7 +8,8 @@ angular
     'ui.router',
     'angular-timeline',
     'mm.foundation',
-    'ngMedia'
+    'ngMedia',
+    'duScroll'
   ])
   .service('MetaService', function() {
     var pageTitle,
