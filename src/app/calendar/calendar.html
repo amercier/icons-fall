@@ -15,7 +15,7 @@
         ng-attr-data-done="{{event.done || undefined}}">
 
         <timeline-badge class="{{event.type}}">
-          <a ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">
+          <a title="{{event.summary}}" ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">
             <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
             <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
             <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
@@ -25,7 +25,7 @@
         <timeline-panel>
           <timeline-heading>
             <timeline-title>
-              <a ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
+              <a title="{{event.summary}}" ng-attr-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
             </timeline-title>
           </timeline-heading>
           <timeline-content>
@@ -56,12 +56,12 @@
                itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
               <meta itemprop="address" content="{{event.location}}">
               <div class="small-6 columns text-center">
-                <a href="{{event.locationURI}}" target="_blank" rel="nofollow" ng-click="trackEventMap(event)">
+                <a title="Directions de {{event.summary}}" href="{{event.locationURI}}" target="_blank" rel="nofollow" ng-click="trackEventMap(event)">
                   <i class="fa fa-map-marker"></i> Carte
                 </a>
               </div>
               <div class="small-6 columns text-center">
-                <a href="{{event.directionURI}}" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
+                <a title="Directions vers {{event.summary}}" href="{{event.directionURI}}" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
                   <i class="fa fa-random fa-rotate-270"></i> Directions
                 </a>
               </div>
