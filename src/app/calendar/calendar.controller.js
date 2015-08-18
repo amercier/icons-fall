@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('CalendarCtrl', function ($rootScope, MetaService, $scope, $q, $http, $document) {
+  .controller('CalendarController', function ($rootScope, MetaService, $scope, $q, $http, $document) {
     $rootScope.meta = MetaService;
     $rootScope.meta.setPageTitle('Agenda');
 

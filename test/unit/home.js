@@ -12,7 +12,7 @@ describe('controllers', function(){
   it('should define more than 5 awesome things', inject(function($controller) {
     expect(scope.awesomeThings).toBeUndefined();
 
-   //  $controller('HomeCtrl', {
+   //  $controller('HomeController', {
    //    $scope: scope
    // });
 

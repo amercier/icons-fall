@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('MusicCtrl', function($rootScope, MetaService, $sce, $scope, $element) {
+  .controller('MusicController', function($rootScope, MetaService, $sce, $scope, $element) {
     $rootScope.meta = MetaService;
     $rootScope.meta.setPageTitle('Musique');
 

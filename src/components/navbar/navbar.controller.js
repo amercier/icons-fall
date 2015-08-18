@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iconsfall')
-  .controller('NavbarCtrl', ['$scope', '$state', function ($scope) {
+  .controller('NavbarController', ['$scope', '$state', function ($scope) {
     $scope.state = {};
     $scope.$on('$stateChangeSuccess', function(e, toState) {
       $scope.state = {};

@@ -31,22 +31,22 @@ angular
       .state('home', {
         url: '/',
         templateUrl: 'app/home/home.html',
-        controller: 'HomeCtrl'
+        controller: 'HomeController'
       })
       .state('music', {
         url: '/music',
         templateUrl: 'app/music/music.html',
-        controller: 'MusicCtrl'
+        controller: 'MusicController'
       })
       .state('calendar', {
         url: '/calendar',
         templateUrl: 'app/calendar/calendar.html',
-        controller: 'CalendarCtrl'
+        controller: 'CalendarController'
       })
       .state('about', {
         url: '/about',
         templateUrl: 'app/about/about.html',
-        controller: 'AboutCtrl'
+        controller: 'AboutController'
       });
 
     $urlRouterProvider.otherwise('/');
