@@ -1,12 +1,16 @@
 var INIT_ANALYTICS = Date.now();
 
 function gat(category, variable, startTime, label) {
+  'use strict';
+
   setTimeout(function() {
     ga('send', 'timing', category, variable, Date.now() - startTime, label);
   }, 0);
 }
 
 function gaa(name, startTime) {
+  'use strict';
+
   gat('Assets', name, startTime);
 }
 
@@ -23,8 +27,9 @@ if (window.location.host === 'iconsfall.com') {
 }
 else {
   window.ga = function(a,b,c,d,e,f) {
+    'use strict';
     console.info('Google Analytics', a,b,c,d,e,f);
-  }
+  };
 }
 
 gaa('analytics.js', INIT_ANALYTICS);
