@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 
 var browserSync = require('browser-sync');
+var modRewrite = require('connect-modrewrite');
 
 var middleware = require('./proxy');
 
@@ -10,10 +11,12 @@ function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
   browserSync.instance = browserSync.init(files, {
-    startPath: '/index.html',
+    startPath: '/',
     server: {
       baseDir: baseDir,
-      middleware: middleware
+      middleware: [modRewrite([
+        '^[^.]+$ /index.html'
+      ])].concat(middleware)
     },
     browser: browser
   });

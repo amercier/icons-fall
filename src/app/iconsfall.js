@@ -25,7 +25,11 @@ angular
       }
     };
   })
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    // Enable HTML push state
+    $locationProvider.html5Mode(true);
+
     $stateProvider
       .state('home', {
         url: '/',
