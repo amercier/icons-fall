@@ -51,10 +51,10 @@
 
             a {
               font-family: $font-family-sans-serif;
-              white-space: nowrap;
               overflow: hidden;
-              text-overflow: ellipsis;
               padding: 0.2rem 0.5rem 0 0.5rem;
+              text-overflow: ellipsis;
+              white-space: nowrap;
 
               .fa {
                 display: inline-block;
@@ -83,5 +83,4 @@
       }
     }
   }
-
 }
