@@ -84,7 +84,7 @@ angular.module('iconsfall')
     // Record time-to-play on playing
     $scope.onPlaying = function(album, track) {
       if (track === playing.track) {
-        ga('send', 'event', 'Music', 'Playing', album.title + ' / ' + track.title, Date.now() - playTime);
+        gat('Music', 'Playing', playTime, album.title + ' / ' + track.title);
       }
     };
 
