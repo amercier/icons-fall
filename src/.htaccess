@@ -365,6 +365,8 @@ AddDefaultCharset utf-8
 #     the rewrite engine.
 #
 #     https://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewriteoptions
+#
+# (6) Rewrite all URLs that don't contain a . (period) to index.html
 
 <IfModule mod_rewrite.c>
 
@@ -382,6 +384,9 @@ AddDefaultCharset utf-8
 
     # (5)
     # RewriteOptions <options>
+
+    # (6)
+    RewriteRule !\. index.html [L]
 
 </IfModule>
 
