@@ -16,11 +16,14 @@ export default class NavbarDirective {
 }
 
 class NavbarController {
-  constructor ($scope, $route) {
+  constructor ($scope, $rootScope, $route) {
     'ngInject';
-    $scope.current = {};
-    if ($route.current) {
-      $scope.current[$route.current.$$route.id] = true;
-    }
+
+    $rootScope.$on('$routeChangeSuccess', () => {
+      $scope.current = {};
+      if ($route.current) {
+        $scope.current[$route.current.$$route.id] = true;
+      }
+    });
   }
 }
