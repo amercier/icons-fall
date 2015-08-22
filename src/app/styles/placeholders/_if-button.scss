@@ -7,7 +7,7 @@
   padding: 0.5em 1em;
   white-space: nowrap;
 
-  svg {
+  .if-icon {
     display: inline-block;
     fill: currentColor;
     height: rem-calc(32);
@@ -42,7 +42,7 @@
     padding: 0.8em 1em 0.5em 1em;
     white-space: normal;
 
-    svg {
+    .if-icon {
       display: block;
       margin: 0 auto rem-calc($line-height / 2);
       top: 0;

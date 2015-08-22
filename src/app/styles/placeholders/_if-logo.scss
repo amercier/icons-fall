@@ -1,7 +1,7 @@
 %if-logo {
   img {
     height: 100%;
-    margin: 0 auto rem-calc($line-height);
+    margin: rem-calc($line-height) auto rem-calc(2 * $line-height);
     max-width: 100%;
 
     @media #{$medium-up} {
