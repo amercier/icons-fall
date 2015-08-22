@@ -6,7 +6,9 @@ var conf = require('./conf');
 
 var browserSync = require('browser-sync');
 
-var $ = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'webpack-stream']
+});
 
 function webpack(watch, callback) {
   var webpackOptions = {
@@ -40,7 +42,7 @@ function webpack(watch, callback) {
   };
 
   return gulp.src(path.join(conf.paths.src, '/app/index.module.js'))
-    .pipe($.webpack(webpackOptions, null, webpackChangeHandler))
+    .pipe($.webpackStream(webpackOptions, null, webpackChangeHandler))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
 }
 
