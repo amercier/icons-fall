@@ -53,6 +53,9 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
+    .pipe($.inlineSource({
+      rootpath: conf.paths.src
+    }))
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
