@@ -1,4 +1,4 @@
-function routerConfig ($routeProvider) {
+export default function routerConfig ($routeProvider) {
   'ngInject';
   $routeProvider
     .when('/', {
@@ -23,5 +23,3 @@ function routerConfig ($routeProvider) {
       redirectTo: '/'
     });
 }
-
-export default routerConfig;
