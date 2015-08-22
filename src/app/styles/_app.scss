@@ -1,0 +1,47 @@
+@import './placeholders/if-anchor';
+@import './placeholders/if-list-inline-centered';
+@import './placeholders/if-logo';
+@import './placeholders/if-title';
+
+[ng-view] {
+  a {
+    @extend %if-anchor;
+  }
+
+  figure {
+    display: block;
+    margin: 0;
+  }
+
+  figure img {
+    display: block;
+  }
+
+  .if-hidden {
+    display: none;
+  }
+
+  .if-button {
+    @extend %if-button;
+  }
+
+  .if-title {
+    @extend %if-title;
+  }
+
+  .if-list-inline-centered {
+    @extend %if-list-inline-centered;
+  }
+
+  .if-logo {
+    @extend %if-logo;
+  }
+
+  .home {
+    .if-button {
+      margin-bottom: rem-calc($line-height);
+      padding: 1em 0;
+    }
+  }
+}
+

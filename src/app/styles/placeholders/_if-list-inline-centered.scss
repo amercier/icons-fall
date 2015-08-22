@@ -1,0 +1,21 @@
+%if-list-inline-centered {
+  display: block;
+  width: 100%;
+
+  > * {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media #{$medium-up} {
+  %if-list-inline-centered {
+    display: table;
+    table-layout: fixed;
+
+    > * {
+      display: table-cell;
+      text-align: center;
+    }
+  }
+}

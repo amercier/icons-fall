@@ -1,0 +1,10 @@
+%if-title {
+  margin-top: rem-calc($line-height);
+  margin-bottom: rem-calc(2 * $line-height);
+
+  .icon {
+    display: block;
+    margin: 0 auto rem-calc($line-height / 2);
+    width: 64px;
+  }
+}

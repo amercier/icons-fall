@@ -1,15 +1,15 @@
 <section class="music row">
 
-  <h1 class="title small-12 columns text-center">
+  <h1 class="if-title small-12 columns text-center">
     <svg viewBox="0 0 200 200" class="icon"><use xlink:href="#music"></use></svg>
     Musique
   </h1>
 
-  <span class="schema" itemprop="genre">Electronica</span>
+  <span class="if-hidden" itemprop="genre">Electronica</span>
 
   <div ng-repeat="album in albums" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
-    <span class="schema" itemprop="numTracks">{{album.tracks.length}}</span>
-    <span class="schema" itemprop="albumReleaseType">{{album.type}}</span>
+    <span class="if-hidden" itemprop="numTracks">{{album.tracks.length}}</span>
+    <span class="if-hidden" itemprop="albumReleaseType">{{album.type}}</span>
 
     <h2 class="small-12 columns">{{album.title}}</h2>
 
