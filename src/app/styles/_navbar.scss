@@ -19,6 +19,8 @@ iconsfall-navbar .navbar {
 }
 
 iconsfall-navbar .navbar {
+  box-shadow: 0 0 10px 5px $body-bg;
+
   a {
     transition:
       color $if-anchor-transition-duration $if-anchor-transition-easing,
