@@ -36,12 +36,4 @@
   .if-logo {
     @extend %if-logo;
   }
-
-  .home {
-    .if-button {
-      margin-bottom: rem-calc($line-height);
-      padding: 1em 0;
-    }
-  }
 }
-
