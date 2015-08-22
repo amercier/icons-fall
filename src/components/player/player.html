@@ -1,0 +1,30 @@
+<div ng-controller="PlayerController as player">
+  <div class="videogular-container audio">
+    <videogular
+      vg-player-ready="player.onPlayerReady($API)"
+      vg-complete="player.onTrackComplete()"
+      vg-theme="player.config.theme.url"
+    >
+      <vg-media
+        vg-src="player.config.sources"
+        vg-tracks="player.config.tracks"
+        vg-type="audio"
+      ></vg-media>
+
+      <vg-buffering></vg-buffering>
+
+      <vg-controls>
+        <div class="controls-container">
+
+          <vg-play-pause-button ng-class="{ replay: player.replay }"></vg-play-pause-button>
+          <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+          </vg-scrub-bar>
+          <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+        </div>
+      </vg-controls>
+
+    </videogular>
+  </div>
+</div>
+

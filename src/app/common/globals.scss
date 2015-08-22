@@ -118,3 +118,23 @@ svg {
 .schema {
   display: none;
 }
+
+
+.videogular-container {
+  position: fixed;
+  bottom: 0;
+  top: auto;
+  right: 0;
+  left: 0;
+  height: 50px;
+  z-index: 10;
+
+  button {
+    margin-bottom: 0;
+  }
+}
+
+videogular vg-play-pause-button.replay .play:before,
+[videogular] vg-play-pause-button.replay .play:before {
+  content: '\e009';
+}

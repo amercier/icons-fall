@@ -18,7 +18,6 @@
     <link href='//fonts.googleapis.com/css?family=Poiret+One|Expletus+Sans' rel='stylesheet'>
     <!-- build:css({.tmp,src}) styles/vendor.css -->
     <link rel="stylesheet" href="app/common/vendor.css">
-
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -40,6 +39,9 @@
     <div ng-include="'components/navbar/navbar.html'"></div>
     <div ui-view></div>
 
+    <div ng-include="'components/player/player.html'"></div>
+
+
     <script>var INIT_ANALYTICS = Date.now()</script>
     <script src="app/analytics.js" inline></script>
     <script>gaa('analytics.js', INIT_ANALYTICS);</script>
@@ -51,11 +53,16 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-timeline/src/angular-timeline.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ng-media-events/src/ng-media-events.js"></script>
-    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/videogular/videogular.js"></script>
+    <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
+    <script src="bower_components/videogular-buffering/vg-buffering.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script>gaa('vendor.js', INIT_VENDOR)</script>
@@ -68,6 +75,7 @@
     <script src="app/calendar/calendar.controller.js"></script>
     <script src="app/about/about.controller.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/player/player.controller.js"></script>
 
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->
