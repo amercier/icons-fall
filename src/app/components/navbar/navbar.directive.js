@@ -1,4 +1,4 @@
-class NavbarDirective {
+export default class NavbarDirective {
   constructor () {
     'ngInject';
 
@@ -7,7 +7,7 @@ class NavbarDirective {
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {},
       controller: NavbarController,
-      controllerAs: 'vm',
+      controllerAs: 'nav',
       bindToController: true
     };
 
@@ -16,9 +16,9 @@ class NavbarDirective {
 }
 
 class NavbarController {
-  constructor () {
+  constructor ($scope, $route) {
     'ngInject';
+    $scope.current = {};
+    $scope.current[$route.current.$$route.id] = true;
   }
 }
-
-export default NavbarDirective;
