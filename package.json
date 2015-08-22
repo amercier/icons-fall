@@ -1,12 +1,13 @@
 {
   "name": "iconsfall",
   "private": true,
-  "dependencies": {},
   "scripts": {
     "install": "bower install",
     "start": "gulp serve",
     "test": "gulp test",
     "build": "rm -rf dist && gulp build"
+  },
+  "dependencies": {
   },
   "devDependencies": {
     "babel-core": "~5.5.8",

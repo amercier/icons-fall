@@ -8,7 +8,7 @@ import AboutController from './about/about.controller';
 import MusicController from './music/music.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
-angular.module('iconsfall', ['ngAnimate', 'ngResource', 'ngRoute', 'mm.foundation'])
+angular.module('iconsfall', ['ngAnimate', 'ngResource', 'ngRoute', 'ngMedia', 'mm.foundation'])
   .config(config)
   .config(routerConfig)
   .run(runBlock)

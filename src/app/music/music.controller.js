@@ -1,9 +1,9 @@
 export default class MusicController {
-  constructor($scope, $element, $sce) {
+  constructor($sce, $scope) {
     'ngInject';
 
     $scope.audios = function() {
-      return angular.element($element[0].querySelectorAll('audio'));
+      return angular.element(document.querySelectorAll('audio'));
     };
 
     $scope.albums = [{
