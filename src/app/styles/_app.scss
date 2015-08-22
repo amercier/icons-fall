@@ -3,6 +3,8 @@
 @import './placeholders/if-logo';
 @import './placeholders/if-title';
 
+@import './navbar';
+
 [ng-view] {
   a {
     @extend %if-anchor;
@@ -37,3 +39,4 @@
     @extend %if-logo;
   }
 }
+

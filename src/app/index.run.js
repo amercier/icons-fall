@@ -6,6 +6,10 @@ export default function runBlock($rootScope, $location) {
   var changeStartTime;
   $rootScope.$on('$routeChangeStart', () => {
     changeStartTime = Date.now();
+
+    // TODO: do it the angular way
+    const path = $location.path();
+    angular.element(document.documentElement).attr('data-location', path);
   });
 
   $rootScope.$on('$routeChangeSuccess', () => {

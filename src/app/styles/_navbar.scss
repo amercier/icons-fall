@@ -1,0 +1,27 @@
+$animate-duration: 200ms;
+
+iconsfall-navbar .navbar {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+[data-location] iconsfall-navbar .navbar {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 2 * $animate-duration ease-out,
+    transform $animate-duration ease-out;
+}
+
+[data-location="/"] iconsfall-navbar .navbar {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+iconsfall-navbar .navbar {
+  a {
+    transition:
+      color $if-anchor-transition-duration $if-anchor-transition-easing,
+      background $if-anchor-transition-duration $if-anchor-transition-easing;
+  }
+}
