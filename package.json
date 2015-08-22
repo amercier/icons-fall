@@ -1,6 +1,6 @@
 {
   "name": "iconsfall",
-  "version": "0.0.0",
+  "private": true,
   "dependencies": {},
   "scripts": {
     "test": "gulp test"
