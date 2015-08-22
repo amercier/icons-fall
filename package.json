@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {},
   "scripts": {
+    "install": "bower install",
+    "start": "gulp serve",
     "test": "gulp test"
   },
   "devDependencies": {
