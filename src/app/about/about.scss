@@ -1,0 +1,13 @@
+.if-about {
+
+  .if-about-members,
+  .if-about-biography,
+  .if-about-contact {
+    margin-bottom: rem-calc($line-height);
+  }
+
+
+  img {
+    margin: 0 auto;
+  }
+}

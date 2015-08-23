@@ -68,7 +68,7 @@ $base-font-size: 20px;
 $rem-base: 20;
 
 // The $base-font-size is 100% while $base-line-height is 150%
-$base-line-height: 1.7;
+$base-line-height: 2;
 $line-height: $rem-base * $base-line-height;
 
 // We use this to control whether or not CSS classes come through in the gem files.
