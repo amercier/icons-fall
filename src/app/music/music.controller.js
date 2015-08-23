@@ -1,12 +1,9 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('MusicController', function($rootScope, MetaService, $sce, $scope, $element) {
-    $rootScope.meta = MetaService;
-    $rootScope.meta.setPageTitle('Musique');
+export default class MusicController {
+  constructor($sce, $scope) {
+    'ngInject';
 
     $scope.audios = function() {
-      return angular.element($element[0].querySelectorAll('audio'));
+      return angular.element(document.querySelectorAll('audio'));
     };
 
     $scope.albums = [{
@@ -123,4 +120,5 @@ angular.module('iconsfall')
         next[0].play();
       }
     };
-  });
+  }
+}

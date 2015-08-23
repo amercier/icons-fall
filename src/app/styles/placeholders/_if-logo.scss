@@ -1,0 +1,11 @@
+%if-logo {
+  img {
+    height: 100%;
+    margin: rem-calc($line-height) auto rem-calc(2 * $line-height);
+    max-width: 100%;
+
+    @media #{$medium-up} {
+      margin: 3rem auto rem-calc(2 * $line-height);
+    }
+  }
+}

@@ -1,7 +1,7 @@
 icons-fall
 ==========
 
-Icon's Fall website
+[Icon's Fall official website](http://iconsfall.com/).
 
 
 Continuous deployment
@@ -13,7 +13,6 @@ Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 
 [![Build Status](https://img.shields.io/travis/amercier/iconsfall/master.svg?style=flat-square)](https://travis-ci.org/amercier/iconsfall)
 [![Code Climate](https://img.shields.io/codeclimate/github/amercier/iconsfall.svg?style=flat-square)](https://codeclimate.com/github/amercier/iconsfall)
-[![Test Coverage](http://img.shields.io/coveralls/amercier/iconsfall/master.svg?style=flat-square)](https://coveralls.io/r/amercier/iconsfall?branch=master)
 [![Dependency Status](http://img.shields.io/gemnasium/amercier/iconsfall.svg?style=flat-square)](https://gemnasium.com/amercier/iconsfall)
 
 [![Open Issues](http://img.shields.io/github/issues/amercier/iconsfall.svg?style=flat-square)](https://github.com/amercier/iconsfall/issues)
@@ -39,9 +38,9 @@ Step 3: tag the latest commit
 Setup
 -----
 
-Clone the repo on dev branch
+Clone the repo:
 
-    git clone -b dev git@github.com:amercier/iconsfall.git
+    git clone git@github.com:amercier/iconsfall.git
     npm install
 
 

@@ -1,0 +1,34 @@
+@import './angular-timeline/dist/angular-timeline';
+
+
+ul.timeline {
+  margin-left: 0;
+
+  li timeline-badge {
+    z-index: auto;
+  }
+}
+
+$timeline-offset: 20px;
+
+@media only screen and (max-width: 767px) {
+  ul.timeline {
+
+    &:before {
+      left: $timeline-offset;
+    }
+
+    li {
+      timeline-panel {
+        width: calc(100% - #{30px + $timeline-offset});
+        width: -moz-calc(100% - #{30px + $timeline-offset});
+        width: -webkit-calc(100% - #{30px + $timeline-offset});
+      }
+
+      timeline-badge {
+        left: -25px + $timeline-offset;
+      }
+    }
+
+  }
+}

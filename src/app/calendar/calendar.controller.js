@@ -1,9 +1,7 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('CalendarController', function ($rootScope, MetaService, $scope, $q, $http, $document) {
-    $rootScope.meta = MetaService;
-    $rootScope.meta.setPageTitle('Agenda');
+/* globals location: false, console: false */
+export default class CalendarController {
+  constructor($scope, $q, $http, $document) {
+    'ngInject';
 
     var environment = {
             'iconsfall.com': 'production',
@@ -126,5 +124,5 @@ angular.module('iconsfall')
           console.error('ERROR', error);
         }
       );
-
-  });
+  }
+}

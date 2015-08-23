@@ -1,0 +1,30 @@
+@import '../mixins/if-anchor';
+
+$if-anchor-color: black;
+$if-anchor-bg: white;
+$if-anchor-hover-color: $if-anchor-bg !default;
+$if-anchor-hover-bg: $if-anchor-color !default;
+$if-anchor-transition-duration: 300ms !default;
+$if-anchor-transition-easing: ease-out !default;
+
+%if-anchor {
+  @include if-anchor(
+    $color: $if-anchor-color,
+    $background: $if-anchor-bg,
+    $hover-color: $if-anchor-hover-color,
+    $hover-background: $if-anchor-hover-bg,
+    $transition-duration: $if-anchor-transition-duration,
+    $transition-easing: $if-anchor-transition-easing
+  );
+
+  &.inverted {
+    @include if-anchor(
+      $color: $if-anchor-bg,
+      $background: $if-anchor-color,
+      $hover-color: $if-anchor-hover-bg,
+      $hover-background: mix($if-anchor-hover-color, $if-anchor-color, 80%),
+      $transition-duration: $if-anchor-transition-duration,
+      $transition-easing: $if-anchor-transition-easing
+    );
+  }
+}

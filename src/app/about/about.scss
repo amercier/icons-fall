@@ -1,39 +1,13 @@
-@import "../common/settings";
+.if-about {
 
-.about {
-
-  .about-members {
-    margin-bottom: rem-calc($line-height);
-
-    img {
-      margin: 0 auto;
-    }
-  }
-
-  .about-biography {
+  .if-about-members,
+  .if-about-biography,
+  .if-about-contact {
     margin-bottom: rem-calc($line-height);
   }
 
-  .about-contact {
-    margin-bottom: rem-calc($line-height);
 
-    a {
-      padding: 0.2em 0.5em;
-    }
+  img {
+    margin: 0 auto;
   }
-
-  .about-files {
-    font-family: $font-family-sans-serif;
-
-    a {
-      display: block;
-
-      .icon {
-        display: block;
-        margin: 0 auto rem-calc($line-height / 2);
-        width: 32px;
-      }
-    }
-  }
-
 }

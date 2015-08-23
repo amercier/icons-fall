@@ -1,5 +1,3 @@
-var INIT_ANALYTICS = Date.now();
-
 function gat(category, variable, startTime, label) {
   'use strict';
 
@@ -31,5 +29,3 @@ else {
     console.info('Google Analytics', a,b,c,d,e,f);
   };
 }
-
-gaa('analytics.js', INIT_ANALYTICS);

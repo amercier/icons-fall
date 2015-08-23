@@ -1,7 +1,5 @@
-'use strict';
-
-angular.module('iconsfall')
-  .controller('AboutController', function ($rootScope, MetaService) {
-    $rootScope.meta = MetaService;
-    $rootScope.meta.setPageTitle('Bio');
-  });
+export default class AboutController {
+  constructor() {
+    'ngInject';
+  }
+}

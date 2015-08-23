@@ -1,50 +1,25 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
+var conf = require('./conf');
 
-var $ = require('gulp-load-plugins')();
+var karma = require('karma');
 
-var wiredep = require('wiredep');
-
-function echo(cb) {
-  return function (err, stdout, stderr) {
-    stdout && console.log(stdout.trim());
-    stderr && console.error(stderr.trim());
-    cb(err);
-  }
-};
-
-gulp.task('clean:coverage', function(cb) {
-  return gulp.src(['test/coverage'], { read: false }).pipe($.rimraf());
-});
-
-gulp.task('karma', ['clean:coverage'], function() {
-  var bowerDeps = wiredep({
-    directory: 'src/bower_components',
-    exclude: ['bootstrap-sass-official'],
-    dependencies: true,
-    devDependencies: true
+function runTests (singleRun, done) {
+  karma.server.start({
+    configFile: path.join(__dirname, '/../karma.conf.js'),
+    singleRun: singleRun,
+    autoWatch: !singleRun
+  }, function(failCount) {
+    done(failCount ? new Error("Failed " + failCount + " tests.") : null);
   });
+}
 
-  var testFiles = bowerDeps.js.concat([
-    'src/{app,components}/**/*.js',
-    'test/unit/**/*.js'
-  ]);
-
-  return gulp.src(testFiles)
-    .pipe($.karma({
-      configFile: 'test/karma.conf.js',
-      action: 'run'
-    }))
-    .on('error', function(err) {
-      // Make sure failed tests cause gulp to exit non-zero
-      throw err;
-    });
+gulp.task('test', ['scripts'], function(done) {
+  runTests(true, done);
 });
 
-gulp.task('coverage', ['karma'], function(cb) {
-  return gulp.src('test/coverage/coverage.txt')
-    .pipe($.exec('echo "<%= file.path.replace(/^.*\\/coverage\\/coverage.txt$/, \'$1\') %>"; cat "<%= file.path %>"', echo(cb)));
+gulp.task('test:auto', ['watch'], function(done) {
+  runTests(false, done);
 });
-
-gulp.task('test', ['coverage']);

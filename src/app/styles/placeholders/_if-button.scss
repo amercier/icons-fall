@@ -1,0 +1,62 @@
+@import './if-anchor';
+
+%if-button {
+  @extend %if-anchor;
+  display: block;
+  font-family: $font-family-sans-serif;
+  padding: 0.5em 1em;
+  white-space: nowrap;
+
+  .if-icon {
+    display: inline-block;
+    fill: currentColor;
+    height: rem-calc(32);
+    margin: 0 1em 0 1em;
+    position: relative;
+    top: rem-calc(8);
+    width: rem-calc(32);
+  }
+
+  span {
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
+
+    &.if-small {
+      width: 5em;
+    }
+
+    &.if-medium {
+      width: 10em;
+    }
+
+    &.if-large {
+      width: 15em;
+    }
+  }
+}
+
+@media #{$medium-up} {
+  %if-button {
+    text-align: center;
+    padding: 0.8em 1em 0.5em 1em;
+    white-space: normal;
+
+    .if-icon {
+      display: block;
+      margin: 0 auto rem-calc($line-height / 2);
+      top: 0;
+    }
+
+    span {
+      display: block;
+      text-align: center;
+
+      &.if-small,
+      &.if-medium,
+      &.if-large {
+        width: auto;
+      }
+    }
+  }
+}
