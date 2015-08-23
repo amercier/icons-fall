@@ -53,12 +53,12 @@
              itemprop="location" itemscope itemtype="http://schema.org/MusicVenue">
             <meta itemprop="address" content="{{event.location}}">
             <div class="small-12 medium-6 columns text-center">
-              <a class="if-button" title="Directions de {{event.summary}}" ng-href="{{event.locationURI}}" target="_blank" rel="nofollow" ng-click="trackEventMap(event)">
+              <a title="Carte de {{event.summary}}" class="if-button" title="Directions de {{event.summary}}" ng-href="{{event.locationURI}}" target="_blank" rel="nofollow" ng-click="trackEventMap(event)">
                 <i class="fa fa-map-marker"></i> Carte
               </a>
             </div>
             <div class="small-12 medium-6 columns text-center">
-              <a class="if-button" title="Directions vers {{event.summary}}" ng-href="{{event.directionURI}}" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
+              <a title="Directions vers {{event.summary}}" class="if-button" title="Directions vers {{event.summary}}" ng-href="{{event.directionURI}}" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
                 <i class="fa fa-random fa-rotate-270"></i> Directions
               </a>
             </div>
