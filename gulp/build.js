@@ -74,6 +74,7 @@ gulp.task('files', function () {
 
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
+    path.join(conf.paths.src, '/**/.*'),
     path.join(conf.paths.tmp, '/**/*.{eot,svg,ttf,woff,woff2}'),
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
