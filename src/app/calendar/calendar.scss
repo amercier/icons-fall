@@ -1,0 +1,147 @@
+@import '../styles/mixins/ellipsis';
+
+// .calendar {
+
+//   a {
+//     display: block;
+//   }
+
+//   .timeline {
+//     li {
+//       .timeline-badge {
+//         background: #333;
+//         color: white;
+
+//         a {
+//           padding: 0;
+//         }
+//       }
+
+//       .timeline-panel {
+
+//         .timeline-heading {
+//           .timeline-title {
+//             margin-bottom: 0.3rem;
+
+//             a {
+//               padding: 0.2rem 0.5rem 0 0.5rem;
+//             }
+//           }
+//         }
+
+//         .timeline-body {
+
+//           .calendar-time {
+//             display: block;
+//             margin-bottom: 0.5rem;
+//             padding: 0 0.5rem;
+//             font-size: 0.8em;
+
+//             > * {
+//               display: block;
+//             }
+
+//             .calendar-done {
+//               color: $alert-color;
+//             }
+//           }
+
+//           .calendar-location {
+//             font-size: 0.8em;
+
+//             a {
+//               font-family: $font-family-sans-serif;
+//               overflow: hidden;
+//               padding: 0.2rem 0.5rem 0 0.5rem;
+//               text-overflow: ellipsis;
+//               white-space: nowrap;
+
+//               .fa {
+//                 display: inline-block;
+//                 margin-bottom: 0;
+//                 margin-right: 0.5em;
+//               }
+//             }
+//           }
+//         }
+//       }
+
+//       &[data-done] {
+
+//         .timeline-badge {
+//           background: white;
+//           color: #CCC;
+
+//           a {
+//             opacity: 0.5;
+//           }
+//         }
+
+//         .timeline-panel {
+//           opacity: 0.5;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+.if-calendar {
+
+  timeline-event {
+
+    li timeline-badge {
+      background: $body-bg;
+      box-shadow: none;
+
+      a {
+        display: block;
+      }
+    }
+
+    .if-timeline-title {
+      @include ellipsis();
+    }
+
+    .if-calendar-time {
+      display: block;
+      margin-bottom: rem-calc(16);
+      margin-top: rem-calc(16);
+      padding: 0 0.5rem;
+      font-size: rem-calc(16);
+
+      > * {
+        display: block;
+      }
+
+      .if-calendar-done {
+        color: $alert-color;
+      }
+    }
+
+    .if-calendar-location {
+      a {
+        @include ellipsis();
+        font-size: rem-calc(16);
+      }
+    }
+
+    &[data-done] {
+      opacity: 0.5;
+
+      timeline-badge {
+        color: #CCC;
+
+        a {
+          opacity: 0.5;
+        }
+      }
+
+      .timeline-panel {
+        opacity: 0.5;
+      }
+    }
+
+  }
+
+}

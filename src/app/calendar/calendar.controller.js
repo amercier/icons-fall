@@ -1,6 +1,6 @@
 /* globals location: false, console: false */
 export default class CalendarController {
-  constructor($scope, $q, $http) {
+  constructor($scope, $q, $http, $document) {
 
     var environment = {
             'iconsfall.com': 'production',
@@ -37,6 +37,31 @@ export default class CalendarController {
 
     $scope.events = [];
 
+    $scope.scrollToNextEvent = function() {
+      var next = document.querySelector('[data-next]'),
+        body = angular.element(document.body);
+      if (next && !body.hasClass('scrolled')) {
+        $document.scrollToElementAnimated(next, 100, 1000, function (t) { return t*(2-t); });
+        body.addClass('scrolled');
+      }
+    };
+
+    $scope.trackEvent = function(action, label) {
+      ga('send', 'event', 'Calendar', action, label);
+    };
+
+    $scope.trackEventURI = function(event) {
+      this.trackEvent('Click ' + event.type, event.summary);
+    };
+
+    $scope.trackEventMap = function(event) {
+      this.trackEvent('Map ' + event.type, event.summary);
+    };
+
+    $scope.trackEventDirections = function(event) {
+      this.trackEvent('Directions ' + event.type, event.summary);
+    };
+
     $q.all(Object.keys(calendars).map(function(calendarId) {
         return $http.get(
           'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events',
@@ -49,32 +74,50 @@ export default class CalendarController {
       }))
       .then(
         function(data) {
+          var nextEvent;
           $scope.events = [].concat.apply([], data.map(function(calendar) {
-              return calendar.data.items.map(function(item) {
-                item.type = calendars[item.organizer.email];
-                if (item.start.dateTime && item.end.dateTime) {
-                  var start = new Date(item.start.dateTime);
-                  var end = new Date(item.end.dateTime);
-                  item.manyDays = end - start > 24 * 3600 * 1000;
-                  item.date = start;
-                  item.done = end.getTime() < now.getTime();
+            return calendar.data.items.map(function(item) {
+              item.type = calendars[item.organizer.email];
+              item.locationURI = item.location ? 'http://maps.google.com/?q=' + encodeURI(item.location) : undefined;
+              item.directionURI = item.location ? 'https://www.google.com/maps/dir/current+location/' + encodeURI(item.location) : '#';
+
+              if (item.description) {
+                var matches = new RegExp('(http://[^ ]+)').exec(item.description.trim());
+                if (matches) {
+                  item.eventURI = matches[0];
                 }
-                else if (item.start.date && item.end.date) {
-                  var d = item.start.date.split('-');
-                  item.manyDays = item.start.date !== item.end.date;
-                  item.date = new Date(d[0], d[1], d[2]);
-                  item.done = item.date.getTime() < today.getTime();
-                }
-                else {
-                  item.date = new Date();
-                  item.done = false;
-                }
-                return item;
-              });
-            }))
-            .sort(function(a, b) {
-              return a.date.getTime() - b.date.getTime();
+              }
+
+              if (item.start.dateTime && item.end.dateTime) {
+                var start = new Date(item.start.dateTime);
+                var end = new Date(item.end.dateTime);
+                item.manyDays = end - start > 24 * 3600 * 1000;
+                item.date = start;
+                item.done = end.getTime() < now.getTime();
+              }
+              else if (item.start.date && item.end.date) {
+                var d = item.start.date.split('-');
+                item.manyDays = item.start.date !== item.end.date;
+                item.date = new Date(d[0], d[1], d[2]);
+                item.done = item.date.getTime() < today.getTime();
+              }
+              else {
+                item.date = new Date();
+                item.done = false;
+              }
+
+              return item;
             });
+          }))
+          .sort(function(a, b) {
+            return a.date.getTime() - b.date.getTime();
+          })
+          .map(function(event) {
+            if (!event.done && !nextEvent) {
+              event.next = true;
+            }
+            return event;
+          });
         },
         function(error) {
           console.error('ERROR', error);
