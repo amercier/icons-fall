@@ -8,6 +8,7 @@
 [ng-view] {
   .if-anchor {
     @extend %if-anchor;
+    padding: 0.2em 0.3em;
   }
 
   figure {
