@@ -2,22 +2,22 @@
   "name": "iconsfall",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "~1.4.4",
-    "angular-animate": "~1.4.4",
-    "angular-encode-uri": "~1.0.0",
-    "angular-foundation": "~0.6.0",
-    "angular-resource": "~1.4.4",
-    "angular-route": "~1.4.4",
-    "angular-scroll": "~0.7.2",
-    "angular-timeline": "~1.5.2",
-    "fontawesome": "~4.4.0",
-    "foundation": "~5.5.2",
-    "ng-media-events": "~1.0.1"
+    "angular": "1.4.x",
+    "angular-animate": "1.4.x",
+    "angular-encode-uri": "1.0.x",
+    "angular-foundation": "0.6.x",
+    "angular-resource": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-scroll": "0.7.x",
+    "angular-timeline": "1.5.x",
+    "fontawesome": "4.x.x",
+    "foundation": "5.5.x",
+    "ng-media-events": "1.0.x"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.4"
+    "angular-mocks": "1.4.x"
   },
   "resolutions": {
-    "angular": "*"
+    "angular": "1.4.4"
   }
 }
