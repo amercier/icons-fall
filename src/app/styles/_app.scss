@@ -6,7 +6,7 @@
 @import './navbar';
 
 [ng-view] {
-  a {
+  .if-anchor {
     @extend %if-anchor;
   }
 

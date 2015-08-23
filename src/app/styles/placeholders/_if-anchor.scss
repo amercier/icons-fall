@@ -16,4 +16,15 @@ $if-anchor-transition-easing: ease-out !default;
     $transition-duration: $if-anchor-transition-duration,
     $transition-easing: $if-anchor-transition-easing
   );
+
+  &.inverted {
+    @include if-anchor(
+      $color: $if-anchor-bg,
+      $background: $if-anchor-color,
+      $hover-color: $if-anchor-hover-bg,
+      $hover-background: mix($if-anchor-hover-color, $if-anchor-color, 80%),
+      $transition-duration: $if-anchor-transition-duration,
+      $transition-easing: $if-anchor-transition-easing
+    );
+  }
 }

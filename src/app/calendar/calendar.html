@@ -24,7 +24,7 @@
         <timeline-panel>
 
           <timeline-heading>
-            <a class="if-timeline-title if-button" title="{{event.summary}}" ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
+            <a class="if-timeline-title if-button" ng-class="{ inverted: event.next }" title="{{event.summary}}" ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
           </timeline-heading>
 
           <div class="if-calendar-time row">
