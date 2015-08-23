@@ -67,7 +67,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
 });
 
-gulp.task('files', function () {
+gulp.task('files', ['fonts'], function () {
   var fileFilter = $.filter(function (file) {
     return file.stat.isFile();
   });
@@ -75,7 +75,7 @@ gulp.task('files', function () {
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
     path.join(conf.paths.src, '/**/.*'),
-    path.join(conf.paths.tmp, '/**/*.{eot,svg,ttf,woff,woff2}'),
+    path.join(conf.paths.tmp, '/serve/**/*.{eot,svg,ttf,woff,woff2}'),
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
     .pipe(fileFilter)

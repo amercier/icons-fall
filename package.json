@@ -5,7 +5,7 @@
     "install": "bower install",
     "start": "gulp serve",
     "test": "gulp test",
-    "build": "rm -rf dist && gulp build",
+    "build": "rm -rf dist && rm -rf .tmp && gulp build",
     "deploy-staging": "htpasswd -b -n \"$STAGING_USERNAME\" \"$STAGING_PASSWORD\" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging",
     "deploy-production": "gulp deploy && ./deploy-ftp.sh dist ftp.iconsfall.com /www"
   },
