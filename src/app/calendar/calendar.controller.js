@@ -1,6 +1,7 @@
 /* globals location: false, console: false */
 export default class CalendarController {
   constructor($scope, $q, $http, $document) {
+    'ngInject';
 
     var environment = {
             'iconsfall.com': 'production',
