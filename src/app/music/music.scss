@@ -1,15 +1,24 @@
-.music {
+.if-music {
 
   audio {
     display: block;
     width: 100%;
   }
 
-  .music-track {
+  .if-music-track {
     margin-bottom: rem-calc($line-height);
+
+    .left {
+      margin-right: 1rem;
+    }
+
+    .if-music-track-title {
+      line-height: rem-calc(40);
+      vertical-align: middle;
+    }
   }
 
-  .music-album-cover {
+  .if-music-album-cover {
     margin-bottom: rem-calc($line-height);
 
     img {

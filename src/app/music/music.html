@@ -1,4 +1,4 @@
-<section class="music row">
+<section class="if-music row">
 
   <h1 class="if-title small-12 columns text-center">
     <svg viewBox="0 0 200 200" class="if-icon"><use xlink:href="#music"></use></svg>
@@ -13,31 +13,16 @@
 
     <h2 class="small-12 columns">{{album.title}}</h2>
 
-    <figure class="music-album-cover no-bullet small-12 medium-6 columns">
+    <figure class="if-music-album-cover no-bullet small-12 medium-6 columns">
       <img ng-src="{{album.cover}}" alt="{{album.title}} cover" itemprop="image" width="500" height="500">
     </figure>
 
     <ul class="no-bullet small-12 medium-offset-1 medium-5 columns">
 
-      <li class="music-track row" ng-repeat="track in album.tracks"
+      <li class="if-music-track clearfix" ng-repeat="track in album.tracks"
           itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
-        <h5 class="small-12 columns">{{track.track}}. <span itemprop="name">{{track.title}}</span></h5>
-        <div class="small-12 columns">
-          <audio controls ng-attr-preload="{{ $index === 0 ? 'auto' : 'none' }}"
-            itemprop="audio"
-            ng-play="onPlay(album, track, $event)"
-            ng-timeupdate="onTimeUpdate(album, track, $event)"
-            ng-volumechange="onVolumeChange(album, track, $event)"
-            ng-playing="onPlaying(album, track, $event)"
-            ng-ended="onEnded(album, track, $event)"
-          >
-            <source type='audio/ogg; codecs="vorbis"' ng-src="{{track.ogg}}">
-            <source type='audio/webm; codecs="vorbis"' ng-src="{{track.webm}}">
-            <source type='audio/mp4' ng-src="{{track.m4a}}">
-            <source type='audio/mp3' ng-src="{{track.mp3}}">
-            Your browser does not support HTML5 Audio :'(
-          </audio>
-        </div>
+        <button class="if-button inverted left" ng-click="play(album, $index)"><i class="fa fa-play"></i></button>
+        <h5 class="if-music-track-title">{{track.track}}. <span itemprop="name">{{track.title}}</span></h5>
       </li>
     </ul>
 

@@ -1,0 +1,50 @@
+[player-view] {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  z-index: 1;
+
+  .if-player {
+    opacity: 0;
+    transform: translateY(100%);
+    background: $primary-color;
+    color: $body-bg;
+    vertical-align: middle;
+
+    &[data-playing] {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 400ms ease-out,
+        transform 200ms ease-out;
+    }
+
+    .progress {
+      border: 0;
+      background: $oil;
+      margin: 0;
+      padding: 0;
+      height: rem-calc(12);
+
+      .meter {
+        background: #481f13;
+        border-right: 2px solid #9e1e00;
+      }
+    }
+
+    img {
+      margin-left: 10px;
+      margin-right: 10px;
+      position: relative;
+      top: -3px;
+    }
+
+    button {
+      padding: rem-calc(10) rem-calc(20);
+      margin: rem-calc(5);
+    }
+
+  }
+}

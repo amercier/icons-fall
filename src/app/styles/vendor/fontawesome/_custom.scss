@@ -5,7 +5,17 @@ $if-fa-icons: (
   home: $fa-var-home,
   check: $fa-var-check,
   map-marker: $fa-var-map-marker,
-  random: $fa-var-random
+  play: $fa-var-play,
+  pause: $fa-var-pause,
+  repeat: $fa-var-repeat,
+  fast-backward: $fa-var-fast-backward,
+  fast-forward: $fa-var-fast-forward,
+  volume-down: $fa-var-volume-down,
+  volume-up: $fa-var-volume-up,
+  volume-off: $fa-var-volume-off,
+  random: $fa-var-random,
+  spinner: $fa-var-spinner,
+  retweet: $fa-var-retweet
 );
 
 @each $key in map-keys($if-fa-icons) {
