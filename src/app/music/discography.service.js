@@ -51,21 +51,14 @@ export default class DiscographyService {
     }];
   }
 
-  tracksBefore(album, index) {
-    return index === 0 ? [] : Array.apply(null, Array(index)).map((nil, i) => {
-      return album.tracks[i];
+  playlist(album) {
+    return album.tracks.map(function(track) {
+      return {
+        track: track.track,
+        title: track.title,
+        sources: track.sources,
+        album: album
+      };
     });
-  }
-
-  tracksAfter(album, index) {
-    return index >= album.tracks.length ? [] : Array.apply(null, Array(album.tracks.length - index - 1)).map((nil, i) => {
-      return album.tracks[index + i + 1];
-    });
-  }
-
-  playlist(album, index, loop = false) {
-    return [album.tracks[index]]
-      .concat(this.tracksAfter(album, index))
-      .concat(loop ? this.tracksBefore(album, index) : []);
   }
 }

@@ -1,0 +1,24 @@
+<div class="if-player" ng-model="player" ng-attr-data-playing="{{ playing || unedefined }}">
+
+  <div class="progress">
+    <span class="meter" style="width: {{percentComplete}}%"></span>
+  </div>
+
+  <button ng-click="previous()"><i class="fa fa-fast-backward"></i></button>
+  <button ng-click="playPause()">
+    <i class="fa fa-pause" ng-if="playing"></i>
+    <i class="fa fa-play" ng-if="!playing"></i>
+  </button>
+  <button ng-click="next()"><i class="fa fa-fast-forward"></i></button>
+
+  <a ng-href="/music">
+    <img width="40" height="40" src="{{ track.album.cover }}">
+  </a>
+
+  {{ track.album.title }} -
+
+  {{ track.track }}. {{ track.title }}
+
+  {{ track.duration }}
+
+</div>

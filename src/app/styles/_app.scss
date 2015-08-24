@@ -6,6 +6,8 @@
 @import './navbar';
 
 [ng-view] {
+  padding-bottom: 70px;
+
   .if-anchor {
     @extend %if-anchor;
     padding: 0.2em 0.3em;
