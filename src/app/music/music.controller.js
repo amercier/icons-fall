@@ -1,50 +1,12 @@
 export default class MusicController {
-  constructor($sce, $scope) {
+  constructor($sce, $scope, discography) {
     'ngInject';
 
     $scope.audios = function() {
       return angular.element(document.querySelectorAll('audio'));
     };
 
-    $scope.albums = [{
-      title: 'White Line',
-      type: 'EP',
-      cover: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/cover.jpg'),
-      tracks: [
-        {
-          track: '01',
-          title: 'Golden Tree',
-          ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.ogg'),
-          mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.mp3'),
-          webm: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.webm'),
-          m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/01.%20Golden%20Tree.m4a')
-        },
-        {
-          track: '02',
-          title: 'Season Passed',
-          ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.ogg'),
-          mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.mp3'),
-          webm: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.webm'),
-          m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/02.%20Season%20Passed.m4a')
-        },
-        {
-          track: '03',
-          title: 'Paths',
-          ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.ogg'),
-          mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.mp3'),
-          webm: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.webm'),
-          m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/03.%20Paths.m4a')
-        },
-        {
-          track: '04',
-          title: 'White Line',
-          ogg: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.ogg'),
-          mp3: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.mp3'),
-          webm: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.webm'),
-          m4a: $sce.trustAsResourceUrl('http://cdn.iconsfall.com/music/white-line/04.%20White%20Line.m4a')
-        }
-      ]
-    }];
+    $scope.albums = discography.albums;
 
     var started = false,
       playing = false,

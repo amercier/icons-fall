@@ -31,10 +31,7 @@
             ng-playing="onPlaying(album, track, $event)"
             ng-ended="onEnded(album, track, $event)"
           >
-            <source type='audio/ogg; codecs="vorbis"' ng-src="{{track.ogg}}">
-            <source type='audio/webm; codecs="vorbis"' ng-src="{{track.webm}}">
-            <source type='audio/mp4' ng-src="{{track.m4a}}">
-            <source type='audio/mp3' ng-src="{{track.mp3}}">
+            <source ng-repeat="source in track.sources" type="{{source.type}}" src="{{source.src}}">
             Your browser does not support HTML5 Audio :'(
           </audio>
         </div>

@@ -5,6 +5,7 @@ import routerConfig from './index.route';
 import runBlock from './index.run';
 import HomeController from './home/home.controller';
 import AboutController from './about/about.controller';
+import DiscographyService from './music/discography.service';
 import MusicController from './music/music.controller';
 import CalendarController from './calendar/calendar.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
@@ -24,6 +25,7 @@ angular.module('iconsfall', [
   .run(runBlock)
   .controller('HomeController', HomeController)
   .controller('AboutController', AboutController)
+  .factory('discography', ($sce) => new DiscographyService($sce))
   .controller('MusicController', MusicController)
   .controller('CalendarController', CalendarController)
   .directive('iconsfallNavbar', () => new NavbarDirective());
