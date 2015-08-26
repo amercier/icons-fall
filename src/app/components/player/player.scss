@@ -7,15 +7,16 @@
   z-index: 1;
 
   .if-player {
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(100%);
     background: $primary-color;
     color: $body-bg;
     vertical-align: middle;
     height: 100%;
+    line-height: 60px - 8px;
 
-    &[data-playing] {
+    &[data-visible] {
       opacity: 1;
       transform: translateY(0);
       transition:
@@ -33,6 +34,7 @@
       bottom: 0;
       right: 0;
       left: 0;
+      height: 10px;
 
       .meter {
         background: transparentize(darken(rgb(255, 42, 0), 40%), 0.7);
@@ -48,9 +50,40 @@
     }
 
     button {
-      padding: rem-calc(10) rem-calc(15);
-      margin: rem-calc(5) rem-calc(5);
+      padding: rem-calc(10);
+      margin: 0 rem-calc(5);
+      width: rem-calc(40);
     }
 
+    .if-track-label {
+    }
+
+    .if-track-time {
+      padding: 0 1em;
+    }
+
+    .if-track-currenttime {
+      width: 3.5em;
+      display: inline-block;
+      margin-left: 1em;
+    }
+  }
+
+  // Responsive design
+
+  @media #{$small-up} {
+    .if-album-cover,
+    .if-track-album,
+    .if-track-duration {
+      display: none;
+    }
+  }
+
+  @media #{$medium-up} {
+    .if-album-cover,
+    .if-track-album,
+    .if-track-duration {
+      display: inline-block;
+    }
   }
 }

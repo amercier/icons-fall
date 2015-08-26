@@ -32,6 +32,18 @@ angular.module('iconsfall', [
 
 var app = angular.module('iconsfall');
 
+app.filter('formatDuration', function() {
+  return function(duration) {
+    duration = Math.round(duration);
+    const seconds = duration % 60,
+      minutes = (duration - seconds) / 60;
+    return [
+      (minutes < 10 ? '0' : '') + minutes,
+      (seconds < 10 ? '0' : '') + seconds
+    ].join(':');
+  };
+});
+
 app.factory('audio', function($document) {
   var audio = $document[0].createElement('audio');
   return audio;
@@ -41,9 +53,20 @@ app.factory('player', function(audio, $rootScope) {
   var player = {
 
     current: null,
-    progress: 0,
+    currentTime: 0,
     playing: false,
     ready: false,
+    ended: false,
+    playlist: [],
+
+    setTrack: function(index) {
+      player.current = player.playlist[index];
+      player.currentIndex = index;
+      audio.src = player.playlist[index].sources[0].src;
+      if (player.playing) {
+        audio.play();
+      }
+    },
 
     start: function(playlist, index = 0) {
       if (player.playing) {
@@ -51,13 +74,9 @@ app.factory('player', function(audio, $rootScope) {
       }
 
       player.playlist = playlist;
-
-      var url = playlist[index].sources[0].src;
-      player.current = playlist[index];
-      player.currentIndex = index;
-      audio.src = url;
-      audio.play();
       player.playing = true;
+      player.ended = false;
+      player.setTrack(index);
     },
 
     playPause: function() {
@@ -76,27 +95,20 @@ app.factory('player', function(audio, $rootScope) {
         audio.pause();
         player.playing = false;
         player.current = null;
+        player.playlist = [];
       }
-    },
-
-    currentTime: function() {
-      return audio.currentTime;
     },
 
     next: function() {
       if (player.currentIndex < player.playlist.length - 1) {
-        player.start(player.playlist, player.currentIndex + 1);
+        player.setTrack(player.currentIndex + 1);
       }
     },
 
     previous: function() {
       if (player.currentIndex > 0) {
-        player.start(player.playlist, player.currentIndex - 1);
+        player.setTrack(player.currentIndex - 1);
       }
-    },
-
-    currentDuration: function() {
-      return audio.duration;
     }
   };
 
@@ -108,18 +120,26 @@ app.factory('player', function(audio, $rootScope) {
 
   audio.addEventListener('timeupdate', function() {
     $rootScope.$apply(function() {
-      player.progress = player.currentTime();
-      player.percentage = 100 * player.progress / player.currentDuration();
+      player.currentTime = audio.currentTime;
+    });
+  });
+
+  audio.addEventListener('loadedmetadata', function() {
+    $rootScope.$apply(function() {
+      player.duration = audio.duration;
     });
   });
 
   audio.addEventListener('ended', function() {
-    if (player.playlist.length > 1) {
-      $rootScope.$apply(player.next());
-    }
-    else {
-      $rootScope.$apply(player.stop());
-    }
+    $rootScope.$apply(function() {
+      if (player.playlist.length > 1) {
+        player.next();
+      }
+      else {
+        player.ended = true;
+        player.stop();
+      }
+    });
   });
 
   return player;
@@ -138,24 +158,31 @@ app.directive('playerView', [function(){
 
       scope.$watch('ngModel.current', function(newVal) {
         if (newVal) {
-          scope.playing = true;
+          scope.started = true;
           scope.track = scope.ngModel.current;
-
-          scope.$watch('ngModel.ready', function(newVal) {
-            if (newVal) {
-              scope.duration = scope.ngModel.currentDuration();
-            }
-          });
-
-          scope.$watch('ngModel.progress', function() {
-            scope.secondsProgress = scope.ngModel.progress;
-            scope.percentComplete = scope.ngModel.percentage;
-          });
         }
+      });
+
+      scope.$watch('ngModel.duration', function() {
+        scope.duration = scope.ngModel.duration;
+      });
+
+      scope.$watch('ngModel.currentTime', function() {
+        scope.currentTime = scope.ngModel.currentTime;
+        scope.currentTimePercent = 100 * scope.ngModel.currentTime / scope.ngModel.duration;
+      });
+
+      scope.$watch('ngModel.playing', function() {
+        scope.playing = scope.ngModel.playing;
+      });
+
+      scope.$watch('ngModel.ready', function() {
+        scope.ready = scope.ngModel.ready;
       });
 
       scope.playPause = function() {
         scope.ngModel.playPause();
+        scope.playing = !scope.playing;
       };
 
       scope.next = function() {
@@ -167,11 +194,13 @@ app.directive('playerView', [function(){
       };
 
       scope.hasPrevious = function() {
-        scope.ngModel.hasPrevious();
+        return scope.ngModel.playlist.length > 1 &&
+          scope.ngModel.currentIndex > 0;
       };
 
       scope.hasNext = function() {
-        scope.ngModel.hasNext();
+        return scope.ngModel.playlist.length > 1 &&
+          scope.ngModel.currentIndex < scope.ngModel.playlist.length - 1;
       };
     }
   };

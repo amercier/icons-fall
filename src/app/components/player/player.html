@@ -1,22 +1,30 @@
-<div class="if-player" ng-model="player" ng-attr-data-playing="{{ playing || unedefined }}">
+<div class="if-player" ng-model="player" ng-attr-data-visible="{{ started || unedefined }}">
 
   <div class="progress">
-    <span class="meter" style="width: {{percentComplete}}%"></span>
+    <span class="meter" style="width: {{currentTimePercent}}%"></span>
   </div>
 
-  <button ng-click="previous()"><i class="fa fa-fast-backward"></i></button>
-  <button ng-click="playPause()">
-    <i class="fa fa-pause" ng-if="playing"></i>
-    <i class="fa fa-play" ng-if="!playing"></i>
+  <button ng-click="previous()" ng-disabled="!hasPrevious()">
+    <i class="fa fa-fast-backward"></i>
   </button>
-  <button ng-click="next()"><i class="fa fa-fast-forward"></i></button>
+  <button ng-click="playPause()">
+    <i class="fa fa-play" ng-if="!playing"></i>
+    <i class="fa fa-pause" ng-if="playing"></i>
+  </button>
+  <button ng-click="next()" ng-disabled="!hasNext()"><i class="fa fa-fast-forward"></i></button>
 
-  <img width="40" height="40" src="{{ track.album.cover }}">
+  <img class="if-album-cover" width="40" height="40" src="{{ track.album.cover }}">
 
-  {{ track.album.title }} -
-
-  {{ track.track }}. {{ track.title }}
-
-  {{ track.duration }}
+  <span class="if-track-label">
+    <span class="if-track-album">{{ track.album.title }} -</span>
+    <span class="if-track-title">{{ track.track }}. {{ track.title }}</span>
+    <span class="if-track-time right">
+      <i class="fa fa-spinner fa-pulse" ng-if="!ready"></i>
+      <span ng-if="ready">
+        <span class="if-track-currenttime">{{ currentTime | formatDuration }}</span>
+        <span class="if-track-duration">/ {{ duration | formatDuration }}</span>
+      </span>
+    </span>
+  </span>
 
 </div>
