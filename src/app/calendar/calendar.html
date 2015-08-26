@@ -14,7 +14,9 @@
         ng-attr-data-done="{{event.done || undefined}}">
 
         <timeline-badge class="{{event.type}}">
-          <a title="{{event.summary}}" ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="$parent.trackEventURI(event)">
+          <a class="if-anchor" ng-class="{ inverted: event.next }"
+            ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" title="{{event.summary}}"
+            ng-click="$parent.trackEventURI(event)">
             <i class="fa fa-microphone" ng-if="event.type == 'recording'"></i>
             <i class="fa fa-bolt" ng-if="event.type == 'concert'"></i>
             <i class="fa fa-home" ng-if="event.type == 'residence'"></i>
@@ -24,7 +26,7 @@
         <timeline-panel>
 
           <timeline-heading>
-            <a class="if-timeline-title if-button" ng-class="{ inverted: event.next }" title="{{event.summary}}" ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
+            <a class="if-timeline-title if-button" title="{{event.summary}}" ng-href="{{event.eventURI}}" target="_blank" rel="nofollow" ng-click="trackEventURI(event)">{{event.summary}}</a>
           </timeline-heading>
 
           <div class="if-calendar-time row">
@@ -58,7 +60,7 @@
               </a>
             </div>
             <div class="small-12 medium-6 columns text-center">
-              <a title="Directions vers {{event.summary}}" class="if-button" title="Directions vers {{event.summary}}" ng-href="{{event.directionURI}}" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
+              <a title="Directions vers {{event.summary}}" class="if-button" title="Directions vers {{event.summary}}" ng-href="{{event.directionURI}} || undefined" target="_blank" rel="nofollow" ng-click="trackEventDirections(event)">
                 <i class="fa fa-random fa-rotate-270"></i> Directions
               </a>
             </div>
