@@ -112,9 +112,11 @@ app.factory('player', function(audio, $rootScope) {
     },
 
     setProgress: function(progress) {
-      progress = Math.max(0, progress);
-      progress = Math.min(1, progress);
-      audio.currentTime = audio.duration * progress;
+      if (audio.duration) {
+        progress = Math.max(0, progress);
+        progress = Math.min(1, progress);
+        audio.currentTime = audio.duration * progress;
+      }
     }
   };
 
