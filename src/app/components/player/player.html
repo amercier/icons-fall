@@ -1,7 +1,7 @@
 <div class="if-player" ng-model="player" ng-attr-data-visible="{{ started || unedefined }}">
 
-  <div class="progress">
-    <span class="meter" style="width: {{currentTimePercent}}%"></span>
+  <div class="progress" ng-click="onProgressClick($event)">
+    <span class="meter" style="width: {{currentTimePercent}}%" ng-if="ready"></span>
   </div>
 
   <button ng-click="previous()" ng-disabled="!hasPrevious()">

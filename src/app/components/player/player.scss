@@ -26,19 +26,19 @@
 
     .progress {
       border: 0;
-      background: $oil;
+      background: darken($oil, 8%);
+      cursor: pointer;
       margin: 0;
       padding: 0;
-      height: rem-calc(12);
       position: absolute;
       bottom: 0;
       right: 0;
       left: 0;
-      height: 10px;
+      height: rem-calc(12);
 
       .meter {
-        background: transparentize(darken(rgb(255, 42, 0), 40%), 0.7);
-        border-right: 1px solid darken(rgb(255, 42, 0), 30%);
+        background: transparentize(darken(rgb(255, 42, 0), 30%), 0.5);
+        border-right: 1px solid darken(rgb(255, 42, 0), 10%);
       }
     }
 

@@ -109,6 +109,12 @@ app.factory('player', function(audio, $rootScope) {
       if (player.currentIndex > 0) {
         player.setTrack(player.currentIndex - 1);
       }
+    },
+
+    setProgress: function(progress) {
+      progress = Math.max(0, progress);
+      progress = Math.min(1, progress);
+      audio.currentTime = audio.duration * progress;
     }
   };
 
@@ -201,6 +207,10 @@ app.directive('playerView', [function(){
       scope.hasNext = function() {
         return scope.ngModel.playlist.length > 1 &&
           scope.ngModel.currentIndex < scope.ngModel.playlist.length - 1;
+      };
+
+      scope.onProgressClick = function($event) {
+        scope.ngModel.setProgress($event.clientX / $event.currentTarget.clientWidth);
       };
     }
   };
