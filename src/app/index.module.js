@@ -66,6 +66,7 @@ app.factory('player', function(audio, $rootScope) {
       if (player.playing) {
         audio.play();
       }
+      player.ended = false;
     },
 
     start: function(playlist, index = 0) {
@@ -75,7 +76,6 @@ app.factory('player', function(audio, $rootScope) {
 
       player.playlist = playlist;
       player.playing = true;
-      player.ended = false;
       player.setTrack(index);
     },
 
@@ -91,11 +91,10 @@ app.factory('player', function(audio, $rootScope) {
     },
 
     stop: function() {
-      if (player.playing) {
+      if (!player.ended) {
         audio.pause();
         player.playing = false;
-        player.current = null;
-        player.playlist = [];
+        player.setTrack(0);
       }
     },
 
@@ -140,7 +139,7 @@ app.factory('player', function(audio, $rootScope) {
 
   audio.addEventListener('ended', function() {
     $rootScope.$apply(function() {
-      if (player.playlist.length > 1) {
+      if (player.currentIndex < player.playlist.length - 1) {
         player.next();
       }
       else {
@@ -164,33 +163,24 @@ app.directive('playerView', [function(){
     templateUrl: 'app/components/player/player.html',
     link: function(scope) {
 
-      scope.$watch('ngModel.current', function(newVal) {
-        if (newVal) {
-          scope.started = true;
-          scope.track = scope.ngModel.current;
-        }
-      });
-
-      scope.$watch('ngModel.duration', function() {
-        scope.duration = scope.ngModel.duration;
-      });
-
-      scope.$watch('ngModel.currentTime', function() {
-        scope.currentTime = scope.ngModel.currentTime;
-        scope.currentTimePercent = 100 * scope.ngModel.currentTime / scope.ngModel.duration;
-      });
-
-      scope.$watch('ngModel.playing', function() {
-        scope.playing = scope.ngModel.playing;
-      });
-
-      scope.$watch('ngModel.ready', function() {
-        scope.ready = scope.ngModel.ready;
+      scope.$watchCollection('ngModel', function(ngModel) {
+        scope.started = !!ngModel.current;
+        scope.track = ngModel.current;
+        scope.duration = ngModel.duration;
+        scope.currentTime = ngModel.currentTime;
+        scope.currentTimePercent = 100 * ngModel.currentTime / ngModel.duration;
+        scope.playing = ngModel.playing;
+        scope.ended = ngModel.ended;
+        scope.ready = ngModel.ready;
       });
 
       scope.playPause = function() {
         scope.ngModel.playPause();
-        scope.playing = !scope.playing;
+      };
+
+      scope.replay = function() {
+        scope.ngModel.playing = true;
+        scope.ngModel.setTrack(0);
       };
 
       scope.next = function() {
