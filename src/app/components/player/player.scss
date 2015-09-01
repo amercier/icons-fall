@@ -1,4 +1,4 @@
-[player-view] {
+.if-player {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -6,78 +6,75 @@
   height: 60px;
   z-index: 1;
 
-  .if-player {
-    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateY(100%);
-    background: $primary-color;
-    color: $body-bg;
-    vertical-align: middle;
-    height: 100%;
-    line-height: 45px;
+  box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(100%);
+  background: $primary-color;
+  color: $body-bg;
+  vertical-align: middle;
+  line-height: 45px;
 
-    &[data-visible] {
-      opacity: 1;
-      transform: translateY(0);
-      transition:
-        opacity 400ms ease-out,
-        transform 200ms ease-out;
+  &[data-visible] {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 400ms ease-out,
+      transform 200ms ease-out;
+  }
+
+  .progress {
+    border: 0;
+    background: darken($oil, 10%);
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    height: rem-calc(12);
+
+    .meter {
+      background: transparentize(darken(rgb(255, 42, 0), 10%), 0.8);
+      border-right: 1px solid darken(rgb(255, 42, 0), 0%);
+    }
+  }
+
+  img {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    top: -3px;
+  }
+
+  button {
+    padding: rem-calc(10);
+    margin: 0 rem-calc(5);
+    width: rem-calc(40);
+    transition:
+      box-shadow 300ms,
+      opacity 500ms;
+    will-change: box-shadow;
+    box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 1);
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 0.5);
     }
 
-    .progress {
-      border: 0;
-      background: darken($oil, 10%);
-      cursor: pointer;
-      margin: 0;
-      padding: 0;
-      height: rem-calc(12);
-
-      .meter {
-        background: transparentize(darken(rgb(255, 42, 0), 10%), 0.8);
-        border-right: 1px solid darken(rgb(255, 42, 0), 0%);
-      }
+    &:active {
+      outline: none;
+      box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 0);
     }
+  }
 
-    img {
-      margin-left: 10px;
-      margin-right: 10px;
-      position: relative;
-      top: -3px;
-    }
+  .if-track-label {
+  }
 
-    button {
-      padding: rem-calc(10);
-      margin: 0 rem-calc(5);
-      width: rem-calc(40);
-      transition:
-        box-shadow 300ms,
-        opacity 500ms;
-      will-change: box-shadow;
-      box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 1);
+  .if-track-time {
+    padding: 0 1em;
+  }
 
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 0.5);
-      }
-
-      &:active {
-        outline: none;
-        box-shadow: 0 0 5px 2px transparentize(darken(rgb(255, 42, 0), 5%), 0);
-      }
-    }
-
-    .if-track-label {
-    }
-
-    .if-track-time {
-      padding: 0 1em;
-    }
-
-    .if-track-currenttime {
-      width: 3.3em;
-      display: inline-block;
-      margin-left: 1em;
-    }
+  .if-track-currenttime {
+    width: 3.3em;
+    display: inline-block;
+    margin-left: 1em;
   }
 
   // Responsive design

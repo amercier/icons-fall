@@ -40,4 +40,4 @@ angular.module('iconsfall', [
   .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio))
   .filter('formatDuration', () => new FormatDurationFilter().filter)
   .controller('PlayerController', ($scope, discography, player) => new PlayerController($scope, discography, player))
-  .directive('playerView', () => new PlayerDirective());
+  .directive('iconsfallPlayer', () => new PlayerDirective());
