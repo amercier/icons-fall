@@ -10,6 +10,8 @@ import MusicController from './music/music.controller';
 import CalendarController from './calendar/calendar.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
+import AudioService from '../app/components/player/audio.service';
+
 angular.module('iconsfall', [
   'ngAnimate',
   'ngResource',
@@ -25,10 +27,12 @@ angular.module('iconsfall', [
   .run(runBlock)
   .controller('HomeController', HomeController)
   .controller('AboutController', AboutController)
-  .factory('discography', ($sce) => new DiscographyService($sce))
+  .factory('discography', $sce => new DiscographyService($sce))
   .controller('MusicController', MusicController)
   .controller('CalendarController', CalendarController)
-  .directive('iconsfallNavbar', () => new NavbarDirective());
+  .directive('iconsfallNavbar', () => new NavbarDirective())
+
+  .factory('audio', $document => new AudioService($document).element);
 
 var app = angular.module('iconsfall');
 
@@ -42,11 +46,6 @@ app.filter('formatDuration', function() {
       (seconds < 10 ? '0' : '') + seconds
     ].join(':');
   };
-});
-
-app.factory('audio', function($document) {
-  var audio = $document[0].createElement('audio');
-  return audio;
 });
 
 app.factory('player', function(audio, $rootScope) {
