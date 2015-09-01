@@ -12,6 +12,7 @@ import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 import AudioService from '../app/components/player/audio.service';
 import PlayerService from '../app/components/player/player.service';
+import FormatDurationFilter from '../app/components/player/duration.filter';
 
 angular.module('iconsfall', [
   'ngAnimate',
@@ -34,21 +35,10 @@ angular.module('iconsfall', [
   .directive('iconsfallNavbar', () => new NavbarDirective())
 
   .factory('audio', $document => new AudioService($document).element)
-  .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio));
+  .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio))
+  .filter('formatDuration', () => new FormatDurationFilter().filter);
 
 var app = angular.module('iconsfall');
-
-app.filter('formatDuration', function() {
-  return function(duration) {
-    duration = Math.round(duration);
-    const seconds = duration % 60,
-      minutes = (duration - seconds) / 60;
-    return [
-      (minutes < 10 ? '0' : '') + minutes,
-      (seconds < 10 ? '0' : '') + seconds
-    ].join(':');
-  };
-});
 
 app.directive('playerView', [function(){
 
