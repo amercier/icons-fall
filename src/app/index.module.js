@@ -13,6 +13,7 @@ import NavbarDirective from '../app/components/navbar/navbar.directive';
 import AudioService from '../app/components/player/audio.service';
 import PlayerService from '../app/components/player/player.service';
 import FormatDurationFilter from '../app/components/player/duration.filter';
+import PlayerController from '../app/components/player/player.controller';
 
 angular.module('iconsfall', [
   'ngAnimate',
@@ -36,7 +37,8 @@ angular.module('iconsfall', [
 
   .factory('audio', $document => new AudioService($document).element)
   .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio))
-  .filter('formatDuration', () => new FormatDurationFilter().filter);
+  .filter('formatDuration', () => new FormatDurationFilter().filter)
+  .controller('PlayerController', ($scope, discography, player) => new PlayerController($scope, discography, player));
 
 var app = angular.module('iconsfall');
 
@@ -95,8 +97,3 @@ app.directive('playerView', [function(){
     }
   };
 }]);
-
-app.controller('PlayerController', function($scope, discography, player) {
-  $scope.player = player;
-  $scope.albums = discography.albums;
-});
