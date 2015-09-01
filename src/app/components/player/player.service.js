@@ -53,7 +53,18 @@ export default class PlayerService {
   setTrack(index) {
     this.current = this.playlist[index];
     this.currentIndex = index;
-    this.audio.src = this.playlist[index].sources[0].src;
+
+    // Append <source> elements
+    this.audio.setAttribute('src', null);
+    angular.element(this.audio).find('source').remove();
+    this.playlist[index].sources.forEach(source => {
+      const sourceElement = document.createElement('source');
+      sourceElement.src = source.src;
+      sourceElement.type = source.type;
+      this.audio.appendChild(sourceElement);
+    });
+    this.audio.removeAttribute('src');
+
     if (this.playing) {
       this.audio.play();
     }
