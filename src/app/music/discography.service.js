@@ -57,7 +57,10 @@ export default class DiscographyService {
         track: track.track,
         title: track.title,
         sources: track.sources,
-        album: album
+        album: album,
+        toString: function() {
+          return [album.title, track.title].join(' / ');
+        }
       };
     });
   }

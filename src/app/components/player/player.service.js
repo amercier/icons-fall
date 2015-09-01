@@ -9,6 +9,15 @@ export default class PlayerService {
     this.ready = false;
     this.ended = false;
     this.playlist = [];
+    this.listeners = {
+      start: [],
+      pause: [],
+      play: [],
+      ended: [],
+      stop: [],
+      next: [],
+      previous: []
+    };
 
     this.audio.addEventListener('canplay', () => {
       $rootScope.$apply(() => {
@@ -31,11 +40,11 @@ export default class PlayerService {
     this.audio.addEventListener('ended', () => {
       $rootScope.$apply(() => {
         if (this.currentIndex < this.playlist.length - 1) {
-          this.next();
+          this.next(true);
         }
         else {
           this.ended = true;
-          this.stop();
+          this.stop(true);
         }
       });
     });
@@ -59,36 +68,40 @@ export default class PlayerService {
     this.playlist = playlist;
     this.playing = true;
     this.setTrack(index);
+    this.fireEvent('start', playlist, index);
   }
 
   playPause() {
     if (this.playing) {
       this.playing = false;
       this.audio.pause();
+      this.fireEvent('pause');
     }
     else {
       this.playing = true;
       this.audio.play();
+      this.fireEvent('play');
     }
   }
 
-  stop() {
-    if (!this.ended) {
-      this.audio.pause();
-      this.playing = false;
-      this.setTrack(0);
-    }
+  stop(auto) {
+    this.fireEvent(auto ? 'ended' : 'stop', this.playlist, this.currentIndex);
+    this.audio.pause();
+    this.playing = false;
+    this.setTrack(0);
   }
 
-  next() {
+  next(auto) {
     if (this.currentIndex < this.playlist.length - 1) {
       this.setTrack(this.currentIndex + 1);
+      this.fireEvent('next', this.playlist, this.currentIndex, auto);
     }
   }
 
   previous() {
     if (this.currentIndex > 0) {
       this.setTrack(this.currentIndex - 1);
+      this.fireEvent('previous', this.playlist, this.currentIndex);
     }
   }
 
@@ -100,4 +113,11 @@ export default class PlayerService {
     }
   }
 
+  on(event, handler) {
+    this.listeners[event].push(handler);
+  }
+
+  fireEvent(event, ...data) {
+    this.listeners[event].forEach(handler => handler.apply(null, data));
+  }
 }

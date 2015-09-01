@@ -15,6 +15,7 @@ import PlayerService from '../app/components/player/player.service';
 import FormatDurationFilter from '../app/components/player/duration.filter';
 import PlayerController from '../app/components/player/player.controller';
 import PlayerDirective from '../app/components/player/player.directive';
+import playerAnalytics from '../app/components/player/player.analytics';
 
 angular.module('iconsfall', [
   'ngAnimate',
@@ -40,4 +41,5 @@ angular.module('iconsfall', [
   .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio))
   .filter('formatDuration', () => new FormatDurationFilter().filter)
   .controller('PlayerController', ($scope, discography, player) => new PlayerController($scope, discography, player))
-  .directive('iconsfallPlayer', () => new PlayerDirective());
+  .directive('iconsfallPlayer', () => new PlayerDirective())
+  .run(playerAnalytics);

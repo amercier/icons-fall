@@ -8,8 +8,11 @@ function gat(category, variable, startTime, label) {
 
 function gaa(name, startTime) {
   'use strict';
-
   gat('Assets', name, startTime);
+}
+
+function gae(category, variable, label) {
+   ga('send', 'event', category, variable, label);
 }
 
 if (window.location.host === 'iconsfall.com') {
