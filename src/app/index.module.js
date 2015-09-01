@@ -11,6 +11,7 @@ import CalendarController from './calendar/calendar.controller';
 import NavbarDirective from '../app/components/navbar/navbar.directive';
 
 import AudioService from '../app/components/player/audio.service';
+import PlayerService from '../app/components/player/player.service';
 
 angular.module('iconsfall', [
   'ngAnimate',
@@ -32,7 +33,8 @@ angular.module('iconsfall', [
   .controller('CalendarController', CalendarController)
   .directive('iconsfallNavbar', () => new NavbarDirective())
 
-  .factory('audio', $document => new AudioService($document).element);
+  .factory('audio', $document => new AudioService($document).element)
+  .factory('player', ($rootScope, audio) => new PlayerService($rootScope, audio));
 
 var app = angular.module('iconsfall');
 
@@ -46,109 +48,6 @@ app.filter('formatDuration', function() {
       (seconds < 10 ? '0' : '') + seconds
     ].join(':');
   };
-});
-
-app.factory('player', function(audio, $rootScope) {
-  var player = {
-
-    current: null,
-    currentTime: 0,
-    playing: false,
-    ready: false,
-    ended: false,
-    playlist: [],
-
-    setTrack: function(index) {
-      player.current = player.playlist[index];
-      player.currentIndex = index;
-      audio.src = player.playlist[index].sources[0].src;
-      if (player.playing) {
-        audio.play();
-      }
-      player.ended = false;
-    },
-
-    start: function(playlist, index = 0) {
-      if (player.playing) {
-        player.stop();
-      }
-
-      player.playlist = playlist;
-      player.playing = true;
-      player.setTrack(index);
-    },
-
-    playPause: function() {
-      if (player.playing) {
-        player.playing = false;
-        audio.pause();
-      }
-      else {
-        player.playing = true;
-        audio.play();
-      }
-    },
-
-    stop: function() {
-      if (!player.ended) {
-        audio.pause();
-        player.playing = false;
-        player.setTrack(0);
-      }
-    },
-
-    next: function() {
-      if (player.currentIndex < player.playlist.length - 1) {
-        player.setTrack(player.currentIndex + 1);
-      }
-    },
-
-    previous: function() {
-      if (player.currentIndex > 0) {
-        player.setTrack(player.currentIndex - 1);
-      }
-    },
-
-    setProgress: function(progress) {
-      if (audio.duration) {
-        progress = Math.max(0, progress);
-        progress = Math.min(1, progress);
-        audio.currentTime = audio.duration * progress;
-      }
-    }
-  };
-
-  audio.addEventListener('canplay', function() {
-    $rootScope.$apply(function() {
-      player.ready = true;
-    });
-  });
-
-  audio.addEventListener('timeupdate', function() {
-    $rootScope.$apply(function() {
-      player.currentTime = audio.currentTime;
-    });
-  });
-
-  audio.addEventListener('loadedmetadata', function() {
-    $rootScope.$apply(function() {
-      player.duration = audio.duration;
-    });
-  });
-
-  audio.addEventListener('ended', function() {
-    $rootScope.$apply(function() {
-      if (player.currentIndex < player.playlist.length - 1) {
-        player.next();
-      }
-      else {
-        player.ended = true;
-        player.stop();
-      }
-    });
-  });
-
-  return player;
 });
 
 app.directive('playerView', [function(){
