@@ -1,5 +1,7 @@
 export default class HomeController {
-  constructor() {
+  constructor(meta) {
     'ngInject';
+
+    meta.setPageTitle();
   }
 }

@@ -1,5 +1,7 @@
 export default class AboutController {
-  constructor() {
+  constructor(meta) {
     'ngInject';
+
+    meta.setPageTitle('Bio');
   }
 }

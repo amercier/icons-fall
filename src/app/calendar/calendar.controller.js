@@ -1,7 +1,9 @@
 /* globals location: false, console: false */
 export default class CalendarController {
-  constructor($scope, $q, $http, $document) {
+  constructor(meta, $scope, $q, $http, $document) {
     'ngInject';
+
+    meta.setPageTitle('Agenda');
 
     var environment = {
             'iconsfall.com': 'production',

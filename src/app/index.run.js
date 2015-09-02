@@ -1,4 +1,4 @@
-export default function runBlock($rootScope, $location) {
+export default function runBlock($rootScope, $location, $timeout, meta) {
   'ngInject';
 
   // Track view on Google Analytics
@@ -16,5 +16,12 @@ export default function runBlock($rootScope, $location) {
     const path = $location.path();
     ga('send', 'pageview', { page: path });
     gat('Views', 'ChangeSuccess', changeStartTime, path);
+  });
+
+  // Update title after route change
+  $rootScope.$on('$routeChangeSuccess', () => {
+    $timeout(() => {
+      document.title = meta.getTitle();
+    });
   });
 }

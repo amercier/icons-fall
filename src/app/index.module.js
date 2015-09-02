@@ -3,6 +3,8 @@ import config from './index.config';
 import routerConfig from './index.route';
 
 import runBlock from './index.run';
+import MetaService from '../app/components/meta/meta.service';
+
 import HomeController from './home/home.controller';
 import AboutController from './about/about.controller';
 import DiscographyService from './music/discography.service';
@@ -29,6 +31,7 @@ angular.module('iconsfall', [
 ])
   .config(config)
   .config(routerConfig)
+  .factory('meta', () => new MetaService())
   .run(runBlock)
   .controller('HomeController', HomeController)
   .controller('AboutController', AboutController)
