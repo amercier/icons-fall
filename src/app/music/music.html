@@ -5,16 +5,16 @@
     Musique
   </h1>
 
-  <span class="if-hidden" itemprop="genre">Electronica</span>
+  <meta content="Electronica" itemprop="genre"/>
 
   <div ng-repeat="album in albums" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
-    <span class="if-hidden" itemprop="numTracks">{{album.tracks.length}}</span>
-    <span class="if-hidden" itemprop="albumReleaseType">{{album.type}}</span>
+    <meta content="{{album.tracks.length}}" itemprop="numTracks"/>
+    <meta content="Icon's Fall" itemprop="byArtist"/>
 
-    <h2 class="small-12 columns">{{album.title}}</h2>
+    <h2 class="small-12 columns" itemprop="name">{{album.title}}</h2>
 
     <figure class="if-music-album-cover no-bullet small-12 medium-6 columns">
-      <img ng-src="{{album.cover}}" alt="{{album.title}} cover" itemprop="image" width="500" height="500">
+      <img ng-src="{{album.cover}}" alt="Couverture de l'album {{album.title}}" width="500" height="500" itemprop="image">
     </figure>
 
     <ul class="no-bullet small-12 medium-offset-1 medium-5 columns">
@@ -22,7 +22,9 @@
       <li class="if-music-track clearfix" ng-repeat="track in album.tracks"
           itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
         <button class="if-button inverted left" ng-click="play(album, $index)"><i class="fa fa-play"></i></button>
-        <h5 class="if-music-track-title">{{track.track}}. <span itemprop="name">{{track.title}}</span></h5>
+        <h5 class="if-music-track-title">
+          <span itemprop="name">{{track.title}}</span>
+        </h5>
       </li>
     </ul>
 
