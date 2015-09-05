@@ -27,5 +27,5 @@ export default function runBlock($rootScope, $location, $timeout, meta) {
 
   $rootScope.onBuy = function(album) {
     gae('Sales', 'Buy album', album);
-  }
+  };
 }
