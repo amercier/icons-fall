@@ -5,45 +5,63 @@
 
 @import './navbar';
 
-[ng-view] {
+body {
   padding-bottom: 70px;
-
-  .if-anchor {
-    @extend %if-anchor;
-    padding: 0.2em 0.3em;
-  }
-
-  figure {
-    display: block;
-    margin: 0;
-  }
-
-  figure img {
-    display: block;
-  }
-
-  a:not([href]) {
-    pointer-events: none;
-  }
-
-  .if-hidden {
-    display: none;
-  }
-
-  .if-button {
-    @extend %if-button;
-  }
-
-  .if-title {
-    @extend %if-title;
-  }
-
-  .if-list-inline-centered {
-    @extend %if-list-inline-centered;
-  }
-
-  .if-logo {
-    @extend %if-logo;
-  }
 }
 
+.if-anchor {
+  @extend %if-anchor;
+  padding: 0.2em 0.3em;
+}
+
+figure {
+  display: block;
+  margin: 0;
+}
+
+figure img {
+  display: block;
+}
+
+a:not([href]) {
+  pointer-events: none;
+}
+
+.if-hidden {
+  display: none;
+}
+
+.if-button {
+  @extend %if-button;
+}
+
+.if-title {
+  @extend %if-title;
+}
+
+.if-list-inline-centered {
+  @extend %if-list-inline-centered;
+}
+
+.if-logo {
+  @extend %if-logo;
+}
+
+.if-buy-button {
+  margin: 0 0 2em 0;
+
+  &.if-button {
+    white-space: normal;
+  }
+
+  img {
+    float: left;
+    height: 4em;
+    width: auto;
+    margin-right: 1em;
+  }
+
+  span {
+    line-height: 2.2;
+  }
+}

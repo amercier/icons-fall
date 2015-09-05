@@ -24,4 +24,8 @@ export default function runBlock($rootScope, $location, $timeout, meta) {
       document.title = meta.getTitle();
     });
   });
+
+  $rootScope.onBuy = function(album) {
+    gae('Sales', 'Buy album', album);
+  }
 }
