@@ -11,10 +11,10 @@
 # # Authorization                                                      #
 # ######################################################################
 
-AuthUserFile /homez.155/iconsfaloh/staging/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Staging access is restricted"
 AuthType Basic
+AuthName "Staging access is restricted"
+AuthUserFile /home/iconsfaloh/staging/.htpasswd
+AuthGroupFile /dev/null
 
 # Apache 2.4
 <IfModule mod_authz_core.c>
