@@ -7,7 +7,7 @@ icons-fall
 Continuous deployment
 ---------------------
 
-Continuous integration is managed by [Codeship](https://www.codeship.io/).
+Continuous integration is managed by [Travis CI](https://travis-ci.org/).
 Code analysis is performed by [Code Climate](https://codeclimate.com/).
 Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 
