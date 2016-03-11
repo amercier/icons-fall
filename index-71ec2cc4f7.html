@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app="iconsfall">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Icon's Fall</title>
+    <meta name="description" content="Icon’s Fall est un groupe de musique actuelle. Ses compositions originales mêlent influences rock (Radiohead, Grizzly Bear, Sigur Rós) aux expérimentations electronica (Bjork, Air, Atoms For Peace).">
+    <base href="/">
+
+    <!-- DNS prefeching -->
+    <link rel="dns-prefetch" href="//cdn.iconsfall.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//stats.g.doubleclick.net">
+
+    <!-- Google fonts -->
+    <link href='//fonts.googleapis.com/css?family=Poiret+One|Expletus+Sans' rel='stylesheet'>
+
+    <link rel="stylesheet" href="styles/vendor.css">
+
+    <link rel="stylesheet" href="styles/app.css">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-controller="PlayerController">
+      <iconsfall-player ng-model="player"></div>
+    </div>
+
+    <iconsfall-navbar></iconsfall-navbar>
+    <div ng-view></div>
+
+    <div class="row">
+      <div class="small-8 small-offset-2 medium-6 medium-offset-3 large-6 large-offset-3 columns">
+        <h4 class="text-center">
+          L'EP White Line est disponible !
+        </h4>
+        <a class="if-buy-button if-button inverted"
+          href="https://plus.payname.fr/iconsfall/?type=cGEz0"
+          target="_blank" rel="nofollow"
+          ng-click="onBuy('White Line')"
+        >
+          <img
+            src="http://cdn.iconsfall.com/music/white-line/cover.jpg"
+            alt="Couverture de White Line"
+            width="500" height="500">
+          <span>
+            Acheter l'EP<br>
+            White Line (8€)
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <script src="app/analytics.js" inline></script>
+
+    <script>var INIT_VENDOR = Date.now()</script>
+    <script src="scripts/vendor.js"></script>
+    <script>gaa('vendor.js', INIT_VENDOR)</script>
+
+    <script>var INIT_MAIN = Date.now()</script>
+    <script src="scripts/app.js"></script>
+    <script>gaa('main.js', INIT_MAIN)</script>
+
+  </body>
+</html>
