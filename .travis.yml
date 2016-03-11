@@ -6,6 +6,9 @@ cache:
   directories:
   - bower_components
   - node_modules
+script:
+- npm test
+- npm run build
 after_success:
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_TAG" != ""
   && npm run build || echo "Not on master branch or a tag. Skipping build" >&2
