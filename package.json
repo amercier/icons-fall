@@ -43,7 +43,7 @@
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~1.5.2",
     "gulp-uglify": "~1.5.3",
-    "gulp-useref": "~3.0.6",
+    "gulp-useref": "~3.1.0",
     "gulp-util": "~3.0.5",
     "htpasswd": "~2.2.1",
     "http-proxy-middleware": "~0.14.0",
