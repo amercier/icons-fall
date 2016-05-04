@@ -46,7 +46,7 @@
     "gulp-useref": "~3.1.0",
     "gulp-util": "~3.0.5",
     "htpasswd": "~2.2.1",
-    "http-proxy-middleware": "~0.14.0",
+    "http-proxy-middleware": "~0.15.0",
     "jasmine-core": "~2.3.4",
     "jshint": "~2.8.0",
     "jshint-loader": "~0.8.3",
