@@ -26,8 +26,7 @@ angular.module('iconsfall', [
   'ngMedia',
   'mm.foundation',
   'rt.encodeuri',
-  'angular-timeline',
-  'duScroll'
+  'angular-timeline'
 ])
   .config(config)
   .config(routerConfig)

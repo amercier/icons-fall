@@ -1,6 +1,6 @@
 /* globals location: false, console: false */
 export default class CalendarController {
-  constructor(meta, $scope, $q, $http, $document) {
+  constructor(meta, $scope, $q, $http) {
     'ngInject';
 
     meta.setPageTitle('Agenda');
@@ -39,15 +39,6 @@ export default class CalendarController {
     today.setHours(0, 0, 0, 0);
 
     $scope.events = [];
-
-    $scope.scrollToNextEvent = function() {
-      var next = document.querySelector('[data-next]'),
-        body = angular.element(document.body);
-      if (next && !body.hasClass('scrolled')) {
-        $document.scrollToElementAnimated(next, 100, 1000, function (t) { return t*(2-t); });
-        body.addClass('scrolled');
-      }
-    };
 
     $scope.trackEvent = function(action, label) {
       ga('send', 'event', 'Calendar', action, label);
@@ -113,7 +104,7 @@ export default class CalendarController {
             });
           }))
           .sort(function(a, b) {
-            return a.date.getTime() - b.date.getTime();
+            return b.date.getTime() - a.date.getTime();
           })
           .map(function(event) {
             if (!event.done && !nextEvent) {
