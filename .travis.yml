@@ -7,7 +7,7 @@ cache:
 after_success: npm run build
 deploy:
 - provider: script
-  script: htpasswd -b -n "$STAGING_USERNAME" "$STAGING_PASSWORD" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging
+  script: htpasswd -v -b -n "$STAGING_USERNAME" "$STAGING_PASSWORD" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging
   skip_cleanup: true
   on:
     branch: master
