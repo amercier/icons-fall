@@ -8,8 +8,6 @@ script:
 - npm test
 - npm run build
 after_success:
-- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_TAG" != ""
-  && npm run build || echo "Not on master branch or a tag. Skipping build" >&2
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master"
   && npm run deploy-staging || echo "Not on master branch. Skipping deployment to staging" >&2
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_TAG" != ""
