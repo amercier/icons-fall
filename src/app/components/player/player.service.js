@@ -84,15 +84,23 @@ export default class PlayerService {
 
   playPause() {
     if (this.playing) {
-      this.playing = false;
-      this.audio.pause();
-      this.fireEvent('pause');
+      this.pause();
     }
     else {
-      this.playing = true;
-      this.audio.play();
-      this.fireEvent('play');
+      this.resume();
     }
+  }
+
+  pause() {
+    this.playing = false;
+    this.audio.pause();
+    this.fireEvent('pause');
+  }
+
+  resume() {
+    this.playing = true;
+    this.audio.play();
+    this.fireEvent('play');
   }
 
   stop(auto) {

@@ -11,7 +11,8 @@
     "angular-timeline": "1.5.x",
     "fontawesome": "4.x.x",
     "foundation": "5.5.x",
-    "ng-media-events": "1.0.x"
+    "ng-media-events": "1.0.x",
+    "ng-youtube-embed": "1.7.x"
   },
   "devDependencies": {
     "angular-sanitize": "1.4.x",
