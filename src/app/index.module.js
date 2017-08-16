@@ -27,7 +27,7 @@ angular.module('iconsfall', [
   'mm.foundation',
   'rt.encodeuri',
   'angular-timeline',
-  'duScroll'
+  'ngYoutubeEmbed'
 ])
   .config(config)
   .config(routerConfig)

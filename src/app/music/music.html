@@ -1,32 +1,51 @@
-<section class="if-music row">
+<section class="if-music">
 
-  <h1 class="if-title small-12 columns text-center">
-    <svg viewBox="0 0 200 200" class="if-icon"><use xlink:href="#music"></use></svg>
-    Musique
-  </h1>
+  <div class="row">
+    <h1 class="if-title small-12 columns text-center">
+      <svg viewBox="0 0 200 200" class="if-icon"><use xlink:href="#music"></use></svg>
+      Musique
+    </h1>
 
-  <meta content="Electronica" itemprop="genre"/>
+    <meta content="Electronica" itemprop="genre"/>
 
-  <div ng-repeat="album in albums" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
-    <meta content="{{album.tracks.length}}" itemprop="numTracks"/>
-    <meta content="Icon's Fall" itemprop="byArtist"/>
+    <div ng-repeat="album in albums" itemprop="album" itemscope itemtype="http://schema.org/MusicAlbum">
+      <meta content="{{album.tracks.length}}" itemprop="numTracks"/>
+      <meta content="Icon's Fall" itemprop="byArtist"/>
 
-    <h2 class="small-12 columns" itemprop="name">{{album.title}}</h2>
+      <h2 class="small-12 columns" itemprop="name">{{album.title}} EP</h2>
 
-    <figure class="if-music-album-cover no-bullet small-12 medium-6 columns">
-      <img ng-src="{{album.cover}}" alt="Couverture de l'album {{album.title}}" width="500" height="500" itemprop="image">
-    </figure>
+      <figure class="if-music-album-cover no-bullet small-12 medium-6 columns">
+        <img ng-src="{{album.cover}}" alt="Couverture de l'album {{album.title}}" width="500" height="500" itemprop="image">
+      </figure>
 
-    <ul class="no-bullet small-12 medium-offset-1 medium-5 columns">
+      <ul class="no-bullet small-12 medium-offset-1 medium-5 columns">
 
-      <li class="if-music-track clearfix" ng-repeat="track in album.tracks"
-          itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
-        <button class="if-button inverted left" ng-click="play(album, $index)"><i class="fa fa-play"></i></button>
-        <h5 class="if-music-track-title">
-          <span itemprop="name">{{track.title}}</span>
-        </h5>
-      </li>
-    </ul>
+        <li class="if-music-track clearfix" ng-repeat="track in album.tracks"
+            itemprop="track" itemscope itemtype="http://schema.org/MusicRecording">
+          <button class="if-button inverted left" ng-click="play(album, $index)"><i class="fa fa-play"></i></button>
+          <h5 class="if-music-track-title">
+            <span itemprop="name">{{track.title}}</span>
+          </h5>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <h2 class="small-12 columns">White Line - Clip officiel </h2>
+
+    <div class="small-12 columns" itemscope itemtype="http://schema.org/MusicVideoObject" contentUrl="https://www.youtube.com/watch?v={{videoId}}">
+      <div class="container-16-9">
+        <ng-youtube-embed
+          video="videoId"
+          videoid="myVideo"
+          enablejsapi="true"
+          onready="onYoutubePlayerReady"
+          onstatechange="onYoutubePlayerStateChange">
+        </ng-youtube-embed>
+      </div>
+    </div>
 
   </div>
 
