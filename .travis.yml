@@ -4,13 +4,16 @@ cache:
   directories:
   - bower_components
   - node_modules
-script:
-- npm test
-- npm run build
-after_success:
-- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master"
-  && npm run deploy-staging || echo "Not on master branch. Skipping deployment to staging" >&2
-- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_TAG" != ""
-  && git config --global user.email "iconsfall@travis-ci.org"
-  && git config --global user.name "Icon's Fall CI"
-  && npm run deploy-production || echo "Not tagged. Skipping deployment to production" >&2
+after_success: npm run build
+deploy:
+- provider: script
+  script: htpasswd -b -n "$STAGING_USERNAME" "$STAGING_PASSWORD" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /staging
+  skip_cleanup: true
+  on:
+    branch: master
+- provider: script
+  script: rm -f dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /www
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
