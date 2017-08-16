@@ -8,6 +8,7 @@
     "angular-foundation": "0.6.x",
     "angular-resource": "1.4.x",
     "angular-route": "1.4.x",
+    "angular-sanitize": "1.4.x",
     "angular-scroll": "0.7.x",
     "angular-timeline": "1.5.x",
     "fontawesome": "4.x.x",
