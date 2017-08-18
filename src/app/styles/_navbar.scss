@@ -3,6 +3,10 @@ $animate-duration: 200ms;
 iconsfall-navbar .navbar {
   opacity: 0;
   transform: translateY(-100%);
+
+  .title-area {
+    z-index: 1; // Prevents unclickable link
+  }
 }
 
 [data-location] iconsfall-navbar .navbar {
