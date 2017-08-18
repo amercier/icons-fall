@@ -7,6 +7,9 @@
 #    ftp-deploy.sh dist ftp.amercier.com /www
 
 dir=$(echo "$1" | sed 's/\/$//')
+
+echo "Deploying $dir to ftp://$2$3..."
+
 find "$dir" -type f | while read filename; do
   url=$(echo "$dir" | sed 's/\//\\\//g')
   url=$(echo "$filename" | sed "s/^$url//")
