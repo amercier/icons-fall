@@ -28,4 +28,21 @@ export default function runBlock($rootScope, $location, $timeout, meta) {
   $rootScope.onBuy = function(album) {
     gae('Sales', 'Buy album', album);
   };
+
+  // Update <link> tags
+  $rootScope.$on('$routeChangeSuccess', () => {
+    const path = $location.path();
+    let upLink = document.querySelector('link[rel=up]');
+
+    if (path !== '/') {
+      if (!upLink) {
+        upLink = document.createElement('link');
+        upLink.rel = 'up';
+        upLink.href = '/';
+        document.head.appendChild(upLink);
+      }
+    } else if (upLink) {
+      upLink.parentNode.removeChild(upLink);
+    }
+  });
 }
