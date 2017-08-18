@@ -1,7 +1,7 @@
 icons-fall
 ==========
 
-[Icon's Fall official website](http://iconsfall.com/).
+[Icon's Fall official website](https://iconsfall.com/).
 
 
 Continuous deployment
@@ -18,16 +18,16 @@ Dependency tracking is managed by [Gemnasium](https://gemnasium.com/).
 [![Open Issues](http://img.shields.io/github/issues/amercier/iconsfall.svg?style=flat-square)](https://github.com/amercier/iconsfall/issues)
 
 Pushes on master branch are automatically deployed on
-[http://staging.iconsfall.com](http://staging.iconsfall.com).
+[https://staging.iconsfall.com](https://staging.iconsfall.com).
 
 Tags are automatically deployed on
-[http://iconsfall.com](http://iconsfall.com).
+[https://iconsfall.com](https://iconsfall.com).
 
 Step 1: deploy to master branch
 
     git push
 
-Step 2: test at [http://staging.iconsfall.com](http://staging.iconsfall.com)
+Step 2: test at [https://staging.iconsfall.com](https://staging.iconsfall.com)
 
 Step 3: tag the latest commit
 
