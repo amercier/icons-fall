@@ -13,7 +13,7 @@
 
 AuthType Basic
 AuthName "Staging access is restricted"
-AuthUserFile /home/iconsfaloh/staging/.htpasswd
+AuthUserFile /home/amercier/staging.iconsfall.com/.htpasswd
 AuthGroupFile /dev/null
 
 # Apache 2.4
