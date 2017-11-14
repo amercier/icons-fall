@@ -12,7 +12,7 @@ deploy:
   on:
     branch: master
 - provider: script
-  script: rm -f dist/.htpasswd && ./deploy-ftp.sh dist ftp.iconsfall.com /www
+  script: rm -f dist/.htpasswd && ./deploy-ftp.sh dist ftp.amercier.com /iconsfall.com
   skip_cleanup: true
   on:
     branch: master
