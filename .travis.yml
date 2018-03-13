@@ -1,19 +1,40 @@
 language: node_js
 node_js: node
+env:
+  global:
+    - STAGING_AWS_S3_BUCKET=iconsfall-staging
+    - STAGING_AWS_S3_REGION=eu-west-3
+    - PRODUCTION_AWS_S3_BUCKET=iconsfall-production
+    - PRODUCTION_AWS_S3_REGION=eu-west-3
 cache:
   directories:
   - bower_components
   - node_modules
-after_success: npm run build
+before_deploy:
+  - npm run build
+  - pip install --user awscli
 deploy:
-- provider: script
-  script: htpasswd -b -n "$STAGING_USERNAME" "$STAGING_PASSWORD" > dist/.htpasswd && ./deploy-ftp.sh dist ftp.amercier.com /staging.iconsfall.com
-  skip_cleanup: true
-  on:
-    branch: master
-- provider: script
-  script: rm -f dist/.htpasswd && ./deploy-ftp.sh dist ftp.amercier.com /iconsfall.com
-  skip_cleanup: true
-  on:
-    branch: master
-    tags: true
+  # Note: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be set in Travis project settings
+  - provider: script
+    script: >
+      echo "User-agent: *\nDisallow: /" > dist/robots.txt;
+      ~/.local/bin/aws s3 sync dist s3://${STAGING_AWS_S3_BUCKET} --region=${STAGING_AWS_S3_REGION} --delete;
+      rm dist/robots.txt;
+      ~/.local/bin/aws configure set preview.cloudfront true;
+      ~/.local/bin/aws cloudfront create-invalidation --distribution-id $STAGING_CLOUDFRONT_DISTRIBUTION_ID --paths /index.html;
+      sleep 10;
+      curl --fail --silent --show-error https://${STAGING_USERNAME}:${STAGING_PASSWORD}@staging.iconsfall.com/
+    on:
+      branch: master
+    skip_cleanup: true
+  - provider: script
+    script: >
+      ~/.local/bin/aws s3 sync dist s3://${PRODUCTION_AWS_S3_BUCKET} --region=${PRODUCTION_AWS_S3_REGION} --delete;
+      ~/.local/bin/aws configure set preview.cloudfront true;
+      ~/.local/bin/aws cloudfront create-invalidation --distribution-id $PRODUCTION_CLOUDFRONT_DISTRIBUTION_ID --paths /index.html;
+      sleep 10;
+      curl --fail --silent --show-error https://iconsfall.com/
+    on:
+      branch: master
+      tags: true
+    skip_cleanup: true
