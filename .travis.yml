@@ -1,15 +1,13 @@
 language: node_js
-node_js: node
+node_js: --lts
+addons:
+  chrome: stable
 env:
   global:
     - STAGING_AWS_S3_BUCKET=iconsfall-staging
     - STAGING_AWS_S3_REGION=eu-west-3
     - PRODUCTION_AWS_S3_BUCKET=iconsfall-production
     - PRODUCTION_AWS_S3_REGION=eu-west-3
-cache:
-  directories:
-  - bower_components
-  - node_modules
 before_deploy:
   - npm run build
   - pip install --user awscli
@@ -38,3 +36,7 @@ deploy:
       branch: master
       tags: true
     skip_cleanup: true
+cache:
+  directories:
+    - $HOME/.npm
+    - $HOME/.cache/bower

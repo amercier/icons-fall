@@ -37,10 +37,20 @@ module.exports = function(config) {
       moduleName: 'iconsfall'
     },
 
-    browsers : ['PhantomJS'],
+    // Browsers
+    browsers: ['PhantomJS', 'ChromeHeadlessNoSandbox', 'FirefoxHeadless'],
+    customLaunchers: {
+      // Workaround for https://github.com/travis-ci/travis-ci/issues/8836
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
 
     plugins : [
       'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor'
     ],
